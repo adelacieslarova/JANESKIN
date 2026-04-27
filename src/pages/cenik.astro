@@ -6,96 +6,292 @@ import Badge from '../components/ui/Badge.astro';
 import Button from '../components/ui/Button.astro';
 import CtaBanner from '../components/blocks/CtaBanner.astro';
 
-const pricingData = [
+const pricingData: any[] = [
   {
     category: 'Kosmetická péče',
     id: 'kosmeticka-pece',
     items: [
-      { name: 'Collagen Intensive Hydroboost', price: '1 100 Kč', duration: '60 min', note: 'Ideální pro první návštěvu' },
-      { name: 'Lifting & firming ošetření', price: '1 300 Kč', duration: '90 min' },
-      { name: 'Ošetření akné a problematické pleti', price: '1 100 Kč', duration: '75 min' },
-      { name: 'Anti-pigmentační ošetření', price: '1 200 Kč', duration: '75 min' },
-      { name: 'Ošetření citlivé a reaktivní pleti', price: '1 100 Kč', duration: '60 min' },
-      { name: 'Intenzivní anti-age ošetření', price: '1 500 Kč', duration: '120 min' },
+      {
+        name: 'První návštěva salonu',
+        price: null,
+        duration: '30 min',
+        description: 'Přidejte k vybrané službě pouze v případě první návštěvy salonu. Při Vaši první návštěvě salonu během krátké vstupní konzultace probereme Vaši současnou péči o pleť, Vaše očekávání a přání. Jsem tu pro Vás, pomůžu Vám se zorientovat v široké nabídce služeb a společně vybereme to nejvhodnější ošetření a nastavíme plán salonní a domácí péče. Jako první ošetření pro své klienty nejčastěji volím Collagen Intensive Hydroboost – Hydratační ošetření, kterým dodáme pleti potřebnou hydrataci, zářivost a jemnost. Je to ideální ošetření pro seznámení Vaší pleti s přípravky kosmeceutik Larens Professional Line. Není to však vždy pravidlem, vše se odvíjí od aktuální kondice Vaší pleti. Ošetření, které v salonu nabízím, jsou vhodné pro ženy i muže bez rozdílu věku. Kontraindikací pro veškeré kosmetické aplikace je alergie na bílkoviny z ryb. Prosím nevolte si při první návštěvě jako první péči o pleť mikrojehličkování, chemický peeling nebo anti-spot ošetření. Tato ošetření vyžadují důkladné seznámení s Vaší pletí a probrání možných kontraindikací, tak abyste byli předem obeznámeni s průběhem a výsledkem procedury. Takováto ošetření neprovádím novým klientům při první návštěvě. Dále ke kosmetické aplikaci nezapomeňte přidat také doplňkové služby nebo líčení.',
+      },
+      {
+        name: 'Collagen Intensive Hydroboost – Hydratační péče s masáží',
+        price: '1 300 Kč',
+        duration: '90 min',
+        note: 'Ideální pro první návštěvu',
+        description: 'Kosmetická péče podporující hydrataci, zářivost a jemnost pleti. Vhodné po letní sezóně nebo kdykoliv, kdy Vaše pleť potřebuje extra dávku hydratace. Efekt: hloubková regenerace dehydratované pokožky, optimální zlepšení vzhledu a kondice pleti, sjednocení struktury pleti, redukce vrásek, zpomalení stárnutí, stimulace buněk k vlastní regeneraci. Procedura zahrnuje: odlíčení; povrchové čištění pleti; peeling; čištění pleti ultrazvukem; aplikaci aktivní látky/séra; masáž obličeje, krku a dekoltu, masku; závěrečný krém a výživu na rty.',
+      },
+      {
+        name: 'Collagen Lifting Therapy – Liftingová péče s masáží',
+        price: '1 300 Kč',
+        duration: '90 min',
+        description: 'Kosmetická péče podporující krásu a mladost Vaší pleti. Zanechává pokožku svěží, napnutou a hydratovanou. Efekt: vyhlazení vrásek a zpomalení tvorby nových; zlepšení vzhledu a kondice pleti; intenzivní hloubková hydratace, podpora tvorby vlastního kolagenu. Aplikace zahrnuje: odlíčení; povrchové čištění; peeling; použití ultrazvuku, přístrojové zapracování séra/ampulky; masáž obličeje, krku a dekoltu; masku; aplikaci závěrečného krému, očního krému a výživy na rty.',
+      },
+      {
+        name: 'Acne Skin Therapy – Péče o aknózní pleť',
+        price: '1 300 Kč',
+        duration: '90 min',
+        description: 'Kosmetická péče zaměřená na problematickou pleť se sklonem k akné bez masáže. Efekt: urychlení regenerace a hojení pleti; čistící, klidnící, protizánětlivý a antibakteriální účinek; minimalizace pórů a regulace sekrece kožního mazu; snížení zarudnutí a zánětu. Aplikace zahrnuje: odlíčení; povrchové čištění; peeling; čištění ultrazvukem; manuální čištění dle stavu pleti; přístrojové zapracování séra/ampule; masku; aplikaci závěrečného krému, očního krému a výživy na rty.',
+      },
+      {
+        name: 'Sensitive Skin Therapy – Péče o citlivou pleť s masáží',
+        price: '1 300 Kč',
+        duration: '90 min',
+        description: 'Kosmetická péče zaměřená na pleť citlivou, se sklonem k atopické dermatitidě nebo růžovce. Efekt: snížení zarudnutí a zánětu; zmírnění příznaků alergií a svědivosti kůže; posílení krevních vlásečnic; dodání optimální hydratace pleti; zvláčnění a vyhlazení; ochrana pleti proti škodlivým vnějším faktorům. Aplikace zahrnuje: odlíčení; povrchové čištění; peeling; použití ultrazvuku; přístrojové zapracování séra/ampule; masáž obličeje, krku, dekoltu; masku, aplikaci závěrečného krému, očního krému a výživy na rty.',
+      },
+      {
+        name: 'Anti-Aging Express Luxe – Péče s růstovými faktory',
+        price: '1 400 Kč',
+        duration: '60 min',
+        description: 'Kosmetická péče s okamžitým a dlouhotrvajícím efektem za použití liftingové revitalizační masky/zábalu s růstovými faktory z rostlinné Bio-placenty. Efekt: Vyhlazení a odstranění vrásek; vyplnění deficitů v kůži; podpora tvorby nového vlastního kolagenu a elastinu; zrychlení regeneračních procesů v pleti; stimulace k obnově vlastních buněk. Procedura zahrnuje: odlíčení; čistění pleti; peeling; přístrojové zapracování séra/ampulky; aplikace masky/zábalu; závěrečný krém, oční krém a výživu na rty.',
+      },
+      {
+        name: 'Anti-Aging Relax Luxe – Péče s růstovými faktory a masáží',
+        price: '1 800 Kč',
+        duration: '120 min',
+        description: 'Kosmetická péče s okamžitým a dlouhotrvajícím efektem za použití liftingové revitalizační masky/zábalu s růstovými faktory z rostlinné Bio-placenty. Efekt: Vyhlazení a odstranění vrásek; vyplnění deficitů v kůži; podpora tvorby nového vlastního kolagenu a elastinu; zrychlení regeneračních procesů v pleti; stimulace k obnově vlastních buněk. Procedura zahrnuje: odlíčení; povrchové čistění pleti; peeling; přístrojové zapracování séra/ampulky; mikromasáž očního okolí a masáž obličeje, krku a dekoltu; masku/zábal; závěrečný krém, oční krém a výživu na rty.',
+      },
+      {
+        name: 'Intensive Lifting Detox+ – Detoxikační péče',
+        price: '1 100 Kč',
+        duration: '60 min',
+        description: 'Detoxikační kosmetická péče před důležitou událostí. Ideální pro pokožku vystavenou stresu, znečištění a nedostatečné výživě. Pro pleť bez jiskry, s akné i s pigmentovými skvrnami. Efekt: detoxikuje a remineralizuje pokožku; redukuje množství volných radikálů a zpomaluje proces stárnutí; vyhlazuje, zpevňuje, dodává pleti vitalitu a energii; redukuje pigmentové skvrny a zabraňuje vzniku nových, sjednocuje barevný tón pleti; absorbuje kožní maz a matuje pokožku; zklidňuje zarudnutí a hypersenzitivní pokožku. Procedura zahrnuje: odlíčení; povrchové čištění pleti; peeling; aplikaci masky; s lehkou masáží; aplikaci séra a výživy rty. Vhodné jako intenzivní kůra 3–5 ošetření 1× za 10 dní. Celá kůra 5 ošetření 5 500 CZK. Kůra pro udržení výsledků 1 ošetření každých 4–5 týdnů.',
+      },
     ],
   },
   {
     category: 'Chemické peelingy',
     id: 'chemicke-peelingy',
     items: [
-      { name: 'Povrchový chemický peeling', price: '1 100 Kč', duration: '60 min', note: 'Peptidy rybího kolagenu' },
-      { name: 'Peeling + maska', price: '1 300 Kč', duration: '75 min' },
-    ],
-  },
-  {
-    category: 'Microneedling s Exosomy',
-    id: 'microneedling',
-    items: [
-      { name: 'Microneedling s Exosomy', price: '2 300 Kč', duration: '90 min', note: 'Exosomy + HA + růstové faktory' },
-      { name: 'Série 3 ošetření', price: '6 300 Kč', duration: '3 × 90 min', note: 'Úspora 600 Kč' },
+      {
+        name: 'Chemický Peeling – Povrchový chemický peeling',
+        price: '1 100 Kč',
+        duration: '60 min',
+        note: 'Peptidy rybího kolagenu',
+        description: 'Exkluzivní omlazení s povrchovým chemickým peelingem s komplexem přírodních peptidů rybího kolagenu. Pleť se zjemní, vyhladí, projasní a zhydratuje. Nedochází k olupování pleti nebo silnému podráždění. Vhodný pro všechny typy pleti i pleť citlivou. Efekt: hloubková rekonstrukce pleti obličeje; mizí pigmentace, záněty i akné; podpora procesů hojení a vyhlazení jizev; zmírnění projevů stárnutí. Procedura zahrnuje: odlíčení, povrchové čištění pleti; peeling, aplikaci masky, závěrečný krém/krém s SPF; výživa na rty. Vhodný jako kůra 4 ošetření 1× za 10 dní v období září až duben. Celá kůra 4 ošetření 4 400 CZK.',
+      },
+      {
+        name: 'Chemický Peeling Luxe – Povrchový chemický peeling s růstovými faktory',
+        price: '1 600 Kč',
+        duration: '60 min',
+        description: 'Exkluzivní omlazení s povrchovým chemickým peelingem s komplexem přírodních peptidů rybího kolagenu a liftingovou revitalizační maskou/zábalem s růstovými faktory z rostlinné Bio-placenty. Pleť se zjemní, vyhladí, projasní a zhydratuje. Nedochází k olupování pleti nebo silnému podráždění. Vhodný pro všechny typy pleti i pleť citlivou. Efekt: hloubková rekonstrukce pleti obličeje; mizí pigmentace, záněty i akné; podpora procesů hojení a vyhlazení jizev; zmírnění projevů stárnutí. Procedura zahrnuje: odlíčení, povrchové čištění pleti; peeling, aplikaci masky/zábalu, závěrečný krém/krém s SPF; výživa na rty. Vhodný jako kůra 4 ošetření 1× za 10 dní v období září až duben. Celá kůra 4 ošetření 6 400 CZK.',
+      },
     ],
   },
   {
     category: 'Anti Spot Therapy',
     id: 'anti-spot',
     items: [
-      { name: 'Anti Spot Therapy', price: '1 100 Kč', duration: '60 min', note: 'Pigmentové skvrny' },
-      { name: 'Série 3 ošetření', price: '3 000 Kč', duration: '3 × 60 min', note: 'Úspora 300 Kč' },
+      {
+        name: 'Anti Spot Therapy – Depigmentační péče',
+        price: '1 100 Kč',
+        duration: '60 min',
+        note: 'Pigmentové skvrny',
+        description: 'Rozjasňující procedura zaměřená na odstranění pigmentových skvrn různého původu souvisejících se sluncem; věkem; hormony nebo následky kožních onemocnění jako je akné nebo atopická dermatitida. Efekt: redukce skvrn; sjednocení barevného tónu pleti bez nepřirozeného zesvětlení celé pleti; potlačení vzniku nových skvrn. Hydratuje; poskytuje potřebnou dávku antioxidantů; stimuluje k obnově a regeneraci pleti. Procedura zahrnuje: odlíčení, povrchové čištění pleti; aplikaci detoxikační masky, s lehkou masáží, aplikaci depigmentačního séra a neutralizéru; závěrečný depigmentační krém/krém s SPF a péče o rty. Intenzivní kůra 3–6 ošetření 1× za 10 dní v období září do konce května. Celá kůra 6 ošetření 6 600 CZK.',
+      },
     ],
   },
   {
     category: 'Kosmetické masáže',
     id: 'masaze',
     items: [
-      { name: 'Klasická masáž obličeje, krku a dekoltu', price: '600 Kč', duration: '45 min' },
-      { name: 'Liftingová masáž', price: '750 Kč', duration: '60 min' },
-      { name: 'Mikromasáž očního okolí', price: '400 Kč', duration: '30 min' },
-      { name: 'Relaxační masáž obličeje + záda', price: '900 Kč', duration: '90 min' },
+      {
+        name: 'Kosmetická masáž obličeje, krku a dekoltu s pleťovou maskou',
+        price: '1 000 Kč',
+        duration: '60 min',
+        description: 'Patří mezi nejúčinnější a nejpříjemnější prostředek v boji proti stárnutí pokožky obličeje, krku a dekoltu. Masáž působí na velké množství nervových zakončení v obličeji, ale také příznivě ovlivňuje celou nervovou soustavu. Během masáže dochází ke zklidnění pleti i celého organismu a k relaxačnímu účinku na centrální nervovou soustavu i celé tělo. Efekt: zlepšení prokrvení pleti a efektivnější přísun kyslíku a živin. Odplavení odpadních látek a zmírnění únavy pleti. Jemná exfoliace zrohovatělých vrstev kůže, kožní buňky jsou tak lépe vyživovány, pokožka se stává vláčnější, pevnější, pružnější a zpomaluje se tvorba vrásek. Zlepšení látkové výměny a úpravy tvorby mazových žláz. Uvolnění napětí svalů, které jsou napojeny na kůži v obličeji a celkové zjemní výrazu tváře. Procedura zahrnuje: odlíčení, povrchové čištění pleti, krku a dekoltu, masáž za použití masážního oleje nebo krému, aplikaci pleťové masky pro posílení účinků masáže, závěrečný krém, oční krém a výživu na rty. Proceduru je vhodné absolvovat 1× za 3–4 týdny. 1× masáž 1 000 CZK, doba trvání 60 min. Balíček 5× masáž = 4 500 CZK. Balíček 10× masáž = 8 000 CZK.',
+      },
+      {
+        name: 'Liftingová masáž obličeje s pleťovou maskou',
+        price: '1 200 Kč',
+        duration: '90 min',
+        description: 'Je způsob, jak omladit obličej pomocí velmi jemných a pomalých speciálních masážních tahů. Masáž je velmi odpočinková a následný efekt je viditelný již po první proceduře. Výsledkem je svěží vzhled, zjemněné rysy obličeje zbavené únavy bez použití skalpelu. Efekt: zlepšení prokrvení svalů v oblasti obličeje, pleť se projasní. Masáží dochází k zvýšení pružnosti kůže, zpomalení tvorby vrásek a k odstranění svalového napětí. Působí příznivě na psychiku, na celou nervovou soustavu. Odplavuje kyselinu mléčnou, dochází k poklesu únavy. Je vhodná pro zdravou, ale unavenou pleť s vráskami jak mimickými, tak i senilními, ale také i při obrně nervů. Procedura zahrnuje: odlíčení, povrchové čištění pleti, masáž za použití masážního oleje nebo krému, aplikaci liftingové masky s collagenem pro posílení účinků masáže, závěrečný krém, oční krém a výživu na rty. Proceduru je vhodné absolvovat 2× v týdnu po dobu 4–6 týdnů a následně 1× měsíčně pro udržení výsledků. 1× masáž 1 200 CZK, doba trvání 90 min. Balíček 5× manuální lifting = 5 500 CZK. Balíček 10× manuální lifting = 10 000 CZK.',
+      },
+      {
+        name: 'Mikromasáž očního okolí s alginátovou pleťovou maskou',
+        price: '600 Kč',
+        duration: '45 min',
+        description: 'Jedná se o jemnou a pomalou masáž pokožky očního okolí. Masáž působí jako prevence stárnutí pleti, má příznivý vliv na omezení tvorby vrásek okolo očí. Po této masáži dochází k omezení tvorby kruhů a vodnatých váčků pod očima, k snížení nitroočního tlaku a při pravidelné aplikaci také ke zlepšení zraku. Působí proti migréně a je vhodná při dlouhodobé práci s počítači nebo práci při umělém světle. Uvolňuje a pročišťuje dutiny. Efekt: Masáží dochází k působení na lymfatický systém a k odplavení toxických látek. K projasnění očního okolí a ústupu viditelných známek únavy. K uvolnění napětí očních svalů a jejich zrelaxování. Po masáži budou Vaše oči zářit. Procedura zahrnuje: odlíčení, povrchové čištění pleti, masáž za použití masážního oleje nebo krému, aplikaci alginátové masky na oční okolí, závěrečný krém, oční krém a výživu na rty. Proceduru je vhodné absolvovat 1× za 14 dní. 1× mikromasáž 600 CZK, doba trvání 45 min. Balíček 5× mikromasáž = 2 500 CZK. Balíček 10× mikromasáž = 4 000 CZK.',
+      },
     ],
   },
   {
-    category: 'Laminace řas a obočí',
+    category: 'Make-up',
+    id: 'makeup',
+    items: [],
+    subsections: [
+      {
+        title: 'Svatební vizáž',
+        items: [
+          {
+            name: 'Vizáž nevěsta',
+            price: '3 500 Kč',
+            duration: '120 min',
+            description: 'Vizáž obsahuje předsvatební konzultaci a zkoušku, make-up v den svatby, nalepení jednorázových řas. U svatebního líčení je nutné uhradit rezervační poplatek ve výši 1 500 CZK v den zkoušky, odečítá se od celkové ceny nebo slouží jako úhrada za zkoušku. Rezervace zkoušky před událostí 1–2 měsíce. Prosím přečtěte si informace k vizáži, kde jsou sepsány všechny důležité body jak se nejlépe připravit.',
+          },
+          {
+            name: 'Vizáž nevěsta komplet',
+            price: '4 500 Kč',
+            duration: '210 min',
+            description: 'Vizáž obsahuje předsvatební konzultaci a zkoušku vizáže, make-up a účes v den svatby, nalepení jednorázových řas, možnost zakoupení nebo zapůjčení ozdob do účesu za vratnou kauci. U svatebního líčení je nutné uhradit rezervační poplatek ve výši 1 500 CZK v den zkoušky, odečítá se od celkové ceny nebo slouží jako úhrada za zkoušku. Rezervaci zkoušky před událostí 1–2 měsíce. Prosím přečtěte si informace k vizáži, kde jsou sepsány všechny důležité body jak se nejlépe připravit.',
+          },
+          {
+            name: 'Vizáž svatebčanka',
+            price: '800 Kč',
+            duration: '60 min',
+            description: 'Make-up od 800 CZK / 60 minut. Účes od 800 CZK / 60 minut. Lepení řas od 150 CZK. Prosím přečtěte si informace k vizáži, kde jsou sepsány všechny důležité body jak se nejlépe připravit.',
+          },
+          {
+            name: 'Vizáž svatebčanka komplet',
+            price: '1 500 Kč',
+            duration: '120 min',
+            description: 'Make-up a účes od 1 500 CZK / 120 minut. Lepení řas od 150 CZK. Prosím přečtěte si informace k vizáži, kde jsou sepsány všechny důležité body.',
+          },
+        ],
+      },
+      {
+        title: 'Foto vizáž',
+        items: [],
+      },
+      {
+        title: null,
+        items: [
+          {
+            name: 'Poradenství v oblasti péče o pleť a líčení',
+            price: '1 200 Kč',
+            duration: '90 min',
+            description: 'Ztrácíte se v nabídce kosmetických produktů? Nevíte si rady s nastavením vhodné kosmetické péče právě pro Vás? U šálku něčeho dobrého si povíme jaké přípravky použít na denní bázi dle stavu Vaši pleti a věku, jak pleť správně odličovat a čistit, jaké jsou pro Vás vhodné séra nebo krémy. Dále si nastíníme, jak můžete péči o Vaši pleť ještě více vylepšit, pokud se chcete více rozmazlit a dopřát si nadstandartní péči. Jak je to s peelingem v domácích podmínkách a jaké masky můžete zařadit pro podporu udržení salónních procedur. Jaké pomůcky pleti prospívají a jaké ji naopak škodí. Co vás čeká, při návštěvě kosmetického salónu a jaké stavy lze možno salonním ošetřením ovlivnit a kdy je už nutné jít k dermatologovi. Poradím Vám i s kosmetickou péčí pro Vaši drahou polovičku nebo dospívajícího potomka. V rámci konzultace probereme také produkty dekorativní péče vhodné pro Váš typ pleti. V rámci konzultace je možno vyzkoušet vybrané dostupné kosmetické přípravky.',
+          },
+          {
+            name: 'Mini kurz líčení s Larens Colour',
+            price: '1 500 Kč',
+            duration: '120 min',
+            description: 'Krása začíná uvnitř a pokračuje s Larens Colour, což není jen značka dekorativní kosmetiky, je to víc než jen make-up. Je pokračováním vašeho pečujícího rituálu a investicí do kvality vaší pleti! Základ make-upů a korektorů Larens Colour tvoří Liposomal Collagen Complex, Phytodermina H Lifting™ a rovnou 3 typy kyseliny hyaluronové – liposomální kyselina hyaluronová a kyselina hyaluronová s vysokou a nízkou molekulovou hmotností. Mezi další pečující složky patří extrakt z pupečníku asijského, extrakt z kořene ženšenu, extrakt zeleného čaje, extrakt z jasmínových květů, extrakt ze zlaté řasy, extrakt z arniky, kokosová voda, estery bambuckého másla, D-panthenol, jojobový olej, přírodní UV filtry. Složení produktů neobsahuje polycyklické silikony ani parabeny. Produkty značky Larens Colour jsou určené pro všechny věkové kategorie, tak i pro osoby s citlivou, alergickou, aknózní či dehydratovanou pletí. Během inspirativního kurzu líčení se naučíte, jak správně připravit pleť před líčením. Naučíte se, jak si správně zvolit odstín make-upu a korektoru k Vaši pleti. Dozvíte se, jak make-up správně aplikovat, aby vypadal jako Vaše druhá kůže bez efektu masky. Vytvoříme spolu klasický každodenní look, tak i výraznější variantu, pokud se budete potřebovat připravit pro speciální příležitosti. To vše vykouzlíme se značkou Larens Colour a produkty, které nabízejí to nejlepší z přírody. V rámci kurzu je možno vyzkoušet dostupné kosmetické přípravky a přípravky dekorativní kosmetiky.',
+          },
+          {
+            name: 'Proměna s Larens Colour',
+            price: '2 000 Kč',
+            duration: '180 min',
+            description: 'Zatoužila jste ve svém životě po změně? Chtěla byste vyzkoušet úplně něco nového? Postarám se o Vaši kompletní make-up proměnu s Larens Colour, kterou doplníme o úpravu vlasů ve formě vhodného účesu (nezahrnuje složitější účesy, barvení ani střih). Chtěla byste si užít hezké odpoledne spolu s kamarádkou nebo dcerou? Přijďte si společně užít den v příjemné atmosféře s kapkou něčeho dobrého. Pro možnost absolvovat proměnu pro více osob mě kontaktujte a domluvíme vše potřebné.',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    category: 'Doplňkové služby ke kosmetické péči',
+    id: 'doplnkove',
+    note: 'Doplňkové služby je možné zakoupit pouze ke kosmetické aplikaci',
+    items: [],
+    subsections: [
+      {
+        title: 'Epilace',
+        items: [
+          { name: 'Epilace obočí', price: '100 Kč', duration: '15 min' },
+          { name: 'Epilace horního rtu', price: '100 Kč', duration: '15 min' },
+          { name: 'Epilace brady', price: '100 Kč', duration: '15 min' },
+        ],
+      },
+      {
+        title: 'Obočí a řasy',
+        items: [
+          { name: 'Barvení obočí', price: '100 Kč', duration: '15 min' },
+          { name: 'Barvení řas', price: '100 Kč', duration: '15 min' },
+          { name: 'Barvení obočí a řas', price: '150 Kč', duration: '20 min' },
+        ],
+      },
+      {
+        title: 'Líčení po kosmetické péči',
+        items: [
+          { name: 'Lehké denní líčení', price: '250 Kč', duration: '15 min', description: 'Lehké denní líčení s Larens Colour po kosmetické péči.' },
+        ],
+      },
+      {
+        title: 'Nadstandardní aplikace',
+        items: [
+          { name: 'Aplikace alginátové masky', price: '250 Kč', duration: '20 min' },
+          { name: 'Aplikace Bio Renew masky', price: '450 Kč', duration: '30 min' },
+          { name: 'Aplikace ampule Anti Acne / Anti-Aging', price: null, duration: '30 min' },
+        ],
+      },
+    ],
+  },
+  {
+    category: 'Voucher na salonní služby',
+    id: 'voucher',
+    intro: 'Vhodný jako dárek pro osobu, kterou chcete potěšit chvilkou nerušené relaxace, odpočinku a péčí luxusní kosmoceutikou Larens.',
+    items: [
+      {
+        name: 'Voucher na služby č. 1',
+        price: '1 000 Kč',
+        duration: '60 min',
+        description: 'Chcete mít jistotu, že při výběru dárku nešlápnete vedle? Dárkový poukaz bude ta správná volba. Obdarovaná si sama vybere, na jakou kosmetickou proceduru poukaz využije. V nabídce jsou specializovaná kosmetická ošetření, omlazující mikroneedling, masáže, laminace řas a obočí, kurz líčení nebo péče o pleť. Věnujte dárkový poukaz, kterým zároveň darujete milované osobě čas pro sebe a péči o svůj zevnějšek, relaxaci při kosmetické masáži a tolik potřebný odpočinek. Dárkový poukaz v hodnotě 1 000 CZK Vám vystavíme po domluvě, případně je možné zvolit i jinou částku dle Vašeho přání. K dispozici jsou luxusní poukazy v tištěné podobě s dárkovou obálkou a mašlí, nemusíte tak již přemýšlet do čeho poukaz zabalit. Poukazy na salonní služby je možné vyzvednout po domluvě v SALONU JANESKIN. Nestíháte poukaz vyzvednout osobně, nevadí. Nabízím Vám možnost zakoupit dárkový poukaz v elektronické podobě. Poukaz zašlu na vaši e-mailovou adresu neprodleně po připsání částky, na kterou bude stanovena hodnota poukazu, na bankovní účet. Platnost poukazu je stanovena 6 měsíců od data zakoupení, pokud není dohodnuto jinak.',
+      },
+      {
+        name: 'Voucher na služby č. 2',
+        price: '1 500 Kč',
+        duration: '90 min',
+        description: 'Chcete mít jistotu, že při výběru dárku nešlápnete vedle? Dárkový poukaz bude ta správná volba. Obdarovaná si sama vybere, na jakou kosmetickou proceduru poukaz využije. V nabídce jsou specializovaná kosmetická ošetření, omlazující mikroneedling, masáže, laminace řas a obočí, kurz líčení nebo péče o pleť. Věnujte dárkový poukaz, kterým zároveň darujete milované osobě čas pro sebe a péči o svůj zevnějšek, relaxaci při kosmetické masáži a tolik potřebný odpočinek. Dárkový poukaz v hodnotě 1 500 CZK Vám vystavíme po domluvě, případně je možné zvolit i jinou částku dle Vašeho přání. K dispozici jsou luxusní poukazy v tištěné podobě s dárkovou obálkou a mašlí, nemusíte tak již přemýšlet do čeho poukaz zabalit. Poukazy na salonní služby je možné vyzvednout po domluvě v SALONU JANESKIN. Nestíháte poukaz vyzvednout osobně, nevadí. Nabízím Vám možnost zakoupit dárkový poukaz v elektronické podobě. Poukaz zašlu na vaši e-mailovou adresu neprodleně po připsání částky, na kterou bude stanovena hodnota poukazu, na bankovní účet. Platnost poukazu je stanovena 6 měsíců od data zakoupení, pokud není dohodnuto jinak.',
+      },
+      {
+        name: 'Voucher na služby č. 3',
+        price: '2 000 Kč',
+        duration: '90 min',
+        description: 'Chcete mít jistotu, že při výběru dárku nešlápnete vedle? Dárkový poukaz bude ta správná volba. Obdarovaná si sama vybere, na jakou kosmetickou proceduru poukaz využije. V nabídce jsou specializovaná kosmetická ošetření, omlazující mikroneedling, masáže, laminace řas a obočí, kurz líčení nebo péče o pleť. Věnujte dárkový poukaz, kterým zároveň darujete milované osobě čas pro sebe a péči o svůj zevnějšek, relaxaci při kosmetické masáži a tolik potřebný odpočinek. Dárkový poukaz v hodnotě 2 000 CZK Vám vystavíme po domluvě, případně je možné zvolit i jinou částku dle Vašeho přání. K dispozici jsou luxusní poukazy v tištěné podobě s dárkovou obálkou a mašlí, nemusíte tak již přemýšlet do čeho poukaz zabalit. Poukazy na salonní služby je možné vyzvednout po domluvě v SALONU JANESKIN. Nestíháte poukaz vyzvednout osobně, nevadí. Nabízím Vám možnost zakoupit dárkový poukaz v elektronické podobě. Poukaz zašlu na vaši e-mailovou adresu neprodleně po připsání částky, na kterou bude stanovena hodnota poukazu, na bankovní účet. Platnost poukazu je stanovena 6 měsíců od data zakoupení, pokud není dohodnuto jinak.',
+      },
+    ],
+  },
+  {
+    category: 'Laminace obočí a řas',
     id: 'laminace',
     items: [
-      { name: 'Laminace řas InLei®', price: '850 Kč', duration: '60 min' },
-      { name: 'Laminace řas + barvení', price: '950 Kč', duration: '75 min' },
-      { name: 'Laminace obočí', price: '450 Kč', duration: '45 min' },
-      { name: 'Laminace obočí + barvení', price: '550 Kč', duration: '60 min' },
-      { name: 'Laminace řas + obočí komplet', price: '1 350 Kč', duration: '120 min', note: 'Zvýhodněná cena' },
+      {
+        name: 'Lash Filler – Laminace řas s barvením a výživou',
+        price: '1 000 Kč',
+        duration: '90 min',
+        description: 'Je procedura pokročilé laminace řas, při níž dochází nejen k jemnému, ale účinnému natočení přirozených řas a jejich barvení, ale také k dodání potřebné výživy a posílení řasy zevnitř. Díky patentovanému složení od InLei® se řasy průměrně zahustí až o 25 % a prodlouží o 9 % už po 3 aplikacích. Řasy jsou po ošetření zdravější, pružnější, vyživené a objemnější. Postup zahrnuje: čištění, nanesení laminačních produktů, barvení obočí, nanesení filleru – výživy, která řasy obnovuje, opravuje a udržuje optimální hydrataci, zpevňuje, vyplňuje a zahušťuje strukturu řasy, nanesení závěrečného kroku lash molecular – molekulární rekonstrukce pro řasy, která zlepšuje hydrataci, lesk, sílu a flexibilitu řas, ale také posiluje trvanlivost barvy.',
+      },
+      {
+        name: 'Brow Bomber – Laminace obočí s barvením a výživou',
+        price: '1 000 Kč',
+        duration: '90 min',
+        description: 'Je procedura, při níž se přírodní chloupky obočí vyčešou v požadovaném směru a fixují pomocí kombinace přípravků InLei®. Všechny produkty se svou účinností vzájemně podporují a zajišťují efektivní růst chloupků. Ideální procedura pro dokonalou úpravu obočí. Postup zahrnuje: čištění, nanesení laminačních produktů, vyměření obočí s barvením v tzv. ombre efektu, aby bylo dosaženo opravdové přirozenosti. Epilaci voskem, barevnou korekci a nanesení závěrečné výživy.',
+      },
+      {
+        name: 'Zvýhodněný balíček Lash Filler & Brow Bomber – Laminace řas a obočí s barvením a výživou',
+        price: '1 800 Kč',
+        duration: '120 min',
+        note: 'Zvýhodněná cena',
+        description: 'Balíček laminace řas a obočí od InLei® v jedné proceduře. Při laminaci řas dochází k natočení přirozených řas a k jejich barvení, ale také k dodání potřebné výživy a posílení řasy zevnitř. Při laminaci obočí se přírodní chloupky obočí vyčešou v požadovaném směru a zafixují. Postup zahrnuje úpravu a barvení obočí v tzv. ombre efektu.',
+      },
     ],
   },
   {
-    category: 'Make-up a vizážistika',
-    id: 'makeup',
+    category: 'Celková úprava obočí',
+    id: 'uprava-oboci',
     items: [
-      { name: 'Denní make-up', price: '800 Kč', duration: '60 min' },
-      { name: 'Večerní make-up', price: '900 Kč', duration: '75 min' },
-      { name: 'Foto vizáž', price: '1 100 Kč', duration: '90 min' },
-      { name: 'Svatební líčení vč. zkoušky', price: 'od 3 500 Kč', duration: '2 × 90 min' },
-      { name: 'Kompletní vizáž (make-up + účes)', price: 'od 4 500 Kč', duration: '210 min' },
-      { name: 'Kurz líčení (individuální)', price: '1 500 Kč', duration: '120 min' },
-    ],
-  },
-  {
-    category: 'Doplňkové služby',
-    id: 'doplnkove',
-    items: [
-      { name: 'Barvení obočí', price: '150 Kč', duration: '15 min' },
-      { name: 'Barvení řas', price: '150 Kč', duration: '15 min' },
-      { name: 'Barvení obočí + řas', price: '250 Kč', duration: '25 min' },
-      { name: 'Úprava obočí', price: '80 Kč', duration: '15 min' },
-      { name: 'Epilace horního rtu', price: '80 Kč', duration: '10 min' },
-      { name: 'Nadstandardní maska (přídavek k ošetření)', price: '150 Kč', duration: '+ 15 min' },
-      { name: 'Lehké denní líčení po ošetření', price: '200 Kč', duration: '20 min' },
+      {
+        name: 'Celková úprava obočí',
+        price: '450 Kč',
+        duration: '45 min',
+        description: 'Procedura zahrnuje: čištění, vyměření obočí, barvení hybridní barvou, ombre efekt, epilace, korekce.',
+      },
     ],
   },
   {
     category: 'Svatební balíčky',
     id: 'nevesta',
     items: [
-      { name: 'Příprava pleti — 3× ošetření', price: '3 500 Kč', duration: '3 × 60 min', note: 'Zvýhodněný balíček' },
-      { name: 'Svatební vizáž vč. zkoušky', price: 'od 3 500 Kč', duration: '2 × 90 min' },
-      { name: 'Kompletní vizáž (make-up + účes)', price: 'od 4 500 Kč', duration: '210 min' },
+      {
+        name: 'Zvýhodněný balíček krásy pro nastávající nevěstu',
+        price: '1 300 Kč',
+        duration: '60 min',
+        note: 'Balíček 3× = 3 500 Kč',
+        description: 'Vaše pleť si v období před svatbou zaslouží pozornost a to nejen kvůli krásnému make-upu a svatebním fotkám, ale především kvůli vašemu pocitu jedinečnosti a sebevědomí. Každá pleť má jiné potřeby a ať se už chystáte na kosmetické ošetření poprvé, nebo už máte nějaké kosmetické ošetření za sebou, ráda Vám pomůžu se zorientovat v nabídce kosmetických ošetření a vybrat přesně to pravé pro Vás před vaším velkým dnem. Pokud nedocházíte pravidelně na kosmetickou péči a chtěla byste stav své pleti zlepšit, 3 měsíce předem je ten ideální čas naplánovat první návštěvu. Vaši pleti sestavím na míru péči, která pleť zklidní a rozzáří. Budete odcházet se zdravou a krásnou pletí, která bude působit svěže a hydratovaně. Zvýhodněná služba pro nevěsty, které se chystají na svatební zkoušku líčení v našem salonu. Proceduru je vhodné absolvovat 1× za 4 týdny. 1× péče 1 300 CZK, doba trvání 60 min. Balíček 3× ošetření = 3 500 CZK.',
+      },
     ],
   },
 ];
@@ -106,7 +302,6 @@ const pricingData = [
   description="Ceník kosmetického salonu JANESKIN — Dolní Lutyně. Ceny všech ošetření, masáží, laminací, vizážistiky a svatebních balíčků. Jana Szymiková."
 >
   <PageHeader
-    label="Ceník"
     title="Ceník služeb"
     subtitle="Přehledný ceník všech ošetření. Ceny jsou orientační — konečná cena závisí na délce a rozsahu ošetření."
     breadcrumb={[{ label: 'Ceník', href: '/cenik' }]}
@@ -129,55 +324,134 @@ const pricingData = [
   <div class="cenik-content section">
     <div class="container">
 
-      <!-- Info banner -->
-      <div class="cenik-info" role="note">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-        <p>Ceny jsou uvedeny včetně DPH. Na první návštěvu doporučuji <strong>Collagen Intensive Hydroboost</strong> — ideální úvod do kosmeceutiky Larens.</p>
-      </div>
-
       <!-- Kategorie -->
       {pricingData.map(cat => (
         <section class="price-category" id={cat.id} aria-label={cat.category}>
           <h2 class="price-category__title">{cat.category}</h2>
-          <table class="price-table" role="table" aria-label={`Ceník — ${cat.category}`}>
-            <thead class="price-table__head">
-              <tr>
-                <th scope="col" class="price-table__th price-table__th--name">Ošetření</th>
-                <th scope="col" class="price-table__th price-table__th--duration">Délka</th>
-                <th scope="col" class="price-table__th price-table__th--price">Cena</th>
-              </tr>
-            </thead>
-            <tbody>
-              {cat.items.map((item, i) => (
-                <tr class="price-table__row">
-                  <td class="price-table__td price-table__name">
-                    {item.name}
-                    {item.note && <span class="price-table__note">{item.note}</span>}
-                  </td>
-                  <td class="price-table__td price-table__duration">{item.duration}</td>
-                  <td class="price-table__td price-table__price">
-                    <Badge text={item.price} variant="gold" />
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          {cat.note && <p class="price-category__note">{cat.note}</p>}
+          {cat.intro && <p class="price-category__intro">{cat.intro}</p>}
+
+          {cat.subsections ? (
+            cat.subsections.map((sub: any, subIdx: number) => (
+              <>
+                {sub.title && <h3 class="price-subsection__title">{sub.title}</h3>}
+                {sub.intro && <p class="price-subsection__intro">{sub.intro}</p>}
+                {sub.items.length > 0 && (
+                <table class="price-table" role="table" aria-label={`Ceník — ${cat.category} — ${sub.title}`}>
+                  <tbody>
+                    {sub.items.map((item: any, i: number) => (
+                      <>
+                        <tr class={`price-table__row${item.description ? ' is-expandable' : ''}`}>
+                          <td class="price-table__td price-table__name">
+                            <div class="price-table__name-wrap">
+                              <span class="price-table__name-text">
+                                {item.name}
+                                {item.note && <span class="price-table__note">{item.note}</span>}
+                              </span>
+                              {item.description && (
+                                <button
+                                  class="expand-toggle"
+                                  aria-expanded="false"
+                                  data-target={`detail-${cat.id}-s${subIdx}-${i}`}
+                                >
+                                  <span class="toggle-label">Zobrazit více</span>
+                                  <svg class="toggle-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                                </button>
+                              )}
+                            </div>
+                          </td>
+                          <td class="price-table__td price-table__duration">{item.duration}</td>
+                          <td class="price-table__td price-table__price">
+                            {item.price
+                              ? <Badge text={item.price} variant="gold" />
+                              : <span class="price-table__no-price">—</span>
+                            }
+                          </td>
+                        </tr>
+                        {item.description && (
+                          <tr class="price-table__detail" id={`detail-${cat.id}-s${subIdx}-${i}`} aria-hidden="true">
+                            <td colspan="3" class="price-table__detail-td">
+                              <div class="price-table__detail-body">
+                                <p>{item.description}</p>
+                              </div>
+                            </td>
+                          </tr>
+                        )}
+                      </>
+                    ))}
+                  </tbody>
+                </table>
+                )}
+              </>
+            ))
+          ) : (
+            <table class="price-table" role="table" aria-label={`Ceník — ${cat.category}`}>
+              <tbody>
+                {cat.items.map((item: any, i: number) => (
+                  <>
+                    <tr class={`price-table__row${item.description ? ' is-expandable' : ''}`}>
+                      <td class="price-table__td price-table__name">
+                        <div class="price-table__name-wrap">
+                          <span class="price-table__name-text">
+                            {item.name}
+                            {item.note && <span class="price-table__note">{item.note}</span>}
+                          </span>
+                          {item.description && (
+                            <button
+                              class="expand-toggle"
+                              aria-expanded="false"
+                              data-target={`detail-${cat.id}-${i}`}
+                            >
+                              <span class="toggle-label">Zobrazit více</span>
+                              <svg class="toggle-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                            </button>
+                          )}
+                        </div>
+                      </td>
+                      <td class="price-table__td price-table__duration">{item.duration}</td>
+                      <td class="price-table__td price-table__price">
+                        {item.price
+                          ? <Badge text={item.price} variant="gold" />
+                          : <span class="price-table__no-price">—</span>
+                        }
+                      </td>
+                    </tr>
+                    {item.description && (
+                      <tr class="price-table__detail" id={`detail-${cat.id}-${i}`} aria-hidden="true">
+                        <td colspan="3" class="price-table__detail-td">
+                          <div class="price-table__detail-body">
+                            <p>{item.description}</p>
+                          </div>
+                        </td>
+                      </tr>
+                    )}
+                  </>
+                ))}
+              </tbody>
+            </table>
+          )}
         </section>
       ))}
 
       <!-- Dárkové poukazy -->
       <section class="price-category" id="darkove-poukazy" aria-label="Dárkové poukazy">
         <h2 class="price-category__title">Dárkové poukazy</h2>
+        <p class="voucher-intro">Chcete mít jistotu, že při výběru dárku nešlápnete vedle? Dárkový poukaz bude ta správná volba. Obdarovaná si sama vybere, na jakou kosmetickou proceduru poukaz využije – v nabídce jsou specializovaná kosmetická ošetření, omlazující mikroneedling, masáže, laminace řas a obočí, kurz líčení nebo péče o pleť. Věnujte dárkový poukaz, kterým zároveň darujete milované osobě čas pro sebe, relaxaci a tolik potřebný odpočinek.</p>
         <div class="voucher-grid">
-          {[1000, 1500, 2000].map(val => (
+          {[
+            { price: '1 000 Kč', duration: '60 min' },
+            { price: '1 500 Kč', duration: '90 min' },
+            { price: '2 000 Kč', duration: '90 min' },
+          ].map(v => (
             <div class="voucher-card">
               <p class="voucher-card__label">Dárkový poukaz</p>
-              <p class="voucher-card__value">{val.toLocaleString('cs-CZ')} Kč</p>
+              <p class="voucher-card__value">{v.price}</p>
+              <p class="voucher-card__duration">{v.duration}</p>
               <p class="voucher-card__validity">Platnost 6 měsíců</p>
             </div>
           ))}
         </div>
-        <p class="voucher-note">Poukaz lze objednat jako tištěný (v luxusní obálce) nebo elektronický (emailem obratem).</p>
+        <p class="voucher-footer">K dispozici jsou luxusní poukazy v tištěné podobě s dárkovou obálkou a mašlí, nebo v elektronické podobě zaslanou na e-mail. Hodnotu poukazu je možné zvolit i individuálně dle Vašeho přání. Poukazy je možné vyzvednout po domluvě v SALONU JANESKIN. Platnost poukazu je 6 měsíců od data zakoupení, pokud není dohodnuto jinak.</p>
       </section>
 
       <div class="cenik-cta">
@@ -187,7 +461,6 @@ const pricingData = [
     </div>
   </div>
 
-  <CtaBanner />
 </Layout>
 
 <style>
@@ -269,6 +542,49 @@ const pricingData = [
     margin-bottom: var(--space-4);
   }
 
+  .price-category__note {
+    font-size: var(--text-sm);
+    color: var(--color-accent-hover);
+    font-style: italic;
+    margin-bottom: var(--space-5);
+    margin-top: calc(-1 * var(--space-2));
+  }
+
+  .price-category__intro {
+    font-size: var(--text-sm);
+    color: var(--color-text-soft);
+    line-height: 1.75;
+    margin-bottom: var(--space-6);
+    max-width: 72ch;
+  }
+
+  .price-subsection__title {
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-text-soft);
+    margin-top: var(--space-8);
+    margin-bottom: var(--space-3);
+    background-color: rgba(232, 217, 184, 0.30);
+    border-left: 3px solid var(--color-accent);
+    padding: var(--space-3) var(--space-4);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  }
+
+  .price-subsection__title:first-of-type {
+    margin-top: 0;
+  }
+
+  .price-subsection__intro {
+    font-size: var(--text-sm);
+    color: var(--color-text-soft);
+    line-height: 1.75;
+    margin-bottom: var(--space-5);
+    max-width: 72ch;
+  }
+
   /* Table */
   .price-table {
     width: 100%;
@@ -340,30 +656,123 @@ const pricingData = [
     white-space: nowrap;
   }
 
+  .price-table__no-price {
+    font-size: var(--text-sm);
+    color: var(--color-text-soft);
+  }
+
+  /* Expandable rows */
+  .price-table__name-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+  }
+
+  .price-table__name-text {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .expand-toggle {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-medium);
+    color: var(--color-accent-hover);
+    padding: 0;
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-underline-offset: 3px;
+    transition: color var(--transition-fast), text-decoration-color var(--transition-fast);
+    white-space: nowrap;
+  }
+
+  .expand-toggle:hover {
+    color: var(--color-accent);
+    text-decoration-color: var(--color-accent);
+  }
+
+  .toggle-icon {
+    transition: transform var(--transition-fast);
+  }
+
+  .expand-toggle[aria-expanded="true"] .toggle-icon {
+    transform: rotate(180deg);
+  }
+
+  .price-table__detail-td {
+    padding: 0;
+    border-bottom: none;
+  }
+
+  .price-table__detail-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+    padding: 0 var(--space-4);
+  }
+
+  .price-table__detail.is-open .price-table__detail-body {
+    max-height: 800px;
+    padding: var(--space-3) var(--space-4) var(--space-5);
+  }
+
+  .price-table__detail.is-open {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .price-table__detail-body p {
+    font-size: var(--text-sm);
+    color: var(--color-text-soft);
+    line-height: 1.75;
+    margin: 0;
+  }
+
+  .is-expandable:hover {
+    background-color: var(--color-bg-alt);
+  }
+
   /* Vouchers */
+  .voucher-intro {
+    font-size: var(--text-base);
+    color: var(--color-text-soft);
+    line-height: 1.75;
+    margin-bottom: var(--space-8);
+    max-width: 72ch;
+  }
+
   .voucher-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-4);
-    margin-bottom: var(--space-4);
+    gap: var(--space-5);
+    margin-bottom: var(--space-6);
   }
 
   .voucher-card {
-    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-hover) 100%);
+    background: linear-gradient(225deg, rgba(245, 232, 210, 0.25) 0%, rgba(150, 105, 50, 0.28) 100%);
     border-radius: var(--radius-lg);
-    padding: var(--space-6);
+    padding: var(--space-5) var(--space-8);
     display: flex;
     flex-direction: column;
     gap: var(--space-1);
-    box-shadow: var(--shadow-md);
   }
 
   .voucher-card__label {
     font-size: var(--text-xs);
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: rgba(44, 36, 32, 0.6);
+    letter-spacing: 0.12em;
+    color: rgba(44, 36, 32, 0.55);
     font-weight: var(--weight-medium);
+    margin-bottom: var(--space-2);
   }
 
   .voucher-card__value {
@@ -374,15 +783,23 @@ const pricingData = [
     line-height: 1;
   }
 
+  .voucher-card__duration {
+    font-size: var(--text-sm);
+    color: rgba(44, 36, 32, 0.65);
+    margin-top: var(--space-2);
+  }
+
   .voucher-card__validity {
     font-size: var(--text-xs);
-    color: rgba(44, 36, 32, 0.55);
+    color: rgba(44, 36, 32, 0.5);
     margin-top: var(--space-1);
   }
 
-  .voucher-note {
+  .voucher-footer {
     font-size: var(--text-sm);
     color: var(--color-text-soft);
+    line-height: 1.7;
+    max-width: 72ch;
   }
 
   /* CTA */
@@ -393,6 +810,12 @@ const pricingData = [
     padding-top: var(--space-8);
     border-top: 1px solid var(--color-border);
     margin-top: var(--space-12);
+  }
+
+  @media (max-width: 900px) {
+    .voucher-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
   /* Mobile table */
@@ -408,5 +831,33 @@ const pricingData = [
       flex-direction: column;
       align-items: center;
     }
+    .price-table__name-wrap {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-2);
+    }
   }
 </style>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('.expand-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetId = btn.dataset.target!;
+      const detail = document.getElementById(targetId)!;
+      const isOpen = detail.classList.contains('is-open');
+
+      const label = btn.querySelector<HTMLElement>('.toggle-label')!;
+      if (isOpen) {
+        detail.classList.remove('is-open');
+        detail.setAttribute('aria-hidden', 'true');
+        btn.setAttribute('aria-expanded', 'false');
+        label.textContent = 'Zobrazit více';
+      } else {
+        detail.classList.add('is-open');
+        detail.setAttribute('aria-hidden', 'false');
+        btn.setAttribute('aria-expanded', 'true');
+        label.textContent = 'Zobrazit méně';
+      }
+    });
+  });
+</script>
