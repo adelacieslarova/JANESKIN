@@ -1,0 +1,131 @@
+---
+import SectionHeading from '../ui/SectionHeading.astro';
+import Button from '../ui/Button.astro';
+import { pricingData, BOOKING_URL } from '../../data/pricing';
+---
+
+<section class="pricing-teaser section" id="cenik" aria-label="Přehled cen">
+  <div class="container">
+    <SectionHeading
+      label="Ceník"
+      title="Ceny ošetření"
+      subtitle="Orientační ceny podle kategorie. Konečná cena závisí na délce a rozsahu ošetření."
+    />
+
+    <ul class="pricing-teaser__list" role="list" data-animate>
+      {pricingData.map(cat => (
+        <li class="pricing-teaser__row">
+          <a href={`/cenik#${cat.id}`} class="pricing-teaser__link">
+            <span class="pricing-teaser__icon" aria-hidden="true" set:html={cat.icon} />
+            <span class="pricing-teaser__name">{cat.category}</span>
+            <span class="pricing-teaser__dots" aria-hidden="true"></span>
+            <span class="pricing-teaser__duration">{cat.durationRange}</span>
+            <span class="pricing-teaser__price">od {cat.priceFrom}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <div class="pricing-teaser__cta">
+      <Button href="/cenik" variant="primary" size="lg">Celý ceník</Button>
+      <Button href={BOOKING_URL} variant="outline" size="lg" target="_blank" rel="noopener noreferrer">Objednat se</Button>
+    </div>
+  </div>
+</section>
+
+<style>
+  .pricing-teaser__list {
+    list-style: none;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .pricing-teaser__row {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .pricing-teaser__link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    padding: var(--space-4) var(--space-3);
+    text-decoration: none;
+    color: inherit;
+    transition: background-color var(--transition-fast), padding-left var(--transition-fast);
+  }
+
+  .pricing-teaser__link:hover {
+    background-color: var(--color-bg-alt);
+    padding-left: var(--space-5);
+  }
+
+  .pricing-teaser__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-md);
+    background-color: var(--color-accent-light);
+    color: var(--color-accent-hover);
+    flex-shrink: 0;
+  }
+
+  .pricing-teaser__icon :global(svg) {
+    width: 18px;
+    height: 18px;
+  }
+
+  .pricing-teaser__name {
+    font-size: var(--text-base);
+    font-weight: var(--weight-medium);
+    color: var(--color-text);
+  }
+
+  .pricing-teaser__dots {
+    flex: 1;
+    border-bottom: 1px dotted var(--color-border);
+    min-width: var(--space-4);
+    align-self: flex-end;
+    margin-bottom: 6px;
+  }
+
+  .pricing-teaser__duration {
+    font-size: var(--text-sm);
+    color: var(--color-text-soft);
+    white-space: nowrap;
+  }
+
+  .pricing-teaser__price {
+    font-family: var(--font-heading);
+    font-size: var(--text-lg);
+    color: var(--color-accent-hover);
+    white-space: nowrap;
+    min-width: 7ch;
+    text-align: right;
+  }
+
+  .pricing-teaser__cta {
+    display: flex;
+    gap: var(--space-4);
+    justify-content: center;
+    margin-top: var(--space-10);
+  }
+
+  @media (max-width: 640px) {
+    .pricing-teaser__dots,
+    .pricing-teaser__duration {
+      display: none;
+    }
+    .pricing-teaser__link {
+      gap: var(--space-3);
+    }
+    .pricing-teaser__name {
+      flex: 1;
+      font-size: var(--text-sm);
+    }
+    .pricing-teaser__cta {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+</style>

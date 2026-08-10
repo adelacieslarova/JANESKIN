@@ -1,7 +1,9 @@
 ---
 import SectionHeading from '../ui/SectionHeading.astro';
 import Button from '../ui/Button.astro';
-import services from '../../data/services.json';
+import { pricingData, categoryTags } from '../../data/pricing';
+
+const services = pricingData;
 ---
 
 <section class="services section" id="sluzby" aria-label="Nabídka služeb">
@@ -18,12 +20,12 @@ import services from '../../data/services.json';
     <ul class="services__carousel" id="services-carousel" role="list" data-animate>
       {services.map(service => (
         <li class="services__slide" role="listitem">
-          <a href={`/sluzby#${service.id}`} class="spc" aria-label={service.title}>
+          <a href={`/sluzby#${service.id}`} class="spc" aria-label={service.category}>
 
             <!-- Foto pozadí -->
             <img
               src={service.image}
-              alt={service.title}
+              alt={service.category}
               class="spc__img"
               loading="lazy"
               decoding="async"
@@ -35,12 +37,12 @@ import services from '../../data/services.json';
             <div class="spc__overlay" aria-hidden="true"></div>
 
             <!-- Badge nahoře vlevo -->
-            <span class="spc__badge">{service.category}</span>
+            <span class="spc__badge">{categoryTags[service.id]}</span>
 
             <!-- Obsah dole -->
             <div class="spc__body">
-              <p class="spc__desc">{service.description}</p>
-              <h3 class="spc__title">{service.title}</h3>
+              <p class="spc__desc">{service.summary}</p>
+              <h3 class="spc__title">{service.category}</h3>
               <div class="spc__meta">
                 <span class="spc__price">od {service.priceFrom}</span>
                 <span class="spc__dot" aria-hidden="true"></span>
@@ -48,9 +50,13 @@ import services from '../../data/services.json';
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                     <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
                   </svg>
-                  {service.duration}
+                  {service.durationRange}
                 </span>
               </div>
+              <span class="spc__cta">
+                Zobrazit detail
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </span>
             </div>
 
           </a>
@@ -250,6 +256,22 @@ import services from '../../data/services.json';
     font-family: var(--font-body);
     font-size: var(--text-sm);
     color: rgba(255, 255, 255, 0.75);
+  }
+
+  .spc__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-top: var(--space-4);
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-medium);
+    color: var(--color-accent);
+    transition: gap var(--transition-fast);
+  }
+
+  .spc:hover .spc__cta {
+    gap: var(--space-3);
   }
 
   /* ── Arrows ── */

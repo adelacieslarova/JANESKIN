@@ -1,0 +1,95 @@
+---
+import SectionHeading from '../ui/SectionHeading.astro';
+
+const photos = [
+  { src: '/images/galerie/interier-salonu.webp', alt: 'Interiér salonu JANESKIN s ošetřovacím lehátkem', w: 675, h: 1200, span: 'tall' },
+  { src: '/images/galerie/produkty-larens.webp', alt: 'Police s kosmeceutikou Larens Professional Line', w: 1200, h: 675, span: 'wide' },
+  { src: '/images/galerie/osetreni-krb.webp', alt: 'Kosmetické ošetření pleti v salonu JANESKIN', w: 900, h: 1200, span: '' },
+  { src: '/images/galerie/licici-koutek.webp', alt: 'Líčicí koutek se zrcadlem a dekorativní kosmetikou', w: 675, h: 1200, span: '' },
+  { src: '/images/galerie/obcerstveni.webp', alt: 'Občerstvení pro klientky salonu', w: 675, h: 1200, span: '' },
+  { src: '/images/galerie/osetreni-lampa.webp', alt: 'Ošetřovací lehátko s kosmetickou lampou', w: 675, h: 1200, span: '' },
+  { src: '/images/galerie/liceni.webp', alt: 'Líčení s dekorativní kosmetikou Larens Colour', w: 675, h: 1200, span: '' },
+  { src: '/images/galerie/detail-pece.webp', alt: 'Detail kosmetické péče o pleť', w: 900, h: 1200, span: 'wide' },
+];
+---
+
+<section class="gallery section section--alt" id="galerie" aria-label="Galerie salonu">
+  <div class="container">
+    <SectionHeading
+      label="Galerie"
+      title="Nahlédněte do salonu"
+      subtitle="Místo, kde se o Vaši pleť postarám v klidu a soukromí — bez spěchu a čekáren."
+    />
+
+    <ul class="gallery__grid" role="list" data-animate>
+      {photos.map(photo => (
+        <li class={`gallery__item gallery__item--${photo.span || 'normal'}`}>
+          <img
+            src={photo.src}
+            alt={photo.alt}
+            class="gallery__img"
+            loading="lazy"
+            decoding="async"
+            width={photo.w}
+            height={photo.h}
+          />
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .gallery__grid {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 200px;
+    gap: var(--space-4);
+  }
+
+  .gallery__item {
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    background-color: var(--color-bg-alt);
+  }
+
+  .gallery__item--tall {
+    grid-row: span 2;
+  }
+
+  .gallery__item--wide {
+    grid-column: span 2;
+  }
+
+  .gallery__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+  }
+
+  .gallery__item:hover .gallery__img {
+    transform: scale(1.05);
+  }
+
+  @media (max-width: 900px) {
+    .gallery__grid {
+      grid-template-columns: repeat(2, 1fr);
+      grid-auto-rows: 180px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .gallery__grid {
+      grid-auto-rows: 150px;
+      gap: var(--space-3);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .gallery__img { transition: none; }
+    .gallery__item:hover .gallery__img { transform: none; }
+  }
+</style>

@@ -1,0 +1,166 @@
+---
+/**
+ * Výpis položek jedné kategorie — název, délka, cena a plný popis.
+ *
+ * Popisy jsou vždy viditelné (žádné "zobrazit více"). Sdílí ji /cenik
+ * i rozbalovací karty na /sluzby, aby se markup nepsal dvakrát.
+ */
+import Badge from '../ui/Badge.astro';
+import type { PriceCategory, PriceItem, PriceSubsection } from '../../data/pricing';
+
+interface Props {
+  category: PriceCategory;
+}
+
+const { category } = Astro.props;
+
+const groups: PriceSubsection[] = category.subsections
+  ? category.subsections
+  : [{ title: null, items: category.items }];
+---
+
+{category.note && <p class="price-list__note">{category.note}</p>}
+{category.intro && <p class="price-list__intro">{category.intro}</p>}
+
+{groups.map((group: PriceSubsection) => (
+  <>
+    {group.title && <h4 class="price-list__subtitle">{group.title}</h4>}
+    {group.items.length > 0 && (
+      <ul class="price-list" role="list">
+        {group.items.map((item: PriceItem) => (
+          <li class="price-item">
+            <div class="price-item__head">
+              <h5 class="price-item__name">
+                {item.name}
+                {item.note && <span class="price-item__tag">{item.note}</span>}
+              </h5>
+              <div class="price-item__meta">
+                {item.duration && <span class="price-item__duration">{item.duration}</span>}
+                {item.price
+                  ? <Badge text={item.price} variant="gold" />
+                  : <span class="price-item__ondemand">Na dotaz</span>
+                }
+              </div>
+            </div>
+            {item.description && <p class="price-item__desc">{item.description}</p>}
+          </li>
+        ))}
+      </ul>
+    )}
+  </>
+))}
+
+<style>
+  .price-list__note {
+    font-size: var(--text-sm);
+    color: var(--color-accent-hover);
+    font-style: italic;
+    margin-bottom: var(--space-5);
+  }
+
+  .price-list__intro {
+    font-size: var(--text-sm);
+    color: var(--color-text-soft);
+    line-height: 1.75;
+    margin-bottom: var(--space-6);
+    max-width: 72ch;
+  }
+
+  .price-list__subtitle {
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-text-soft);
+    margin-top: var(--space-8);
+    margin-bottom: var(--space-4);
+    padding-bottom: var(--space-2);
+    border-bottom: 1px solid var(--color-accent-light);
+  }
+
+  .price-list__subtitle:first-of-type {
+    margin-top: 0;
+  }
+
+  .price-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .price-item {
+    padding: var(--space-5) 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .price-item:last-child {
+    border-bottom: none;
+  }
+
+  .price-item__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-5);
+  }
+
+  .price-item__name {
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    font-weight: var(--weight-medium);
+    color: var(--color-text);
+    line-height: 1.45;
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .price-item__tag {
+    font-size: var(--text-xs);
+    font-weight: var(--weight-regular);
+    color: var(--color-accent-hover);
+    background-color: var(--color-accent-light);
+    border-radius: var(--radius-full);
+    padding: 2px var(--space-3);
+    font-style: italic;
+    white-space: nowrap;
+  }
+
+  .price-item__meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  .price-item__duration {
+    font-size: var(--text-sm);
+    color: var(--color-text-soft);
+  }
+
+  .price-item__ondemand {
+    font-size: var(--text-sm);
+    color: var(--color-text-soft);
+    font-style: italic;
+  }
+
+  .price-item__desc {
+    font-size: var(--text-sm);
+    color: var(--color-text-soft);
+    line-height: 1.8;
+    margin-top: var(--space-3);
+    max-width: 78ch;
+  }
+
+  @media (max-width: 640px) {
+    .price-item__head {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-2);
+    }
+  }
+</style>
