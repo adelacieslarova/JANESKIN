@@ -30,3 +30,11 @@ yarn-error.log*
 
 # Raw source photos (originals already copied to public/images)
 FOTKY/
+foto/
+video/
+
+# Loose source images in repo root
+/anna.webp
+/baner_WOW_ALL_HAIR_CARE_CZ_1680x1040.jpg
+/depositphotos_558006210-stock-photo-stylish-happy-newlyweds-elegant-satisfied.jpg
+/kontakt-hero.jpg.jpg
