@@ -8,17 +8,18 @@
 import SectionHeading from '../ui/SectionHeading.astro';
 import Button from '../ui/Button.astro';
 
-/* Střídáme prostor a ošetření, ať vedle sebe neleží dvě podobné fotky. */
+/* Ochutnávka z galerie — jen svislé fotky, aby se v jednotném poměru 3:4
+   nic neořezávalo, a střídavě prostor / ošetření / detail. */
 const photos = [
-  { src: '/images/salon/osetreni-krb.jpg', alt: 'Kosmetické ošetření pleti v salonu JANESKIN' },
-  { src: '/images/salon/salon-lehatko.jpg', alt: 'Ošetřovací lehátko v salonu JANESKIN' },
+  { src: '/images/salon/osetreni-pleti-kosmeticky-salon-janeskin.jpg', alt: 'Kosmetické ošetření pleti — Jana Szymiková, salon JANESKIN' },
+  { src: '/images/salon/osetrovaci-lehatko-kosmeticky-salon.jpg', alt: 'Ošetřovací lehátko v kosmetickém salonu JANESKIN' },
+  { src: '/images/salon/aplikace-pletove-masky-kosmeticke-osetreni.jpg', alt: 'Aplikace pleťové masky během kosmetického ošetření' },
+  { src: '/images/salon/liceni-a-uces-vizazistika-janeskin.jpg', alt: 'Společenské líčení a účes — vizážistika JANESKIN' },
+  { src: '/images/salon/ultrazvukova-spachtle-cisteni-pleti.jpg', alt: 'Hloubkové čištění pleti ultrazvukovou špachtlí' },
+  { src: '/images/salon/svatebni-uces-drdol-s-ozdobou.jpg', alt: 'Svatební účes — drdol s ozdobou do vlasů' },
   { src: '/images/salon/osetreni-roller.jpg', alt: 'Masáž obličeje zlatým rollerem' },
-  { src: '/images/salon/liceni-koutek.jpg', alt: 'Líčicí koutek se zrcadlem v salonu JANESKIN' },
-  { src: '/images/salon/osetreni-maska.jpg', alt: 'Aplikace masky během kosmetického ošetření' },
-  { src: '/images/salon/salon-pokoj.jpg', alt: 'Interiér kosmetického salonu JANESKIN' },
-  { src: '/images/salon/osetreni-guasha.jpg', alt: 'Ošetření pleti s masážními kameny' },
-  { src: '/images/salon/produkty-larens.jpg', alt: 'Přípravky Larens Professional Line na zlatém podnosu' },
-  { src: '/images/salon/osetreni-masaz.jpg', alt: 'Masáž obličeje, krku a dekoltu' },
+  { src: '/images/salon/darkovy-poukaz-kosmeticky-salon-janeskin.jpg', alt: 'Dárkový poukaz na kosmetické ošetření JANESKIN' },
+  { src: '/images/salon/jana-szymikova-kosmeticka-dolni-lutyne.jpg', alt: 'Jana Szymiková — kosmetička, Dolní Lutyně' },
 ];
 ---
 

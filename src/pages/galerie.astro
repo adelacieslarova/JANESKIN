@@ -12,29 +12,45 @@ import Button from '../components/ui/Button.astro';
 import { BOOKING_URL } from '../data/pricing';
 
 /* Střídáme prostor / ošetření / přípravky / líčení, ať vedle sebe neleží
-   dvě podobné fotky. Fotky mají sjednocené vyvážení bílé, aby galerie
-   nepůsobila jednou dožluta a jednou dobíla. */
+   dvě podobné fotky. Všechny mají sjednocené vyvážení bílé, aby galerie
+   nepůsobila jednou dožluta a jednou dobíla.
+   Popisky (alt) jsou psané tak, aby dávaly smysl i ve vyhledávání. */
 const photos = [
-  { src: '/images/salon/salon-pokoj.jpg', alt: 'Interiér kosmetického salonu JANESKIN' },
+  { src: '/images/salon/kosmeticky-salon-janeskin-osetrovna.jpg', alt: 'Ošetřovna kosmetického salonu JANESKIN v Dolní Lutyni' },
+  { src: '/images/salon/osetreni-pleti-kosmeticky-salon-janeskin.jpg', alt: 'Kosmetické ošetření pleti — Jana Szymiková, salon JANESKIN' },
+  { src: '/images/salon/kosmeceutika-larens-professional-line.jpg', alt: 'Kosmeceutika Larens Professional Line používaná v salonu' },
+  { src: '/images/salon/licici-koutek-vizazistika-janeskin.jpg', alt: 'Líčicí koutek pro vizážistiku v salonu JANESKIN' },
+  { src: '/images/salon/liceni-a-uces-vizazistika-janeskin.jpg', alt: 'Společenské líčení a účes — vizážistika JANESKIN' },
+  { src: '/images/salon/svatebni-uces-drdol-s-ozdobou.jpg', alt: 'Svatební účes — drdol s ozdobou do vlasů' },
+  { src: '/images/salon/aplikace-pletove-masky-kosmeticke-osetreni.jpg', alt: 'Aplikace pleťové masky během kosmetického ošetření' },
+  { src: '/images/salon/kosmeticky-salon-dolni-lutyne-interier.jpg', alt: 'Interiér kosmetického salonu v Dolní Lutyni' },
+  { src: '/images/salon/svatebni-liceni-nevesty-janeskin.jpg', alt: 'Svatební líčení nevěsty v salonu JANESKIN' },
+  { src: '/images/salon/ultrazvukova-spachtle-cisteni-pleti.jpg', alt: 'Hloubkové čištění pleti ultrazvukovou špachtlí' },
+  { src: '/images/salon/svatebni-uces-polodrdol-janeskin.jpg', alt: 'Svatební účes — polodrdol s vlnami' },
+  { src: '/images/salon/darkovy-poukaz-kosmeticky-salon-janeskin.jpg', alt: 'Dárkový poukaz na kosmetické ošetření JANESKIN' },
+  { src: '/images/salon/pdt-lampa-cervene-svetlo-osetreni.jpg', alt: 'Ošetření pleti PDT lampou — červené světlo' },
+  { src: '/images/salon/detail-oci-profesionalni-liceni.jpg', alt: 'Detail očního líčení — profesionální vizážistika' },
+  { src: '/images/salon/osetrovaci-lehatko-kosmeticky-salon.jpg', alt: 'Ošetřovací lehátko v kosmetickém salonu JANESKIN' },
   { src: '/images/salon/osetreni-krb.jpg', alt: 'Kosmetické ošetření pleti u krbu' },
-  { src: '/images/salon/produkty-larens.jpg', alt: 'Přípravky Larens Professional Line na zlatém podnosu' },
-  { src: '/images/salon/liceni-koutek.jpg', alt: 'Líčicí koutek se zrcadlem' },
+  { src: '/images/salon/spolecensky-uces-vlny-janeskin.jpg', alt: 'Společenský účes s vlnami — JANESKIN' },
+  { src: '/images/salon/vozik-s-pripravky-larens.jpg', alt: 'Vozík s přípravky Larens připravený k ošetření' },
+  { src: '/images/salon/alginatova-maska-kosmeticke-osetreni.jpg', alt: 'Alginátová maska při kosmetickém ošetření' },
+  { src: '/images/salon/jana-szymikova-kosmeticka-dolni-lutyne.jpg', alt: 'Jana Szymiková — kosmetička, Dolní Lutyně' },
+  { src: '/images/salon/liceni-na-ples-vizazistika-dolni-lutyne.jpg', alt: 'Líčení na ples v líčicím koutku salonu' },
   { src: '/images/salon/osetreni-roller.jpg', alt: 'Masáž obličeje zlatým rollerem' },
-  { src: '/images/salon/salon-lehatko.jpg', alt: 'Ošetřovací lehátko u okna' },
-  { src: '/images/salon/osetreni-maska.jpg', alt: 'Aplikace masky během ošetření pleti' },
-  { src: '/images/salon/produkty-kvetiny.jpg', alt: 'Kosmeceutika Larens a masážní pomůcky' },
-  { src: '/images/salon/liceni-zrcadlo.jpg', alt: 'Klientka u líčicího zrcadla' },
-  { src: '/images/salon/osetreni-vapozon.jpg', alt: 'Ošetření pleti vapozonem' },
-  { src: '/images/salon/salon-pult.jpg', alt: 'Pracovní pult s přípravky v salonu' },
-  { src: '/images/salon/osetreni-masaz.jpg', alt: 'Masáž obličeje, krku a dekoltu' },
-  { src: '/images/salon/jana-konzultace.jpg', alt: 'Jana Szymiková u police s kosmeceutikou Larens' },
+  { src: '/images/salon/svatebni-uces-s-perlickami.jpg', alt: 'Svatební účes zdobený perličkami' },
+  { src: '/images/salon/obcerstveni-pro-klientky-kosmeticky-salon.jpg', alt: 'Občerstvení pro klientky kosmetického salonu' },
+  { src: '/images/salon/prirozene-denni-liceni-kosmeticky-salon.jpg', alt: 'Přirozené denní líčení — kosmetický salon JANESKIN' },
+  { src: '/images/salon/licici-zrcadlo-vizazistika-dolni-lutyne.jpg', alt: 'Líčicí zrcadlo a kosmetika pro vizážistiku' },
   { src: '/images/salon/osetreni-guasha.jpg', alt: 'Ošetření pleti masážními kameny' },
-  { src: '/images/salon/salon-vozik.jpg', alt: 'Vozík s přípravky Larens připravený k ošetření' },
-  { src: '/images/salon/osetreni-obliceje.jpg', alt: 'Ošetření obličeje v salonu JANESKIN' },
-  { src: '/images/salon/liceni-jana.jpg', alt: 'Jana Szymiková při líčení klientky' },
-  { src: '/images/salon/salon-para.jpg', alt: 'Ošetření pleti párou v salonu JANESKIN' },
-  { src: '/images/salon/osetreni-masaz-hlavy.jpg', alt: 'Relaxační masáž hlavy' },
-  { src: '/images/salon/larens-rada.jpg', alt: 'Celá řada kosmeceutik Larens Professional Line' },
+  { src: '/images/salon/larens-rucnik-detail-kosmeticky-salon.jpg', alt: 'Detail ručníku Larens v kosmetickém salonu' },
+  { src: '/images/salon/pripravky-larens-vozik-salon.jpg', alt: 'Police a vozík s přípravky Larens v salonu' },
+  { src: '/images/salon/osetreni-masaz.jpg', alt: 'Masáž obličeje, krku a dekoltu' },
+  { src: '/images/salon/janeskin-kosmeticky-salon-cedule.jpg', alt: 'Cedule kosmetického salonu JANESKIN — Salon Jana Szymiková' },
+  { src: '/images/salon/osetreni-vapozon.jpg', alt: 'Ošetření pleti vapozonem' },
+  { src: '/images/salon/larens-colour-dekorativni-kosmetika.jpg', alt: 'Dekorativní kosmetika Larens Colour' },
+  { src: '/images/salon/salon-para.jpg', alt: 'Ošetření pleti párou v kosmetickém salonu' },
+  { src: '/images/salon/jana-konzultace.jpg', alt: 'Konzultace péče o pleť s Janou Szymikovou' },
 ];
 ---
 
@@ -90,8 +106,6 @@ const photos = [
                 class="gal-grid__img"
                 loading="lazy"
                 decoding="async"
-                width="900"
-                height="1200"
               />
             </a>
           </li>
@@ -126,11 +140,12 @@ const photos = [
     object-fit: cover;
   }
 
+  /* Zednické zdivo: každá fotka si drží svůj poměr, takže se širokoúhlé
+     záběry interiéru neořezávají a mřížka působí živěji. */
   .gal-grid {
     list-style: none;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: var(--space-4);
+    columns: 4;
+    column-gap: var(--space-4);
     margin-top: var(--space-12);
   }
 
@@ -138,6 +153,8 @@ const photos = [
     overflow: hidden;
     border-radius: 2px;
     background: var(--color-bg-warm);
+    margin-bottom: var(--space-4);
+    break-inside: avoid;
   }
 
   .gal-grid__link {
@@ -147,9 +164,7 @@ const photos = [
 
   .gal-grid__img {
     width: 100%;
-    height: 100%;
-    aspect-ratio: 3 / 4;
-    object-fit: cover;
+    height: auto;
     display: block;
     transition: transform var(--transition-slow);
   }
@@ -169,14 +184,17 @@ const photos = [
 
   @media (max-width: 1024px) {
     .gal-grid {
-      grid-template-columns: repeat(3, 1fr);
+      columns: 3;
     }
   }
 
   @media (max-width: 720px) {
     .gal-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: var(--space-3);
+      columns: 2;
+      column-gap: var(--space-3);
+    }
+    .gal-grid__item {
+      margin-bottom: var(--space-3);
     }
   }
 
