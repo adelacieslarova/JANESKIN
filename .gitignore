@@ -29,9 +29,10 @@ yarn-error.log*
 .claude/
 
 # Raw source photos (originals already copied to public/images)
-FOTKY/
-foto/
-video/
+# Lomítko na začátku = jen v kořeni repa, ať to nechytá public/video/
+/FOTKY/
+/foto/
+/video/
 
 # Loose source images in repo root
 /anna.webp
