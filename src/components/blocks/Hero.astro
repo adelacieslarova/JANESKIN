@@ -71,16 +71,18 @@ const bannerItems = [
     display: block;
   }
 
+  /* Krémový panel vlevo drží text, vpravo fotka zůstává nedotčená —
+     plošný závoj přes celou šířku ji jen vybělil. */
   .hero__veil {
     position: absolute;
     inset: 0;
     background:
       linear-gradient(
         to right,
-        rgba(253, 250, 243, 0.96) 0%,
-        rgba(253, 250, 243, 0.88) 30%,
-        rgba(253, 250, 243, 0.45) 50%,
-        rgba(253, 250, 243, 0) 68%
+        rgba(253, 250, 243, 0.98) 0%,
+        rgba(253, 250, 243, 0.96) 30%,
+        rgba(253, 250, 243, 0.72) 42%,
+        rgba(253, 250, 243, 0) 54%
       );
   }
 
@@ -115,9 +117,9 @@ const bannerItems = [
 
   .hero__title {
     font-family: var(--font-heading);
-    font-size: clamp(2.25rem, 5.5vw, var(--text-5xl));
-    font-weight: var(--weight-light);
-    line-height: 1.1;
+    font-size: clamp(2.125rem, 5vw, var(--text-5xl));
+    font-weight: var(--weight-regular);
+    line-height: 1.15;
     color: var(--color-text);
     margin-bottom: var(--space-6);
   }

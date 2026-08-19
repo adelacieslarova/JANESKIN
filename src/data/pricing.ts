@@ -165,7 +165,7 @@ export const pricingData: PriceCategory[] = [
       'Moderní estetická procedura spojující exosomy, kyselinu hyaluronovou a růstové faktory pro omlazení a zpevnění pleti.',
     priceFrom: '2 300 Kč',
     durationRange: '90 min',
-    image: '/images/salon/produkty-larens.jpg',
+    image: '/images/salon/osetreni-vapozon.jpg',
     icon: icons.needle,
     note: 'Ošetření neprovádím novým klientům při první návštěvě — vyžaduje předchozí konzultaci.',
     items: [
@@ -345,7 +345,7 @@ export const pricingData: PriceCategory[] = [
       'Barvení a epilace obočí a řas, nadstandardní masky a ampule, lehké denní líčení po ošetření.',
     priceFrom: '100 Kč',
     durationRange: '15–30 min',
-    image: '/images/salon/salon-vozik.jpg',
+    image: '/images/salon/osetreni-guasha.jpg',
     icon: icons.doplnky,
     note: 'Doplňkové služby je možné zakoupit pouze ke kosmetické aplikaci.',
     items: [],

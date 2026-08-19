@@ -1,19 +1,22 @@
 ---
 /**
- * Galerie salonu — jednotná mřížka místo mozaiky.
+ * Galerie salonu jako karusel.
  *
- * Fotky jsou skutečné snímky ze salonu; všechny se ořezávají na stejný
- * poměr 3:4, aby řádky seděly a sekce působila klidně.
+ * Posouvá se nativním scroll-snapem (funguje i bez JS, na mobilu prstem),
+ * šipky jen volají scrollBy. Fotky mají jednotný poměr 3:4, ať řádek sedí.
  */
 import SectionHeading from '../ui/SectionHeading.astro';
 
 const photos = [
+  { src: '/images/salon/osetreni-krb.jpg', alt: 'Kosmetické ošetření pleti v salonu JANESKIN' },
   { src: '/images/salon/salon-lehatko.jpg', alt: 'Ošetřovací lehátko v salonu JANESKIN' },
-  { src: '/images/salon/osetreni-roller.jpg', alt: 'Kosmetické ošetření pleti zlatým masážním rollerem' },
-  { src: '/images/salon/produkty-larens.jpg', alt: 'Přípravky Larens Professional Line na zlatém podnosu' },
+  { src: '/images/salon/osetreni-roller.jpg', alt: 'Masáž obličeje zlatým rollerem' },
+  { src: '/images/salon/osetreni-maska.jpg', alt: 'Aplikace masky během kosmetického ošetření' },
   { src: '/images/salon/salon-pokoj.jpg', alt: 'Interiér kosmetického salonu JANESKIN' },
-  { src: '/images/salon/produkty-kvetiny.jpg', alt: 'Kosmeceutika Larens a masážní pomůcky v salonu' },
-  { src: '/images/salon/osetreni-masaz.jpg', alt: 'Masáž obličeje během kosmetického ošetření' },
+  { src: '/images/salon/osetreni-vapozon.jpg', alt: 'Ošetření pleti vapozonem' },
+  { src: '/images/salon/osetreni-guasha.jpg', alt: 'Ošetření pleti s masážními kameny' },
+  { src: '/images/salon/osetreni-masaz.jpg', alt: 'Masáž obličeje, krku a dekoltu' },
+  { src: '/images/salon/liceni-koutek.jpg', alt: 'Líčicí koutek se zrcadlem v salonu JANESKIN' },
 ];
 ---
 
@@ -24,7 +27,14 @@ const photos = [
       title="Nahlédněte do salonu"
       subtitle="Místo, kde se o Vaši pleť postarám v klidu a soukromí — bez spěchu a čekáren."
     />
-    <ul class="gallery__grid" role="list" data-animate>
+  </div>
+
+  <div class="gallery__carousel-wrap" data-animate>
+    <button class="gallery__arrow gallery__arrow--prev" type="button" aria-label="Předchozí fotky" data-dir="-1">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+
+    <ul class="gallery__track" id="gallery-track" role="list" tabindex="0" aria-label="Fotky ze salonu">
       {photos.map(photo => (
         <li class="gallery__item">
           <img
@@ -39,19 +49,39 @@ const photos = [
         </li>
       ))}
     </ul>
+
+    <button class="gallery__arrow gallery__arrow--next" type="button" aria-label="Další fotky" data-dir="1">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
   </div>
 </section>
 
 <style>
-  .gallery__grid {
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-4);
+  .gallery__carousel-wrap {
+    position: relative;
     margin-top: var(--space-12);
   }
 
+  .gallery__track {
+    list-style: none;
+    display: flex;
+    gap: var(--space-4);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scroll-padding-left: max(var(--content-px), (100vw - var(--max-width)) / 2);
+    /* Karusel jde do krajů obrazovky, ale první fotka lícuje s obsahem */
+    padding: 0 max(var(--content-px), (100vw - var(--max-width)) / 2) var(--space-2);
+    scrollbar-width: none;
+  }
+
+  .gallery__track::-webkit-scrollbar {
+    display: none;
+  }
+
   .gallery__item {
+    flex: 0 0 clamp(240px, 26vw, 360px);
+    scroll-snap-align: start;
     overflow: hidden;
     border-radius: 2px;
     background: var(--color-bg-warm);
@@ -70,21 +100,95 @@ const photos = [
     transform: scale(1.03);
   }
 
-  @media (max-width: 900px) {
-    .gallery__grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
+  /* ── Šipky ── */
+  .gallery__arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-accent-light);
+    border-radius: 50%;
+    background: rgba(253, 250, 243, 0.92);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    color: var(--color-accent);
+    cursor: pointer;
+    box-shadow: var(--shadow-md);
+    transition:
+      background-color var(--transition-fast),
+      color var(--transition-fast),
+      opacity var(--transition-fast);
   }
 
-  @media (max-width: 520px) {
-    .gallery__grid {
-      grid-template-columns: 1fr;
+  .gallery__arrow:hover {
+    background: var(--color-dark);
+    color: var(--color-bg-alt);
+  }
+
+  .gallery__arrow[disabled] {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .gallery__arrow--prev {
+    left: var(--space-4);
+  }
+
+  .gallery__arrow--next {
+    right: var(--space-4);
+  }
+
+  @media (max-width: 768px) {
+    .gallery__arrow {
+      display: none;
+    }
+    .gallery__item {
+      flex-basis: 74vw;
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
+    .gallery__track {
+      scroll-behavior: auto;
+    }
     .gallery__item:hover .gallery__img {
       transform: none;
     }
   }
 </style>
+
+<script>
+  const track = document.getElementById('gallery-track');
+  const arrows = document.querySelectorAll<HTMLButtonElement>('.gallery__arrow');
+
+  if (track) {
+    /* Skok o jednu "obrazovku" fotek, ať se nescrolluje po pixelech */
+    const step = () => Math.max(track.clientWidth * 0.8, 280);
+
+    arrows.forEach(arrow => {
+      arrow.addEventListener('click', () => {
+        const dir = Number(arrow.dataset.dir ?? 1);
+        track.scrollBy({ left: dir * step(), behavior: 'smooth' });
+      });
+    });
+
+    /* Šipku schováme, když už není kam posouvat */
+    const sync = () => {
+      const max = track.scrollWidth - track.clientWidth;
+      arrows.forEach(arrow => {
+        const dir = Number(arrow.dataset.dir ?? 1);
+        const atEnd = dir < 0 ? track.scrollLeft <= 4 : track.scrollLeft >= max - 4;
+        arrow.disabled = atEnd;
+      });
+    };
+
+    track.addEventListener('scroll', sync, { passive: true });
+    window.addEventListener('resize', sync);
+    sync();
+  }
+</script>
