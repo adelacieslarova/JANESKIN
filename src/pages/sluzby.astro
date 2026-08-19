@@ -6,6 +6,7 @@ import Badge from '../components/ui/Badge.astro';
 import Button from '../components/ui/Button.astro';
 import InfoBox from '../components/ui/InfoBox.astro';
 import Equipment from '../components/blocks/Equipment.astro';
+import FirstVisit from '../components/blocks/FirstVisit.astro';
 import Larens from '../components/blocks/Larens.astro';
 import PriceList from '../components/blocks/PriceList.astro';
 import { pricingData, BOOKING_URL } from '../data/pricing';
@@ -19,7 +20,7 @@ import { pricingData, BOOKING_URL } from '../data/pricing';
     title="Služby"
     subtitle="Všechna ošetření přizpůsobuji stavu Vaší pleti a individuálním potřebám. Pracuji výhradně s kosmeceutikou Larens."
     breadcrumb={[{ label: 'Služby', href: '/sluzby' }]}
-    image="/images/anna.webp"
+    image="/images/salon/produkty-larens.jpg"
   />
 
   <!-- Rychlá navigace -->
@@ -110,6 +111,7 @@ import { pricingData, BOOKING_URL } from '../data/pricing';
     </div>
   </section>
 
+  <FirstVisit />
   <Equipment />
   <Larens />
 </Layout>

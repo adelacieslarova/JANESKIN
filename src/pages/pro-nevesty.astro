@@ -6,7 +6,6 @@ import Card from '../components/ui/Card.astro';
 import Badge from '../components/ui/Badge.astro';
 import Button from '../components/ui/Button.astro';
 import InfoBox from '../components/ui/InfoBox.astro';
-import Placeholder from '../components/ui/Placeholder.astro';
 import Testimonials from '../components/blocks/Testimonials.astro';
 import CtaBanner from '../components/blocks/CtaBanner.astro';
 
@@ -111,7 +110,15 @@ const faq = [
         </div>
       </div>
       <div class="brides-intro__image">
-        <Placeholder aspect="3/4" label="Fotografie svatební vizáže" />
+        <img
+          src="/images/salon/liceni-koutek.jpg"
+          alt="Líčicí koutek se zrcadlem v salonu JANESKIN"
+          class="brides-intro__img"
+          loading="lazy"
+          decoding="async"
+          width="900"
+          height="1600"
+        />
       </div>
     </div>
   </section>
@@ -178,22 +185,6 @@ const faq = [
     </div>
   </section>
 
-  <!-- Galerie placeholder -->
-  <section class="gallery section section--alt" aria-label="Ukázky práce">
-    <div class="container">
-      <SectionHeading
-        label="Ukázky"
-        title="Výsledky hovoří samy za sebe"
-        subtitle="Fotografie svatebních vizáží budou doplněny."
-      />
-      <div class="gallery__grid" aria-label="Galerie svatebních vizáží">
-        {Array.from({ length: 6 }).map((_, i) => (
-          <Placeholder aspect="3/4" label={`Svatební vizáž ${i + 1}`} />
-        ))}
-      </div>
-    </div>
-  </section>
-
   <!-- FAQ -->
   <section class="faq section" aria-label="Časté otázky">
     <div class="container">
@@ -229,6 +220,14 @@ const faq = [
     display: flex;
     flex-direction: column;
     gap: var(--space-5);
+  }
+
+  .brides-intro__img {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border-radius: 2px;
+    display: block;
   }
 
   .brides-intro__lead {

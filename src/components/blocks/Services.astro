@@ -1,9 +1,18 @@
 ---
+/**
+ * Přehled kategorií služeb.
+ *
+ * Záměrně bez fotek — karty nesou jen zlatou ikonu, název, krátký popis
+ * a cenu od. Fotky se na homepage soustředí do galerie, ať je přehled klidný.
+ */
 import SectionHeading from '../ui/SectionHeading.astro';
 import Button from '../ui/Button.astro';
-import { pricingData, categoryTags } from '../../data/pricing';
+import { pricingData } from '../../data/pricing';
 
-const services = pricingData;
+/* Poukazy mají vlastní sekci a doplňky patří k ošetření — na homepage
+   by jen rozbily mřížku. Zbylých šest kategorií vyplní dva čisté řádky. */
+const hiddenOnHome = ['voucher', 'doplnkove'];
+const services = pricingData.filter(s => !hiddenOnHome.includes(s.id));
 ---
 
 <section class="services section" id="sluzby" aria-label="Nabídka služeb">
@@ -11,433 +20,125 @@ const services = pricingData;
     <SectionHeading
       label="Nabídka"
       title="Co pro Vás mohu udělat"
-      subtitle="Každé ošetření přizpůsobuji stavu Vaší pleti a individuálním potřebám. Využívám výhradně kosmeceutiku Larens."
+      subtitle="Každé ošetření přizpůsobuji stavu Vaší pleti. Pracuji výhradně s kosmeceutikou Larens."
     />
-  </div>
 
-  <!-- Carousel wrapper — full bleed right -->
-  <div class="services__carousel-outer">
-    <ul class="services__carousel" id="services-carousel" role="list" data-animate>
+    <ul class="services__grid" role="list" data-animate>
       {services.map(service => (
-        <li class="services__slide" role="listitem">
-          <a href={`/sluzby#${service.id}`} class="spc" aria-label={service.category}>
-
-            <!-- Foto pozadí -->
-            <img
-              src={service.image}
-              alt={service.category}
-              class="spc__img"
-              loading="lazy"
-              decoding="async"
-              width="600"
-              height="840"
-            />
-
-            <!-- Overlay gradient -->
-            <div class="spc__overlay" aria-hidden="true"></div>
-
-            <!-- Badge nahoře vlevo -->
-            <span class="spc__badge">{categoryTags[service.id]}</span>
-
-            <!-- Obsah dole -->
-            <div class="spc__body">
-              <p class="spc__desc">{service.summary}</p>
-              <h3 class="spc__title">{service.category}</h3>
-              <div class="spc__meta">
-                <span class="spc__price">od {service.priceFrom}</span>
-                <span class="spc__dot" aria-hidden="true"></span>
-                <span class="spc__duration">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                    <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
-                  </svg>
-                  {service.durationRange}
-                </span>
-              </div>
-              <span class="spc__cta">
-                Zobrazit detail
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-              </span>
-            </div>
-
+        <li>
+          <a href={`/sluzby#${service.id}`} class="svc">
+            <span class="svc__icon" aria-hidden="true" set:html={service.icon} />
+            <h3 class="svc__title">{service.category}</h3>
+            <p class="svc__desc">{service.summary}</p>
+            <span class="svc__meta">
+              <span class="svc__price">od {service.priceFrom}</span>
+              <span class="svc__duration">{service.durationRange}</span>
+            </span>
           </a>
         </li>
       ))}
     </ul>
 
-    <!-- Šipky -->
-    <button class="services__arrow services__arrow--prev" id="carousel-prev" aria-label="Předchozí služby">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
-    </button>
-    <button class="services__arrow services__arrow--next" id="carousel-next" aria-label="Další služby">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
-    </button>
-  </div>
-
-  <div class="services__cta container">
-    <Button href="/sluzby" variant="outline" size="md">Zobrazit celý ceník</Button>
+    <div class="services__cta">
+      <Button href="/cenik" variant="outline" size="lg">Celý ceník</Button>
+    </div>
   </div>
 </section>
 
 <style>
-  /* ── Carousel layout ── */
-  .services__carousel-outer {
-    position: relative;
-    margin-top: var(--space-10);
-  }
-
-  .services__carousel {
+  .services__grid {
     list-style: none;
-    display: flex;
-    gap: var(--space-4);
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    /* Left padding = container indent so first card lines up */
-    padding: var(--space-2) var(--space-6) var(--space-6);
-    scroll-padding-left: var(--space-6);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+    margin-top: var(--space-12);
   }
 
-  .services__carousel::-webkit-scrollbar {
-    display: none;
-  }
-
-  .services__slide {
-    scroll-snap-align: start;
-    flex-shrink: 0;
-  }
-
-  /* ── Service Photo Card (spc) ── */
-  .spc {
-    display: block;
-    position: relative;
-    width: 360px;
-    height: 480px;
-    border-radius: var(--radius-xl);
-    overflow: hidden;
-    text-decoration: none;
-    cursor: pointer;
-  }
-
-  /* Photo */
-  .spc__img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
-    display: block;
-    transition: transform 0.5s ease;
-  }
-
-  .spc:hover .spc__img {
-    transform: scale(1.04);
-  }
-
-  /* Overlay */
-  .spc__overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      to bottom,
-      rgba(20, 14, 10, 0.18) 0%,
-      rgba(20, 14, 10, 0.15) 35%,
-      rgba(20, 14, 10, 0.72) 65%,
-      rgba(20, 14, 10, 0.94) 100%
-    );
-    transition: background var(--transition-base);
-  }
-
-  .spc:hover .spc__overlay {
-    background: linear-gradient(
-      to bottom,
-      rgba(20, 14, 10, 0.28) 0%,
-      rgba(20, 14, 10, 0.45) 30%,
-      rgba(20, 14, 10, 0.82) 60%,
-      rgba(20, 14, 10, 0.97) 100%
-    );
-  }
-
-  /* Badge */
-  .spc__badge {
-    position: absolute;
-    top: var(--space-4);
-    left: var(--space-4);
-    background-color: rgba(20, 14, 10, 0.82);
-    color: var(--color-white);
-    font-family: var(--font-body);
-    font-size: var(--text-xs);
-    font-weight: var(--weight-medium);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    padding: 6px var(--space-3);
-    border-radius: var(--radius-full);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    white-space: nowrap;
-  }
-
-  /* Body */
-  .spc__body {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: var(--space-5);
+  .svc {
     display: flex;
     flex-direction: column;
-    gap: var(--space-2);
-  }
-
-  /* Description — skrytý, zobrazí se na hover */
-  .spc__desc {
-    font-family: var(--font-body);
-    font-size: var(--text-sm);
-    color: rgba(255, 255, 255, 0.8);
-    line-height: 1.55;
-    margin: 0;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    max-height: 0;
-    opacity: 0;
-    transform: translateY(6px);
-    transition:
-      max-height 0.35s ease,
-      opacity 0.3s ease,
-      transform 0.3s ease;
-  }
-
-  .spc:hover .spc__desc {
-    max-height: 80px;
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* Title */
-  .spc__title {
-    font-family: var(--font-heading);
-    font-size: var(--text-3xl);
-    font-weight: var(--weight-regular);
-    color: var(--color-white);
-    line-height: 1.15;
-    margin: 0;
-  }
-
-  /* Meta — cena + čas */
-  .spc__meta {
-    display: flex;
-    align-items: center;
-    gap: var(--space-3);
-    flex-wrap: wrap;
-  }
-
-  .spc__price {
-    font-family: var(--font-body);
-    font-size: var(--text-base);
-    font-weight: var(--weight-medium);
-    color: var(--color-accent);
-  }
-
-  .spc__dot {
-    width: 3px;
-    height: 3px;
-    border-radius: var(--radius-full);
-    background-color: rgba(255, 255, 255, 0.35);
-    flex-shrink: 0;
-  }
-
-  .spc__duration {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-family: var(--font-body);
-    font-size: var(--text-sm);
-    color: rgba(255, 255, 255, 0.75);
-  }
-
-  .spc__cta {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-2);
-    margin-top: var(--space-4);
-    font-family: var(--font-body);
-    font-size: var(--text-sm);
-    font-weight: var(--weight-medium);
-    color: var(--color-accent);
-    transition: gap var(--transition-fast);
-  }
-
-  .spc:hover .spc__cta {
-    gap: var(--space-3);
-  }
-
-  /* ── Arrows ── */
-  .services__arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 44px;
-    height: 44px;
-    border-radius: var(--radius-full);
-    background-color: var(--color-white);
+    height: 100%;
+    padding: var(--space-8);
+    background: var(--color-white);
     border: 1px solid var(--color-border);
-    box-shadow: var(--shadow-md);
+    border-radius: 2px;
+    text-decoration: none;
+    color: inherit;
+    transition:
+      border-color var(--transition-base),
+      box-shadow var(--transition-base),
+      transform var(--transition-base);
+  }
+
+  .svc:hover {
+    border-color: var(--color-accent-light);
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-2px);
+  }
+
+  .svc__icon {
+    color: var(--color-gold);
+    margin-bottom: var(--space-5);
+    line-height: 0;
+  }
+
+  .svc__title {
+    font-family: var(--font-heading);
+    font-size: var(--text-2xl);
+    font-weight: var(--weight-regular);
+    color: var(--color-text);
+    margin-bottom: var(--space-3);
+  }
+
+  .svc__desc {
+    font-size: var(--text-sm);
+    font-weight: var(--weight-light);
+    line-height: 1.7;
+    color: var(--color-text-soft);
+    margin-bottom: var(--space-6);
+    flex-grow: 1;
+  }
+
+  .svc__meta {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    color: var(--color-text);
-    transition: all var(--transition-fast);
-    z-index: 2;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-4);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--color-border);
   }
 
-  .services__arrow:hover {
-    background-color: var(--color-accent);
-    border-color: var(--color-accent);
-    color: var(--color-text);
-    box-shadow: var(--shadow-lg);
+  .svc__price {
+    font-size: var(--text-base);
+    color: var(--color-accent);
   }
 
-  .services__arrow--prev {
-    left: var(--space-3);
+  .svc__duration {
+    font-size: var(--text-xs);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-soft);
   }
 
-  .services__arrow--next {
-    right: var(--space-3);
-  }
-
-  .services__arrow[disabled] {
-    opacity: 0.35;
-    pointer-events: none;
-  }
-
-  /* ── CTA ── */
   .services__cta {
-    text-align: center;
-    margin-top: var(--space-8);
+    display: flex;
+    justify-content: center;
+    margin-top: var(--space-12);
   }
 
-  /* ── Drag cursor ── */
-  .services__carousel {
-    cursor: grab;
-    user-select: none;
-  }
-
-  .services__carousel.is-dragging {
-    cursor: grabbing;
-  }
-
-  /* ── Responsive ── */
-  @media (max-width: 768px) {
-    .spc {
-      width: 300px;
-      height: 420px;
-    }
-
-    .spc__title {
-      font-size: var(--text-2xl);
-    }
-
-    /* Šipky přesunout pod karusel */
-    .services__carousel-outer {
-      padding-bottom: calc(40px + var(--space-5));
-    }
-
-    .services__arrow {
-      top: auto;
-      bottom: 0;
-      transform: none;
-      width: 40px;
-      height: 40px;
-    }
-
-    .services__arrow--prev {
-      left: calc(50% - 40px - var(--space-2));
-    }
-
-    .services__arrow--next {
-      right: auto;
-      left: calc(50% + var(--space-2));
+  @media (max-width: 1024px) {
+    .services__grid {
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 
-  @media (max-width: 480px) {
-    .spc {
-      width: calc(100vw - var(--space-12));
+  @media (max-width: 640px) {
+    .services__grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-4);
+    }
+    .svc {
+      padding: var(--space-6);
     }
   }
 </style>
-
-<script>
-  const carousel = document.getElementById('services-carousel') as HTMLElement;
-  const prev     = document.getElementById('carousel-prev') as HTMLButtonElement;
-  const next     = document.getElementById('carousel-next') as HTMLButtonElement;
-
-  if (carousel && prev && next) {
-
-    // ── Arrow buttons ──
-    const getStep = () => {
-      const slide = carousel.querySelector<HTMLElement>('.services__slide');
-      if (!slide) return 320;
-      return slide.offsetWidth + 16;
-    };
-
-    const updateArrows = () => {
-      prev.disabled = carousel.scrollLeft <= 4;
-      next.disabled = carousel.scrollLeft >= carousel.scrollWidth - carousel.clientWidth - 4;
-    };
-
-    prev.addEventListener('click', () => {
-      carousel.scrollBy({ left: -getStep(), behavior: 'smooth' });
-    });
-
-    next.addEventListener('click', () => {
-      carousel.scrollBy({ left: getStep(), behavior: 'smooth' });
-    });
-
-    carousel.addEventListener('scroll', updateArrows, { passive: true });
-    updateArrows();
-
-    // ── Drag to scroll (mouse) ──
-    let isDragging = false;
-    let dragStartX = 0;
-    let dragScrollLeft = 0;
-    let hasDragged = false;
-
-    carousel.addEventListener('mousedown', (e) => {
-      isDragging = true;
-      hasDragged = false;
-      dragStartX = e.pageX - carousel.getBoundingClientRect().left;
-      dragScrollLeft = carousel.scrollLeft;
-      carousel.classList.add('is-dragging');
-    });
-
-    window.addEventListener('mouseup', () => {
-      if (!isDragging) return;
-      isDragging = false;
-      carousel.classList.remove('is-dragging');
-      carousel.style.scrollSnapType = '';
-    });
-
-    window.addEventListener('mousemove', (e) => {
-      if (!isDragging) return;
-      const x = e.pageX - carousel.getBoundingClientRect().left;
-      const walk = x - dragStartX;
-      if (Math.abs(walk) > 5) hasDragged = true;
-      carousel.style.scrollSnapType = 'none';
-      carousel.scrollLeft = dragScrollLeft - walk;
-    });
-
-    // Zrušit klik na odkaz pokud šlo o drag
-    carousel.addEventListener('click', (e) => {
-      if (hasDragged) {
-        e.preventDefault();
-        e.stopPropagation();
-        hasDragged = false;
-      }
-    }, true);
-  }
-</script>

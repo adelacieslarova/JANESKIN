@@ -207,9 +207,9 @@ const year = 2026;
     inset: 0;
     background: linear-gradient(
       to bottom,
-      rgba(44, 36, 32, 0.45) 0%,
-      rgba(44, 36, 32, 0.40) 40%,
-      rgba(44, 36, 32, 0.80) 72%,
+      rgba(59, 41, 15, 0.45) 0%,
+      rgba(59, 41, 15, 0.40) 40%,
+      rgba(59, 41, 15, 0.80) 72%,
       #2C2420 100%
     );
   }
@@ -230,7 +230,7 @@ const year = 2026;
     font-weight: var(--weight-medium);
     text-transform: uppercase;
     letter-spacing: 0.14em;
-    color: var(--color-accent);
+    color: var(--color-accent-light);
     margin-bottom: var(--space-4);
   }
 
@@ -258,6 +258,29 @@ const year = 2026;
     justify-content: center;
     gap: var(--space-4);
     flex-wrap: wrap;
+  }
+
+  /* Na tmavém pruhu se tlačítka obracejí — tmavá varianta by splynula s fotkou */
+  .footer-cta__actions :global(.btn--primary) {
+    background-color: var(--color-accent-light);
+    border-color: var(--color-accent-light);
+    color: var(--color-dark);
+  }
+
+  .footer-cta__actions :global(.btn--primary:hover) {
+    background-color: var(--color-accent-pale);
+    border-color: var(--color-accent-pale);
+    color: var(--color-dark);
+  }
+
+  .footer-cta__actions :global(.btn--outline) {
+    color: var(--color-bg-alt);
+    border-color: rgba(248, 242, 226, 0.55);
+  }
+
+  .footer-cta__actions :global(.btn--outline:hover) {
+    background-color: rgba(248, 242, 226, 0.12);
+    border-color: var(--color-bg-alt);
   }
 
   /* ══════════════════════════════════
@@ -318,9 +341,9 @@ const year = 2026;
   }
 
   .footer__social-link:hover {
-    border-color: var(--color-accent);
-    color: var(--color-accent);
-    background-color: rgba(201, 169, 110, 0.08);
+    border-color: var(--color-accent-light);
+    color: var(--color-accent-light);
+    background-color: rgba(201, 168, 76, 0.08);
   }
 
   /* ── Column titles ── */
@@ -330,7 +353,7 @@ const year = 2026;
     font-weight: var(--weight-medium);
     text-transform: uppercase;
     letter-spacing: 0.12em;
-    color: var(--color-accent);
+    color: var(--color-accent-light);
     margin-bottom: var(--space-5);
   }
 
@@ -351,7 +374,7 @@ const year = 2026;
   }
 
   .footer__link:hover {
-    color: var(--color-accent);
+    color: var(--color-accent-light);
   }
 
   .footer__link--icon {
@@ -378,7 +401,7 @@ const year = 2026;
 
   .footer__address svg {
     flex-shrink: 0;
-    color: var(--color-accent);
+    color: var(--color-accent-light);
   }
 
   /* ── Hours ── */
@@ -411,7 +434,7 @@ const year = 2026;
     font-size: var(--text-sm);
     font-weight: var(--weight-medium);
     color: var(--color-text);
-    background-color: var(--color-accent);
+    background-color: var(--color-accent-light);
     border-radius: var(--radius-md);
     padding: var(--space-2) var(--space-4);
     text-decoration: none;
@@ -419,7 +442,7 @@ const year = 2026;
   }
 
   .footer__cta:hover {
-    background-color: var(--color-accent-hover);
+    background-color: var(--color-accent-pale);
     color: var(--color-text);
   }
 
@@ -458,7 +481,7 @@ const year = 2026;
   }
 
   .footer__legal-link:hover {
-    color: var(--color-accent);
+    color: var(--color-accent-light);
   }
 
   /* ── Responsive ── */

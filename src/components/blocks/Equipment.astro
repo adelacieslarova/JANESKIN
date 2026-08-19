@@ -7,22 +7,16 @@ const equipment = [
     title: 'Ultrazvuková špachtle',
     description: 'Hloubkové čištění pórů a efektivní zapracování aktivních látek do pleti bez podráždění.',
     icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4.5 16.5c-1.5 1.5-1.5 3 0 4.5s3 1.5 4.5 0l11-11c1.5-1.5 1.5-3 0-4.5s-3-1.5-4.5 0L4.5 16.5z"/><path d="M15 5l4 4"/></svg>`,
-    img: '/images/osetre-ultrazvuk.webp',
-    imgAlt: 'Kosmetické ošetření ultrazvukovou špachtlí',
   },
   {
     title: 'Mikrojehličkovací pero',
     description: 'Přesná stimulace přirozené tvorby kolagenu a elastinu. Ideální pro lifting, jizvy i pigmentace.',
     icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="2" x2="12" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>`,
-    img: '/images/osetre-mikrojehly.jpg',
-    imgAlt: 'Ošetření mikrojehličkovacím perem',
   },
   {
     title: 'Galvanická žehlička s LED terapií',
     description: 'Tři účinky v jednom přístroji — hloubkové čištění galvanikou, ionoforéza pro vstřebání látek a fotonová terapie.',
     icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="5"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>`,
-    img: '/images/osetre-galvanika.jpeg',
-    imgAlt: 'Ošetření galvanickou žehličkou s LED terapií',
   },
 ];
 ---
@@ -39,9 +33,6 @@ const equipment = [
       {equipment.map(item => (
         <li>
           <Card variant="info">
-            <div class="equipment-card__img-wrap">
-              <img src={item.img} alt={item.imgAlt} class="equipment-card__img" loading="lazy" decoding="async" width="800" height="450" />
-            </div>
             <div class="equipment-card__icon" aria-hidden="true" set:html={item.icon} />
             <h3 class="equipment-card__title">{item.title}</h3>
             <p class="equipment-card__desc">{item.description}</p>
@@ -58,20 +49,6 @@ const equipment = [
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: var(--space-6);
-  }
-
-  .equipment-card__img-wrap {
-    margin: calc(-1 * var(--space-6)) calc(-1 * var(--space-6)) var(--space-5);
-    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-    overflow: hidden;
-    aspect-ratio: 16 / 9;
-  }
-
-  .equipment-card__img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
   }
 
   .equipment-card__icon {

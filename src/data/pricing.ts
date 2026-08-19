@@ -55,7 +55,7 @@ export const pricingData: PriceCategory[] = [
       'Specializovaná ošetření s kosmeceutikou Larens — od hluboké hydratace přes lifting a chemické peelingy až po řešení akné, pigmentací či citlivé pleti.',
     priceFrom: '1 100 Kč',
     durationRange: '30–120 min',
-    image: '/images/janeskin-vysetreni-detail.webp',
+    image: '/images/salon/osetreni-roller.jpg',
     icon: icons.plet,
     items: [
       {
@@ -165,7 +165,7 @@ export const pricingData: PriceCategory[] = [
       'Moderní estetická procedura spojující exosomy, kyselinu hyaluronovou a růstové faktory pro omlazení a zpevnění pleti.',
     priceFrom: '2 300 Kč',
     durationRange: '90 min',
-    image: '/images/sluzby-microneedling.webp',
+    image: '/images/salon/produkty-larens.jpg',
     icon: icons.needle,
     note: 'Ošetření neprovádím novým klientům při první návštěvě — vyžaduje předchozí konzultaci.',
     items: [
@@ -185,7 +185,7 @@ export const pricingData: PriceCategory[] = [
       'Tři typy masáží obličeje, krku a dekoltu — klasická, liftingová a mikromasáž očního okolí. Relaxace i omlazení.',
     priceFrom: '600 Kč',
     durationRange: '45–90 min',
-    image: '/images/osetre-ultrazvuk.webp',
+    image: '/images/salon/osetreni-masaz.jpg',
     icon: icons.masaz,
     items: [
       {
@@ -221,7 +221,7 @@ export const pricingData: PriceCategory[] = [
       'Pokročilá laminace od InLei® — natočení, barvení a výživa řas i obočí. Zahušťuje řasy až o 25 %.',
     priceFrom: '1 000 Kč',
     durationRange: '90–120 min',
-    image: '/images/osetre-mikrojehly.jpg',
+    image: '/images/salon/liceni-zrcadlo.jpg',
     icon: icons.oko,
     items: [
       {
@@ -274,7 +274,7 @@ export const pricingData: PriceCategory[] = [
       'Svatební líčení, kurzy líčení s Larens Colour, poradenství v péči o pleť i kompletní make-up proměny včetně účesu.',
     priceFrom: '800 Kč',
     durationRange: '60–210 min',
-    image: '/images/makeup-vizaz.jpeg',
+    image: '/images/salon/liceni-koutek.jpg',
     icon: icons.makeup,
     items: [],
     subsections: [
@@ -345,7 +345,7 @@ export const pricingData: PriceCategory[] = [
       'Barvení a epilace obočí a řas, nadstandardní masky a ampule, lehké denní líčení po ošetření.',
     priceFrom: '100 Kč',
     durationRange: '15–30 min',
-    image: '/images/peel-maska.webp',
+    image: '/images/salon/salon-vozik.jpg',
     icon: icons.doplnky,
     note: 'Doplňkové služby je možné zakoupit pouze ke kosmetické aplikaci.',
     items: [],

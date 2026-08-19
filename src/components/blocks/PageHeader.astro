@@ -91,14 +91,15 @@ const { label, title, subtitle, breadcrumb, image } = Astro.props;
     display: block;
   }
 
+  /* Krémový závoj místo tmavého — stejný princip jako hero na homepage */
   .page-header__overlay {
     position: absolute;
     inset: 0;
     background: linear-gradient(
       to bottom,
-      rgba(20, 14, 10, 0.15) 0%,
-      rgba(20, 14, 10, 0.32) 55%,
-      rgba(20, 14, 10, 0.58) 100%
+      rgba(253, 250, 243, 0.55) 0%,
+      rgba(253, 250, 243, 0.70) 55%,
+      rgba(253, 250, 243, 0.86) 100%
     );
   }
 
@@ -139,10 +140,6 @@ const { label, title, subtitle, breadcrumb, image } = Astro.props;
     color: var(--color-text-soft);
   }
 
-  .page-header--photo .page-header__breadcrumb-list {
-    color: rgba(255, 255, 255, 0.75);
-  }
-
   .page-header__breadcrumb-list li {
     display: flex;
     align-items: center;
@@ -155,10 +152,6 @@ const { label, title, subtitle, breadcrumb, image } = Astro.props;
     transition: color var(--transition-fast);
   }
 
-  .page-header--photo .page-header__breadcrumb-link {
-    color: rgba(255, 255, 255, 0.75);
-  }
-
   .page-header__breadcrumb-link:hover {
     color: var(--color-accent);
   }
@@ -167,17 +160,9 @@ const { label, title, subtitle, breadcrumb, image } = Astro.props;
     color: var(--color-border);
   }
 
-  .page-header--photo .page-header__breadcrumb-sep {
-    color: rgba(255, 255, 255, 0.35);
-  }
-
   .page-header__breadcrumb-current {
     color: var(--color-text);
     font-weight: var(--weight-medium);
-  }
-
-  .page-header--photo .page-header__breadcrumb-current {
-    color: rgba(255, 255, 255, 0.95);
   }
 
   /* ── Text ── */
@@ -198,16 +183,10 @@ const { label, title, subtitle, breadcrumb, image } = Astro.props;
 
   .page-header__title {
     font-family: var(--font-heading);
-    font-size: var(--text-5xl);
+    font-size: clamp(2.25rem, 6vw, var(--text-5xl));
     font-weight: var(--weight-regular);
     color: var(--color-text);
     line-height: 1.1;
-  }
-
-  .page-header--photo .page-header__title {
-    color: var(--color-white);
-    /* stín drží čitelnost, aby překryv mohl být světlý a fotka vynikla */
-    text-shadow: 0 2px 16px rgba(20, 14, 10, 0.55);
   }
 
   .page-header__subtitle {
@@ -215,11 +194,6 @@ const { label, title, subtitle, breadcrumb, image } = Astro.props;
     color: var(--color-text-soft);
     line-height: 1.6;
     max-width: 640px;
-  }
-
-  .page-header--photo .page-header__subtitle {
-    color: rgba(255, 255, 255, 0.92);
-    text-shadow: 0 2px 12px rgba(20, 14, 10, 0.55);
   }
 
   /* ── Responsive ── */
