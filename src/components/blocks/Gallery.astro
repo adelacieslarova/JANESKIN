@@ -27,6 +27,23 @@ const photos = [
       title="Nahlédněte do salonu"
       subtitle="Místo, kde se o Vaši pleť postarám v klidu a soukromí — bez spěchu a čekáren."
     />
+
+    <!-- Krátká smyčka ze salonu. Bez zvuku, ať nikoho nepřekvapí. -->
+    <div class="gallery__video-wrap" data-animate>
+      <video
+        id="gallery-video"
+        class="gallery__video"
+        src="/video/salon.mp4"
+        width="848"
+        height="480"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        aria-label="Krátké video z kosmetického salonu JANESKIN"
+      ></video>
+    </div>
   </div>
 
   <div class="gallery__carousel-wrap" data-animate>
@@ -57,9 +74,27 @@ const photos = [
 </section>
 
 <style>
+  /* Video drží šířku blízko svému nativnímu rozlišení (848 px), ať není rozmazané */
+  .gallery__video-wrap {
+    max-width: 880px;
+    margin: var(--space-12) auto 0;
+    border-radius: 2px;
+    overflow: hidden;
+    background: var(--color-bg-warm);
+    box-shadow: var(--shadow-md);
+  }
+
+  .gallery__video {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 848 / 480;
+    object-fit: cover;
+  }
+
   .gallery__carousel-wrap {
     position: relative;
-    margin-top: var(--space-12);
+    margin-top: var(--space-10);
   }
 
   .gallery__track {
@@ -163,6 +198,15 @@ const photos = [
 </style>
 
 <script>
+  /* Kdo má vypnuté animace, tomu se video nepřehrává samo — dostane ovládání. */
+  const video = document.getElementById('gallery-video') as HTMLVideoElement | null;
+  if (video && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    video.autoplay = false;
+    video.loop = false;
+    video.controls = true;
+    video.pause();
+  }
+
   const track = document.getElementById('gallery-track');
   const arrows = document.querySelectorAll<HTMLButtonElement>('.gallery__arrow');
 
