@@ -35,7 +35,7 @@ import { pricingData, BOOKING_URL } from '../data/pricing';
       {pricingData.map(cat => (
         <section class="price-category" id={cat.id} aria-label={cat.category} data-animate>
           <h2 class="price-category__title">{cat.category}</h2>
-          <PriceList category={cat} />
+          <PriceList category={cat} variant="compact" />
         </section>
       ))}
 

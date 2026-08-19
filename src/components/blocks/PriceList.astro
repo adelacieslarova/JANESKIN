@@ -1,18 +1,25 @@
 ---
 /**
- * Výpis položek jedné kategorie — název, délka, cena a plný popis.
+ * Výpis položek jedné kategorie.
  *
- * Popisy jsou vždy viditelné (žádné "zobrazit více"). Sdílí ji /cenik
- * i rozbalovací karty na /sluzby, aby se markup nepsal dvakrát.
+ * variant="full" (/sluzby): název, délka, cena a plný popis, vše viditelné.
+ * variant="compact" (/cenik): jen název a cena — žádné popisy ani úvodní texty.
+ *
+ * Obě stránky sdílí tuhle komponentu, aby se markup nepsal dvakrát.
  */
 import Badge from '../ui/Badge.astro';
 import type { PriceCategory, PriceItem, PriceSubsection } from '../../data/pricing';
 
 interface Props {
   category: PriceCategory;
+  variant?: 'full' | 'compact';
 }
 
-const { category } = Astro.props;
+const { category, variant = 'full' } = Astro.props;
+const compact = variant === 'compact';
+
+/** V ceníku ukazujeme z poznámek jen ty cenové (balíčky, kúry) — zbytek patří k popisu na /sluzby. */
+const showNote = (item: PriceItem) => Boolean(item.note) && (!compact || /Kč/.test(item.note!));
 
 const groups: PriceSubsection[] = category.subsections
   ? category.subsections
@@ -20,19 +27,19 @@ const groups: PriceSubsection[] = category.subsections
 ---
 
 {category.note && <p class="price-list__note">{category.note}</p>}
-{category.intro && <p class="price-list__intro">{category.intro}</p>}
+{!compact && category.intro && <p class="price-list__intro">{category.intro}</p>}
 
 {groups.map((group: PriceSubsection) => (
   <>
     {group.title && <h4 class="price-list__subtitle">{group.title}</h4>}
     {group.items.length > 0 && (
-      <ul class="price-list" role="list">
+      <ul class:list={['price-list', compact && 'price-list--compact']} role="list">
         {group.items.map((item: PriceItem) => (
           <li class="price-item">
             <div class="price-item__head">
               <h5 class="price-item__name">
                 {item.name}
-                {item.note && <span class="price-item__tag">{item.note}</span>}
+                {showNote(item) && <span class="price-item__tag">{item.note}</span>}
               </h5>
               <div class="price-item__meta">
                 {item.duration && <span class="price-item__duration">{item.duration}</span>}
@@ -42,7 +49,7 @@ const groups: PriceSubsection[] = category.subsections
                 }
               </div>
             </div>
-            {item.description && <p class="price-item__desc">{item.description}</p>}
+            {!compact && item.description && <p class="price-item__desc">{item.description}</p>}
           </li>
         ))}
       </ul>
@@ -146,6 +153,15 @@ const groups: PriceSubsection[] = category.subsections
     font-size: var(--text-sm);
     color: var(--color-text-soft);
     font-style: italic;
+  }
+
+  /* Kompaktní ceník: jen řádek název — cena, hustší sazba */
+  .price-list--compact .price-item {
+    padding: var(--space-3) 0;
+  }
+
+  .price-list--compact .price-item__head {
+    gap: var(--space-4);
   }
 
   .price-item__desc {
