@@ -31,7 +31,9 @@ const services = pricingData.filter(s => !hiddenOnHome.includes(s.id));
             <h3 class="svc__title">{service.category}</h3>
             <p class="svc__desc">{service.summary}</p>
             <span class="svc__meta">
-              <span class="svc__price">od {service.priceFrom}</span>
+              <span class="svc__price">
+                {service.priceFrom.includes('Kč') ? `od ${service.priceFrom}` : service.priceFrom}
+              </span>
               <span class="svc__duration">{service.durationRange}</span>
             </span>
           </a>

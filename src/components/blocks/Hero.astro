@@ -1,27 +1,32 @@
 ---
 import Button from '../ui/Button.astro';
 
-/* Stejné čtyři body jako na tištěném banneru u salonu — ať web a polep mluví stejně. */
+/* Stejné čtyři body jako na tištěném banneru u salonu — ať web a polep mluví
+   stejně. Každý vede na příslušnou kategorii ve službách. */
 const bannerItems = [
-  'Profesionální péče o pleť',
-  'Anti-aging ošetření',
-  'Microneedling',
-  'Lash lifting řas a laminace obočí',
+  { label: 'Profesionální péče o pleť', href: '/sluzby#kosmeticka-pece' },
+  { label: 'Anti-aging ošetření', href: '/sluzby#kosmeticka-pece' },
+  { label: 'Microneedling', href: '/sluzby#microneedling' },
+  { label: 'Lash lifting řas a laminace obočí', href: '/sluzby#laminace' },
 ];
 ---
 
 <section class="hero" aria-label="Uvítací sekce">
   <div class="hero__bg">
-    <img
-      src="/images/hero-salon.webp"
-      alt="Kosmetický salon JANESKIN — kosmeceutika Larens a ošetření pleti"
-      class="hero__img"
-      loading="eager"
-      fetchpriority="high"
-      decoding="async"
-      width="2160"
-      height="1013"
-    />
+    <!-- Na mobilu je široká koláž jen tenký proužek — tam jde svislý výřez ošetření -->
+    <picture>
+      <source media="(max-width: 768px)" srcset="/images/hero-salon-mobil.jpg" width="810" height="1013" />
+      <img
+        src="/images/hero-salon.webp"
+        alt="Kosmetický salon JANESKIN — kosmeceutika Larens a ošetření pleti"
+        class="hero__img"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        width="2160"
+        height="1013"
+      />
+    </picture>
     <!-- Krémový závoj místo tmavého překryvu: fotka zůstane světlá, text čitelný -->
     <div class="hero__veil" aria-hidden="true"></div>
 
@@ -45,7 +50,9 @@ const bannerItems = [
   <div class="hero__strip">
     <ul class="hero__strip-inner" role="list">
       {bannerItems.map(item => (
-        <li class="hero__strip-item">{item}</li>
+        <li class="hero__strip-item">
+          <a href={item.href} class="hero__strip-link">{item.label}</a>
+        </li>
       ))}
     </ul>
   </div>
@@ -173,7 +180,24 @@ const bannerItems = [
     font-weight: var(--weight-light);
     letter-spacing: 0.08em;
     text-transform: uppercase;
+  }
+
+  .hero__strip-link {
     color: #F8F2E2;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+    transition: color var(--transition-fast), border-color var(--transition-fast);
+  }
+
+  .hero__strip-link:hover {
+    color: var(--color-accent-light);
+    border-bottom-color: var(--color-accent-light);
+  }
+
+  .hero__strip-link:focus-visible {
+    outline: 2px solid var(--color-accent-light);
+    outline-offset: 4px;
   }
 
   /* Zlatý oddělovač mezi body */
@@ -191,6 +215,11 @@ const bannerItems = [
 
   /* Fotka je široká (2160×1013): pod 1280px se text nevejde → jde pod obrázek */
   @media (max-width: 1280px) {
+    /* Text už neleží na fotce, takže fotka musí začít pod fixní hlavičkou —
+       jinak jí hlavička ukrojí horních 72 px i s hlavami. */
+    .hero {
+      padding-top: 72px;
+    }
     .hero__content {
       position: static;
       padding: var(--space-12) var(--space-6);

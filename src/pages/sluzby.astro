@@ -57,7 +57,8 @@ import { pricingData, BOOKING_URL } from '../data/pricing';
               </span>
 
               <span class="service__meta">
-                <Badge text={`od ${cat.priceFrom}`} variant="gold" />
+                {/* "od" dává smysl jen u částky — poukaz má hodnotu podle přání */}
+                <Badge text={cat.priceFrom.includes('Kč') ? `od ${cat.priceFrom}` : cat.priceFrom} variant="gold" />
                 <Badge text={cat.durationRange} variant="subtle" />
               </span>
 
@@ -323,3 +324,20 @@ import { pricingData, BOOKING_URL } from '../data/pricing';
     .service__body { animation: none; }
   }
 </style>
+
+<script>
+  /* Příchod z odkazu s kotvou (např. z pruhu na homepage) kartu rovnou rozbalí,
+     jinak by člověk přistál na zavřené položce a musel klikat znovu. */
+  const openFromHash = () => {
+    const id = decodeURIComponent(window.location.hash.slice(1));
+    if (!id) return;
+    const target = document.getElementById(id);
+    if (target instanceof HTMLDetailsElement) {
+      target.open = true;
+      target.scrollIntoView({ block: 'start', behavior: 'smooth' });
+    }
+  };
+
+  openFromHash();
+  window.addEventListener('hashchange', openFromHash);
+</script>

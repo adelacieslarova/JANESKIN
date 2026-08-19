@@ -392,16 +392,19 @@ export const pricingData: PriceCategory[] = [
     category: 'Dárkové poukazy',
     summary:
       'Dárek pro někoho, koho chcete potěšit chvilkou nerušené relaxace a péčí luxusní kosmeceutikou Larens.',
-    priceFrom: '1 000 Kč',
-    durationRange: '60–90 min',
+    priceFrom: 'Hodnota dle přání',
+    durationRange: 'dle vybrané služby',
     image: '/images/gold-maska.webp',
     icon: icons.voucher,
     intro:
       'Vhodný jako dárek pro osobu, kterou chcete potěšit chvilkou nerušené relaxace, odpočinku a péčí luxusní kosmeceutikou Larens. Obdarovaná si sama vybere, na jakou proceduru poukaz využije. Hodnotu poukazu je možné zvolit i individuálně. K dispozici jsou luxusní poukazy v tištěné podobě s dárkovou obálkou a mašlí, nebo v elektronické podobě zaslané na e-mail. Platnost poukazu je 6 měsíců od data zakoupení, pokud není dohodnuto jinak.',
     items: [
-      { name: 'Voucher na služby č. 1', price: '1 000 Kč', duration: '60 min' },
-      { name: 'Voucher na služby č. 2', price: '1 500 Kč', duration: '90 min' },
-      { name: 'Voucher na služby č. 3', price: '2 000 Kč', duration: '90 min' },
+      {
+        name: 'Dárkový poukaz',
+        price: null,
+        duration: null,
+        note: 'Hodnotu si volíte sami',
+      },
     ],
   },
 ];
