@@ -6,6 +6,7 @@
  * šipky jen volají scrollBy. Fotky mají jednotný poměr 3:4, ať řádek sedí.
  */
 import SectionHeading from '../ui/SectionHeading.astro';
+import Button from '../ui/Button.astro';
 
 const photos = [
   { src: '/images/salon/osetreni-krb.jpg', alt: 'Kosmetické ošetření pleti v salonu JANESKIN' },
@@ -71,16 +72,23 @@ const photos = [
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
     </button>
   </div>
+
+  <div class="container">
+    <div class="gallery__cta">
+      <Button href="/galerie" variant="outline" size="lg">Celá fotogalerie</Button>
+    </div>
+  </div>
 </section>
 
 <style>
-  /* Video drží šířku blízko svému nativnímu rozlišení (848 px), ať není rozmazané */
+  /* Video je natočené na výšku (480×848), rámeček proto drží svislý poměr —
+     v širokém rámu by kolem něj zůstávaly prázdné pruhy. */
   .gallery__video-wrap {
-    max-width: 880px;
+    width: min(380px, 100%);
     margin: var(--space-12) auto 0;
     border-radius: 2px;
     overflow: hidden;
-    background: var(--color-bg-warm);
+    background: var(--color-dark);
     box-shadow: var(--shadow-md);
   }
 
@@ -88,8 +96,14 @@ const photos = [
     display: block;
     width: 100%;
     height: auto;
-    aspect-ratio: 848 / 480;
+    aspect-ratio: 480 / 848;
     object-fit: cover;
+  }
+
+  .gallery__cta {
+    display: flex;
+    justify-content: center;
+    margin-top: var(--space-10);
   }
 
   .gallery__carousel-wrap {

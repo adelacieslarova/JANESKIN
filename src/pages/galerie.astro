@@ -1,0 +1,196 @@
+---
+/**
+ * Fotogalerie salonu.
+ *
+ * Tady žijí všechny fotky ze salonu i celé video. Na homepage zůstává
+ * jen karusel jako ochutnávka, který sem odkazuje.
+ */
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/blocks/PageHeader.astro';
+import SectionHeading from '../components/ui/SectionHeading.astro';
+import Button from '../components/ui/Button.astro';
+import { BOOKING_URL } from '../data/pricing';
+
+/* Řazeno po tématech: prostor → ošetření → přístroje → přípravky → líčení */
+const photos = [
+  { src: '/images/salon/salon-pokoj.jpg', alt: 'Interiér kosmetického salonu JANESKIN' },
+  { src: '/images/salon/salon-lehatko.jpg', alt: 'Ošetřovací lehátko u okna' },
+  { src: '/images/salon/salon-pult.jpg', alt: 'Pracovní pult s přípravky v salonu' },
+  { src: '/images/salon/osetreni-krb.jpg', alt: 'Kosmetické ošetření pleti u krbu' },
+  { src: '/images/salon/osetreni-roller.jpg', alt: 'Masáž obličeje zlatým rollerem' },
+  { src: '/images/salon/osetreni-maska.jpg', alt: 'Aplikace masky během ošetření pleti' },
+  { src: '/images/salon/osetreni-obliceje.jpg', alt: 'Ošetření obličeje v salonu JANESKIN' },
+  { src: '/images/salon/osetreni-masaz.jpg', alt: 'Masáž obličeje, krku a dekoltu' },
+  { src: '/images/salon/osetreni-masaz-hlavy.jpg', alt: 'Relaxační masáž hlavy' },
+  { src: '/images/salon/osetreni-guasha.jpg', alt: 'Ošetření pleti masážními kameny' },
+  { src: '/images/salon/osetreni-vapozon.jpg', alt: 'Ošetření pleti vapozonem' },
+  { src: '/images/salon/pristroj-led.jpg', alt: 'LED terapie v kosmetickém salonu' },
+  { src: '/images/salon/salon-vozik.jpg', alt: 'Vozík s přípravky Larens připravený k ošetření' },
+  { src: '/images/salon/produkty-larens.jpg', alt: 'Přípravky Larens Professional Line na zlatém podnosu' },
+  { src: '/images/salon/produkty-kvetiny.jpg', alt: 'Kosmeceutika Larens a masážní pomůcky' },
+  { src: '/images/salon/larens-rada.jpg', alt: 'Celá řada kosmeceutik Larens Professional Line' },
+  { src: '/images/salon/liceni-koutek.jpg', alt: 'Líčicí koutek se zrcadlem' },
+  { src: '/images/salon/liceni-zrcadlo.jpg', alt: 'Klientka u líčicího zrcadla' },
+  { src: '/images/salon/liceni-jana.jpg', alt: 'Jana Szymiková při líčení klientky' },
+  { src: '/images/salon/jana-konzultace.jpg', alt: 'Jana Szymiková u police s kosmeceutikou Larens' },
+];
+---
+
+<Layout
+  title="Fotogalerie"
+  description="Fotogalerie kosmetického salonu JANESKIN v Dolní Lutyni — interiér salonu, ošetření pleti, přístroje a kosmeceutika Larens. Jana Szymiková."
+>
+  <PageHeader
+    label="Galerie"
+    title="Podívejte se k nám"
+    subtitle="Prostor, přístroje i ošetření — tak, jak to u mě v salonu vypadá."
+    breadcrumb={[{ label: 'Galerie', href: '/galerie' }]}
+  />
+
+  <!-- Video -->
+  <section class="gal-video section" aria-label="Video ze salonu">
+    <div class="container">
+      <div class="gal-video__frame" data-animate>
+        <video
+          id="salon-video"
+          class="gal-video__player"
+          src="/video/salon.mp4"
+          width="848"
+          height="480"
+          autoplay
+          muted
+          loop
+          playsinline
+          controls
+          preload="metadata"
+          aria-label="Video z kosmetického salonu JANESKIN"
+        ></video>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fotky -->
+  <section class="gal-photos section section--alt" aria-label="Fotografie ze salonu">
+    <div class="container">
+      <SectionHeading
+        label="Fotografie"
+        title="Ze salonu"
+        subtitle="Kliknutím se fotka otevře ve větším."
+      />
+
+      <ul class="gal-grid" role="list" data-animate>
+        {photos.map(photo => (
+          <li class="gal-grid__item">
+            <a href={photo.src} class="gal-grid__link" target="_blank" rel="noopener noreferrer">
+              <img
+                src={photo.src}
+                alt={photo.alt}
+                class="gal-grid__img"
+                loading="lazy"
+                decoding="async"
+                width="900"
+                height="1200"
+              />
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <div class="gal-photos__cta">
+        <Button href={BOOKING_URL} variant="primary" size="lg" target="_blank" rel="noopener noreferrer">Objednat se</Button>
+        <Button href="/sluzby" variant="outline" size="lg">Prohlédnout služby</Button>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* Video je natočené na výšku (480×848) — rámeček drží stejný poměr,
+     takže se nic neořezává ani nezbývají prázdné pruhy. */
+  .gal-video__frame {
+    width: min(440px, 100%);
+    margin: 0 auto;
+    border-radius: 2px;
+    overflow: hidden;
+    background: var(--color-dark);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .gal-video__player {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 480 / 848;
+    object-fit: cover;
+  }
+
+  .gal-grid {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-4);
+    margin-top: var(--space-12);
+  }
+
+  .gal-grid__item {
+    overflow: hidden;
+    border-radius: 2px;
+    background: var(--color-bg-warm);
+  }
+
+  .gal-grid__link {
+    display: block;
+    line-height: 0;
+  }
+
+  .gal-grid__img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    display: block;
+    transition: transform var(--transition-slow);
+  }
+
+  .gal-grid__item:hover .gal-grid__img {
+    transform: scale(1.04);
+  }
+
+  .gal-photos__cta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-4);
+    margin-top: var(--space-12);
+  }
+
+  @media (max-width: 1024px) {
+    .gal-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 720px) {
+    .gal-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-3);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .gal-grid__item:hover .gal-grid__img {
+      transform: none;
+    }
+  }
+</style>
+
+<script>
+  /* Kdo má vypnuté animace, tomu se video nespustí samo */
+  const video = document.getElementById('salon-video') as HTMLVideoElement | null;
+  if (video && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    video.autoplay = false;
+    video.loop = false;
+    video.pause();
+  }
+</script>
