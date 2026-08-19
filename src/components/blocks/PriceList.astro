@@ -24,6 +24,78 @@ const showNote = (item: PriceItem) => Boolean(item.note) && (!compact || /Kč/.t
 const groups: PriceSubsection[] = category.subsections
   ? category.subsections
   : [{ title: null, items: category.items }];
+
+/**
+ * Popis ošetření je jeden dlouhý odstavec, ve kterém jsou schované dva výčty
+ * ("Efekt:" a "Procedura/Aplikace zahrnuje:"). Rozebereme ho na části,
+ * ať se dá zobrazit přehledně.
+ *
+ * Rozdělovat umíme jen tam, kde je to bezpečné: středník je jednoznačný,
+ * čárku bereme pouze u účinků a jen když v bloku nejsou tečky — jinak by
+ * roztrhala věty uprostřed. Když si nejsme jistí, necháme odstavec být.
+ */
+const PROC_LABELS = ['Procedura zahrnuje:', 'Aplikace zahrnuje:'];
+
+function splitItems(text: string, allowComma: boolean): string[] | null {
+  const body = text.trim().replace(/\.$/, '');
+  if (body.includes(';')) return body.split(';').map(s => s.trim()).filter(Boolean);
+  if (allowComma && !body.includes('.') && body.includes(',')) {
+    return body.split(',').map(s => s.trim()).filter(Boolean);
+  }
+  return null;
+}
+
+/** Za výčtem občas pokračují další věty (např. doporučení kúry) — ty patří pod něj. */
+function splitListAndNote(text: string): [string, string] {
+  const m = text.match(/\.\s+(?=[A-ZÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ])/);
+  if (!m || m.index === undefined) return [text, ''];
+  const i = m.index + 1;
+  return [text.slice(0, i), text.slice(i).trim()];
+}
+
+interface ParsedDesc {
+  intro: string;
+  effects: string[] | null;
+  effectsText: string;
+  procedure: string[] | null;
+  procedureText: string;
+  procLabel: string | null;
+  note: string;
+}
+
+function parseDescription(text: string): ParsedDesc {
+  const iEfekt = text.indexOf('Efekt:');
+  const procLabel = PROC_LABELS.find(l => text.includes(l)) ?? null;
+  const iProc = procLabel ? text.indexOf(procLabel) : -1;
+
+  const empty: ParsedDesc = {
+    intro: text, effects: null, effectsText: '',
+    procedure: null, procedureText: '', procLabel: null, note: '',
+  };
+  if (iEfekt < 0 && iProc < 0) return empty;
+
+  const intro = text.slice(0, Math.min(...[iEfekt, iProc].filter(i => i >= 0))).trim();
+
+  let effects: string[] | null = null;
+  let effectsText = '';
+  if (iEfekt >= 0) {
+    const end = iProc > iEfekt ? iProc : text.length;
+    effectsText = text.slice(iEfekt + 'Efekt:'.length, end).trim();
+    effects = splitItems(effectsText, true);
+  }
+
+  let procedure: string[] | null = null;
+  let procedureText = '';
+  let note = '';
+  if (iProc >= 0 && procLabel) {
+    const [list, rest] = splitListAndNote(text.slice(iProc + procLabel.length));
+    procedureText = list.trim();
+    procedure = splitItems(list, false);
+    note = rest;
+  }
+
+  return { intro, effects, effectsText, procedure, procedureText, procLabel, note };
+}
 ---
 
 {category.note && <p class="price-list__note">{category.note}</p>}
@@ -49,7 +121,34 @@ const groups: PriceSubsection[] = category.subsections
                 }
               </div>
             </div>
-            {!compact && item.description && <p class="price-item__desc">{item.description}</p>}
+            {!compact && item.description && (() => {
+              const d = parseDescription(item.description);
+              return (
+                <div class="price-item__body">
+                  {d.intro && <p class="price-item__desc">{d.intro}</p>}
+
+                  {(d.effects || d.effectsText) && (
+                    <div class="desc-block">
+                      <p class="desc-block__label">Efekt</p>
+                      {d.effects
+                        ? <ul class="desc-block__list" role="list">{d.effects.map(e => <li>{e}</li>)}</ul>
+                        : <p class="price-item__desc">{d.effectsText}</p>}
+                    </div>
+                  )}
+
+                  {(d.procedure || d.procedureText) && (
+                    <div class="desc-block">
+                      <p class="desc-block__label">{d.procLabel?.replace(':', '')}</p>
+                      {d.procedure
+                        ? <ul class="desc-block__list" role="list">{d.procedure.map(p => <li>{p}</li>)}</ul>
+                        : <p class="price-item__desc">{d.procedureText}</p>}
+                    </div>
+                  )}
+
+                  {d.note && <p class="price-item__desc price-item__desc--note">{d.note}</p>}
+                </div>
+              );
+            })()}
           </li>
         ))}
       </ul>
@@ -170,6 +269,61 @@ const groups: PriceSubsection[] = category.subsections
     line-height: 1.8;
     margin-top: var(--space-3);
     max-width: 78ch;
+  }
+
+  .price-item__desc--note {
+    font-style: italic;
+  }
+
+  /* ── Efekt / Procedura ── */
+  .desc-block {
+    margin-top: var(--space-4);
+    max-width: 78ch;
+  }
+
+  .desc-block__label {
+    font-size: var(--text-xs);
+    font-weight: var(--weight-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--color-accent);
+    margin-bottom: var(--space-2);
+  }
+
+  /* Sloupce místo mřížky: položky plynou pod sebou, takže delší text
+     nevytváří v řádku prázdné mezery. */
+  .desc-block__list {
+    list-style: none;
+    columns: 2;
+    column-gap: var(--space-8);
+    font-size: var(--text-sm);
+    line-height: 1.6;
+    color: var(--color-text-soft);
+  }
+
+  .desc-block__list li {
+    position: relative;
+    padding-left: var(--space-4);
+    margin-bottom: var(--space-1);
+    break-inside: avoid;
+  }
+
+  /* Zlatá tečka místo klasické odrážky */
+  .desc-block__list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.62em;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--color-accent-light);
+  }
+
+  @media (max-width: 860px) {
+    .desc-block__list {
+      columns: 1;
+    }
   }
 
   @media (max-width: 640px) {
