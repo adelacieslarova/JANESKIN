@@ -9,10 +9,11 @@ const navLinks = [
   { label: 'Kontakt',     href: '/kontakt' },
 ];
 
+/* Reklamace nemají vlastní dokument — jsou článkem 3 obchodních podmínek. */
 const legalLinks = [
   { label: 'Obchodní podmínky', href: '/obchodni-podminky' },
-  { label: 'Reklamační řád',    href: '/reklamacni-rad' },
-  { label: 'GDPR',              href: '/gdpr' },
+  { label: 'Reklamace',         href: '/obchodni-podminky#reklamace' },
+  { label: 'Zpracování osobních údajů', href: '/gdpr' },
 ];
 
 const year = 2026;
@@ -76,7 +77,7 @@ const year = 2026;
       </p>
       <div class="footer__social" aria-label="Sociální sítě">
         <a
-          href="https://www.instagram.com/"
+          href="https://www.instagram.com/salon_janaszymikova/"
           class="footer__social-link"
           target="_blank"
           rel="noopener noreferrer"
@@ -132,7 +133,7 @@ const year = 2026;
         </li>
         <li class="footer__address">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          <span>Dolní Lutyně</span>
+          <span>U Koupaliště 472<br />735 53 Dolní Lutyně</span>
         </li>
       </ul>
     </div>
@@ -163,7 +164,7 @@ const year = 2026;
   <div class="footer__bottom">
     <div class="footer__bottom-inner container">
       <p class="footer__copy">
-        &copy; {year} JANESKIN — Salon Jana Szymiková
+        &copy; {year} JANESKIN — Salon Jana Szymiková · IČO 21506701
       </p>
       <ul class="footer__legal" role="list">
         {legalLinks.map(link => (

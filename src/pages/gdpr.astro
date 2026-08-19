@@ -1,0 +1,188 @@
+---
+/**
+ * Zásady zpracování osobních údajů.
+ *
+ * Text vychází z dokumentu "GDPR_JANESKIN- salon-Jana-Szymikova.docx"
+ * (účinnost 1. 11. 2024). Opraveny jsou jen zjevné překlepy, obsah zůstává.
+ */
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/blocks/PageHeader.astro';
+import LegalIdentity from '../components/blocks/LegalIdentity.astro';
+---
+
+<Layout
+  title="Zásady zpracování osobních údajů"
+  description="Zásady zpracování osobních údajů (GDPR) kosmetického salonu JANESKIN — Jana Szymiková, Dolní Lutyně. Účely, rozsah, doba uchování a práva klientů."
+>
+  <PageHeader
+    label="Dokumenty"
+    title="Zpracování osobních údajů"
+    subtitle="Zásady zpracování osobních údajů (GDPR), účinné od 1. 11. 2024"
+    breadcrumb={[{ label: 'GDPR', href: '/gdpr' }]}
+  />
+
+  <section class="legal section" aria-label="Zásady zpracování osobních údajů">
+    <div class="legal__inner container">
+
+      <h2 id="spravce">1. Správce osobních údajů</h2>
+      <LegalIdentity />
+      <p>Správcem osobních údajů je Jana Szymiková, podnikající fyzická osoba.</p>
+
+      <h2 id="ucely">2. Účely zpracování osobních údajů</h2>
+      <p>Osobní údaje klientů jsou zpracovávány za účelem:</p>
+      <ul>
+        <li>poskytování kosmetických služeb,</li>
+        <li>vedení evidence objednávek a klientů,</li>
+        <li>komunikace s klienty (telefon, e-mail, online rezervační systém Noona),</li>
+        <li>plnění zákonných povinností (např. účetnictví),</li>
+        <li>
+          marketingových účelů — prezentace služeb a výsledků práce (např. fotografie
+          na sociálních sítích, pouze se souhlasem klienta).
+        </li>
+      </ul>
+
+      <h3>Odkazy na weby třetích stran</h3>
+      <p>
+        Na webových stránkách www.janeskin.cz mohou být uvedeny odkazy na webové stránky
+        třetích stran, např. společnosti WellU Sp. z o.o., která provozuje e-shop dostupný
+        na adrese
+        <a href="https://janaszymikova.wellu.eu" target="_blank" rel="noopener noreferrer">janaszymikova.wellu.eu</a>,
+        nebo společnosti Just CS spol. s r.o., která provozuje e-shop dostupný na adrese
+        <a href="https://janaszymikova.justnahrin.eu" target="_blank" rel="noopener noreferrer">janaszymikova.justnahrin.eu</a>.
+      </p>
+      <p>
+        Salon JANESKIN — Jana Szymiková tyto e-shopy neprovozuje, nezpracovává osobní údaje
+        ve spojitosti s objednávkami provedenými prostřednictvím těchto stránek a nenese
+        odpovědnost za způsoby zpracování osobních údajů, ochranu dat nebo obsah těchto
+        externích webů. Doporučujeme, aby se zákazníci při návštěvě těchto webových stránek
+        seznámili se zásadami ochrany osobních údajů příslušné společnosti WellU Sp. z o.o.
+        a Just CS spol. s r.o.
+      </p>
+
+      <h2 id="rozsah">3. Rozsah zpracovávaných osobních údajů</h2>
+      <p>Zpracovávají se zejména tyto údaje:</p>
+      <ul>
+        <li>jméno a příjmení,</li>
+        <li>kontaktní údaje (telefon, e-mail),</li>
+        <li>termíny a druhy objednaných služeb,</li>
+        <li>
+          údaje o stavu pleti či alergiích (pouze pokud je klient dobrovolně poskytne,
+          výhradně pro účely správného výkonu služby),
+        </li>
+        <li>fotografie klientek (pouze se souhlasem pro marketingové účely).</li>
+      </ul>
+
+      <h2 id="pravni-zaklad">4. Právní základ zpracování</h2>
+      <p>Zpracování osobních údajů probíhá na základě:</p>
+      <ul>
+        <li>plnění smlouvy (objednání a poskytnutí služby),</li>
+        <li>splnění zákonné povinnosti (např. uchování účetních dokladů),</li>
+        <li>oprávněného zájmu správce (např. ochrana práv, přímý marketing),</li>
+        <li>souhlasu klienta (v případě fotografií, marketingové komunikace nebo sdílení recenzí).</li>
+      </ul>
+
+      <h2 id="doba">5. Doba uchování osobních údajů</h2>
+      <p>Osobní údaje jsou uchovávány po dobu:</p>
+      <ul>
+        <li>nezbytnou pro poskytování služeb a vedení klientského účtu,</li>
+        <li>stanovenou právními předpisy (např. 10 let u účetních dokladů),</li>
+        <li>nebo do doby odvolání souhlasu klienta, pokud byl udělen (např. pro zveřejnění fotografií).</li>
+      </ul>
+
+      <h2 id="prijemci">6. Příjemci osobních údajů</h2>
+      <p>Osobní údaje mohou být předány:</p>
+      <ul>
+        <li>poskytovateli online rezervačního systému Noona (Noona HQ Ltd.),</li>
+        <li>poskytovateli účetních služeb,</li>
+        <li>poskytovateli webhostingu a IT podpory,</li>
+        <li>orgánům veřejné moci, pokud to vyžaduje zákon.</li>
+      </ul>
+      <p>Osobní údaje nejsou předávány mimo EU.</p>
+
+      <h2 id="prava">7. Práva subjektu údajů</h2>
+      <p>Klient má právo:</p>
+      <ul>
+        <li>požadovat přístup ke svým osobním údajům,</li>
+        <li>požadovat opravu nebo výmaz údajů,</li>
+        <li>omezit zpracování,</li>
+        <li>vznést námitku proti zpracování,</li>
+        <li>požadovat přenositelnost údajů,</li>
+        <li>kdykoli odvolat souhlas, pokud byl udělen,</li>
+        <li>
+          podat stížnost u Úřadu pro ochranu osobních údajů
+          (<a href="https://www.uoou.cz" target="_blank" rel="noopener noreferrer">www.uoou.cz</a>).
+        </li>
+      </ul>
+
+      <h2 id="zabezpeceni">8. Zabezpečení osobních údajů</h2>
+      <p>
+        Správce přijal vhodná technická a organizační opatření k ochraně osobních údajů před
+        ztrátou, zneužitím či neoprávněným přístupem. Přístup k osobním údajům mají pouze
+        osoby, které je nezbytně potřebují pro výkon své práce.
+      </p>
+
+      <h2 id="zaver">9. Závěrečná ustanovení</h2>
+      <p>
+        Tyto zásady nabývají účinnosti dne 1. 11. 2024. Aktuální znění je vždy dostupné
+        v salonu a na webových stránkách www.janeskin.cz.
+      </p>
+
+      <p class="legal__link-note">
+        Podmínky objednávek, storna a reklamací najdete ve
+        <a href="/obchodni-podminky">všeobecných obchodních podmínkách</a>.
+      </p>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .legal__inner {
+    max-width: 820px;
+  }
+
+  .legal__inner h2 {
+    font-size: var(--text-3xl);
+    margin-top: var(--space-12);
+    margin-bottom: var(--space-4);
+    padding-bottom: var(--space-3);
+    border-bottom: 1px solid var(--color-border);
+    scroll-margin-top: 96px;
+  }
+
+  .legal__inner h2:first-child {
+    margin-top: 0;
+  }
+
+  .legal__inner h3 {
+    font-size: var(--text-xl);
+    font-family: var(--font-body);
+    font-weight: var(--weight-medium);
+    color: var(--color-accent);
+    margin-top: var(--space-8);
+    margin-bottom: var(--space-3);
+    scroll-margin-top: 96px;
+  }
+
+  .legal__inner p {
+    color: var(--color-text-soft);
+    margin-bottom: var(--space-4);
+  }
+
+  .legal__inner ul {
+    color: var(--color-text-soft);
+    margin: 0 0 var(--space-4) var(--space-5);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .legal__inner li::marker {
+    color: var(--color-accent-light);
+  }
+
+  .legal__link-note {
+    margin-top: var(--space-10);
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--color-border);
+  }
+</style>

@@ -1,0 +1,71 @@
+---
+/**
+ * Identifikační údaje provozovatele.
+ *
+ * Stejný blok používají VOP i zásady GDPR — v obou dokumentech je uveden
+ * shodně, takže ho držíme na jednom místě.
+ */
+---
+
+<div class="legal-id">
+  <p class="legal-id__name">JANESKIN — SALON JANA SZYMIKOVÁ</p>
+  <dl class="legal-id__list">
+    <div><dt>Sídlo</dt><dd>U Koupaliště 472, 735 53 Dolní Lutyně</dd></div>
+    <div><dt>IČO</dt><dd>21506701</dd></div>
+    <div><dt>IČ provozovny</dt><dd>1015382355</dd></div>
+    <div><dt>Telefon</dt><dd><a href="tel:+420724239998">+420 724 239 998</a></dd></div>
+    <div><dt>E-mail</dt><dd><a href="mailto:jana.szymikova@seznam.cz">jana.szymikova@seznam.cz</a></dd></div>
+    <div><dt>Web</dt><dd><a href="https://www.janeskin.cz">www.janeskin.cz</a></dd></div>
+    <div><dt>Rezervace</dt><dd><a href="https://noona.app/cs/janeskinsalonjanaszymikova" target="_blank" rel="noopener noreferrer">noona.app</a></dd></div>
+    <div><dt>Sociální sítě</dt><dd>Instagram @salon_janaszymikova · Facebook Salon Jana Szymiková</dd></div>
+  </dl>
+</div>
+
+<style>
+  .legal-id {
+    background-color: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: 2px;
+    padding: var(--space-6);
+    margin-bottom: var(--space-10);
+  }
+
+  .legal-id__name {
+    font-family: var(--font-heading);
+    font-size: var(--text-xl);
+    color: var(--color-text);
+    margin-bottom: var(--space-4);
+  }
+
+  .legal-id__list {
+    display: grid;
+    gap: var(--space-2) var(--space-6);
+  }
+
+  .legal-id__list > div {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: var(--space-3);
+    font-size: var(--text-sm);
+  }
+
+  .legal-id__list dt {
+    color: var(--color-text-soft);
+  }
+
+  .legal-id__list dd {
+    color: var(--color-text);
+  }
+
+  @media (max-width: 560px) {
+    .legal-id__list > div {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+    .legal-id__list dt {
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+  }
+</style>
