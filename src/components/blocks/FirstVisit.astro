@@ -2,6 +2,7 @@
 import SectionHeading from '../ui/SectionHeading.astro';
 import InfoBox from '../ui/InfoBox.astro';
 import Button from '../ui/Button.astro';
+import { BOOKING_URL } from '../../data/pricing';
 
 const infoItems = [
   {
@@ -56,7 +57,8 @@ const infoItems = [
     </div>
 
     <div class="first-visit__cta" data-animate data-delay="300">
-      <Button href="#kontakt" variant="primary" size="md">Domluvit první návštěvu</Button>
+      <Button href={BOOKING_URL} variant="primary" size="md" target="_blank" rel="noopener noreferrer">Domluvit první návštěvu</Button>
+      <Button href="/kontakt" variant="outline" size="md">Raději se nejdřív zeptat</Button>
     </div>
 
   </div>
@@ -96,7 +98,11 @@ const infoItems = [
   }
 
   .first-visit__cta {
-    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-4);
     margin-top: var(--space-10);
   }
 
