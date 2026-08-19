@@ -11,28 +11,30 @@ import SectionHeading from '../components/ui/SectionHeading.astro';
 import Button from '../components/ui/Button.astro';
 import { BOOKING_URL } from '../data/pricing';
 
-/* Řazeno po tématech: prostor → ošetření → přístroje → přípravky → líčení */
+/* Střídáme prostor / ošetření / přípravky / líčení, ať vedle sebe neleží
+   dvě podobné fotky. Fotky mají sjednocené vyvážení bílé, aby galerie
+   nepůsobila jednou dožluta a jednou dobíla. */
 const photos = [
   { src: '/images/salon/salon-pokoj.jpg', alt: 'Interiér kosmetického salonu JANESKIN' },
-  { src: '/images/salon/salon-lehatko.jpg', alt: 'Ošetřovací lehátko u okna' },
-  { src: '/images/salon/salon-pult.jpg', alt: 'Pracovní pult s přípravky v salonu' },
   { src: '/images/salon/osetreni-krb.jpg', alt: 'Kosmetické ošetření pleti u krbu' },
-  { src: '/images/salon/osetreni-roller.jpg', alt: 'Masáž obličeje zlatým rollerem' },
-  { src: '/images/salon/osetreni-maska.jpg', alt: 'Aplikace masky během ošetření pleti' },
-  { src: '/images/salon/osetreni-obliceje.jpg', alt: 'Ošetření obličeje v salonu JANESKIN' },
-  { src: '/images/salon/osetreni-masaz.jpg', alt: 'Masáž obličeje, krku a dekoltu' },
-  { src: '/images/salon/osetreni-masaz-hlavy.jpg', alt: 'Relaxační masáž hlavy' },
-  { src: '/images/salon/osetreni-guasha.jpg', alt: 'Ošetření pleti masážními kameny' },
-  { src: '/images/salon/osetreni-vapozon.jpg', alt: 'Ošetření pleti vapozonem' },
-  { src: '/images/salon/pristroj-led.jpg', alt: 'LED terapie v kosmetickém salonu' },
-  { src: '/images/salon/salon-vozik.jpg', alt: 'Vozík s přípravky Larens připravený k ošetření' },
   { src: '/images/salon/produkty-larens.jpg', alt: 'Přípravky Larens Professional Line na zlatém podnosu' },
-  { src: '/images/salon/produkty-kvetiny.jpg', alt: 'Kosmeceutika Larens a masážní pomůcky' },
-  { src: '/images/salon/larens-rada.jpg', alt: 'Celá řada kosmeceutik Larens Professional Line' },
   { src: '/images/salon/liceni-koutek.jpg', alt: 'Líčicí koutek se zrcadlem' },
+  { src: '/images/salon/osetreni-roller.jpg', alt: 'Masáž obličeje zlatým rollerem' },
+  { src: '/images/salon/salon-lehatko.jpg', alt: 'Ošetřovací lehátko u okna' },
+  { src: '/images/salon/osetreni-maska.jpg', alt: 'Aplikace masky během ošetření pleti' },
+  { src: '/images/salon/produkty-kvetiny.jpg', alt: 'Kosmeceutika Larens a masážní pomůcky' },
   { src: '/images/salon/liceni-zrcadlo.jpg', alt: 'Klientka u líčicího zrcadla' },
-  { src: '/images/salon/liceni-jana.jpg', alt: 'Jana Szymiková při líčení klientky' },
+  { src: '/images/salon/osetreni-vapozon.jpg', alt: 'Ošetření pleti vapozonem' },
+  { src: '/images/salon/salon-pult.jpg', alt: 'Pracovní pult s přípravky v salonu' },
+  { src: '/images/salon/osetreni-masaz.jpg', alt: 'Masáž obličeje, krku a dekoltu' },
   { src: '/images/salon/jana-konzultace.jpg', alt: 'Jana Szymiková u police s kosmeceutikou Larens' },
+  { src: '/images/salon/osetreni-guasha.jpg', alt: 'Ošetření pleti masážními kameny' },
+  { src: '/images/salon/salon-vozik.jpg', alt: 'Vozík s přípravky Larens připravený k ošetření' },
+  { src: '/images/salon/osetreni-obliceje.jpg', alt: 'Ošetření obličeje v salonu JANESKIN' },
+  { src: '/images/salon/liceni-jana.jpg', alt: 'Jana Szymiková při líčení klientky' },
+  { src: '/images/salon/salon-para.jpg', alt: 'Ošetření pleti párou v salonu JANESKIN' },
+  { src: '/images/salon/osetreni-masaz-hlavy.jpg', alt: 'Relaxační masáž hlavy' },
+  { src: '/images/salon/larens-rada.jpg', alt: 'Celá řada kosmeceutik Larens Professional Line' },
 ];
 ---
 
