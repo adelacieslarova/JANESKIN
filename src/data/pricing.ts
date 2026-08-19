@@ -96,12 +96,11 @@ export const pricingData: PriceCategory[] = [
           'Kosmetická péče zaměřená na pleť citlivou, se sklonem k atopické dermatitidě nebo růžovce. Efekt: snížení zarudnutí a zánětu; zmírnění příznaků alergií a svědivosti kůže; posílení krevních vlásečnic; dodání optimální hydratace pleti; zvláčnění a vyhlazení; ochrana pleti proti škodlivým vnějším faktorům. Aplikace zahrnuje: odlíčení; povrchové čištění; peeling; použití ultrazvuku; přístrojové zapracování séra/ampule; masáž obličeje, krku, dekoltu; masku, aplikaci závěrečného krému, očního krému a výživy na rty.',
       },
       {
-        name: 'ReHarmony – Péče pro pleť v období hormonálních změn',
-        price: null,
-        duration: null,
-        note: 'Cena a délka na dotaz',
+        name: 'ReHarmony Treatment – Elixír harmonie a mládí s Exosomy',
+        price: '1 800 Kč',
+        duration: '90 min',
         description:
-          'Kosmetická péče s přípravky řady Larens ReHarmony (ReHarmony Serum Pro, Cream Mask Pro a Night Face Cream), určená pleti procházející hormonálními změnami. Podrobnosti ošetření, jeho délku a cenu ráda upřesním osobně nebo telefonicky.',
+          'Harmonizační péče nové generace s Exosomy, hloubkově působícími mikroskopickými nosiči biologicky aktivních peptidů rybího kolagenu, antioxidantů a růstových faktorů, které cíleně podporují obnovu kožních buněk, zklidňují zánětlivé procesy a navrací pleti zdraví, pružnost a vitalitu. Nesou rovněž elixír věčného mládí, extrakt z kořene rdesna mnohokvětého, známého z tradiční východní medicíny jako elixír věčného života, silný antioxidant, který chrání buňky před stárnutím a podporuje jejich regeneraci. Dalšími složkami jsou vitamín C, niacinamid, ceramidy, bioferment nebo vzácné extrakty a rostlinné oleje. Ideální pro zralou, dehydrovanou pleť s narušenou hydrolipidovou bariérou, ale také pro pleť citlivou, reaktivní nebo pro pleť bez jasu. Efekt: obnovení harmonie pleti, hloubková výživa, regenerace a rovnováha i té nejnáročnější pleti. Procedura zahrnuje: odlíčení, povrchové čištění pleti, peeling; ošetření pleti ultrazvukem, aplikaci unikátního séra ReHarmony, masáž obličeje, krku a dekoltu, aplikaci krémové masky ReHarmony, oční krém a výživy na rty. Použití kosmetických přístrojů a výběr aktivních látek je přizpůsoben typu a stavu pleti. Kontraindikací kosmetické aplikace je alergie na bílkoviny z ryb.',
       },
       {
         name: 'Anti-Aging Express Luxe – Péče s růstovými faktory',
