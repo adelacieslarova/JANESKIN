@@ -86,7 +86,9 @@ const fullTitle = `${title} | JANESKIN`;
       });
     },
     {
-      threshold: 0.12,
+      /* Práh musí být 0: vysoký prvek (např. rozbalená karta služby) se na
+         malém displeji nikdy nezobrazí z 12 %, takže by zůstal neviditelný. */
+      threshold: 0,
       rootMargin: '0px 0px -40px 0px',
     }
   );

@@ -290,16 +290,19 @@ import { pricingData, BOOKING_URL } from '../data/pricing';
   }
 
   @media (max-width: 900px) {
+    /* Badge nesmí sdílet sloupec s ikonou — roztáhly by ho na svou šířku
+       a text kategorie by se vmáčkl do úzkého proužku vpravo. */
     .service__head {
-      grid-template-columns: auto 1fr;
+      grid-template-columns: auto minmax(0, 1fr);
       grid-template-areas:
         'icon main'
-        'meta toggle';
-      gap: var(--space-4) var(--space-5);
+        'meta meta'
+        'toggle toggle';
+      gap: var(--space-4) var(--space-4);
     }
     .service__icon   { grid-area: icon; }
     .service__main   { grid-area: main; }
-    .service__meta   { grid-area: meta; justify-content: flex-start; }
+    .service__meta   { grid-area: meta; justify-content: flex-start; flex-wrap: wrap; }
     .service__toggle { grid-area: toggle; justify-content: flex-end; }
   }
 
@@ -334,6 +337,9 @@ import { pricingData, BOOKING_URL } from '../data/pricing';
     const target = document.getElementById(id);
     if (target instanceof HTMLDetailsElement) {
       target.open = true;
+      /* Karta se odkrývá scroll animací — po prokliku ji odkryjeme rovnou,
+         ať uživatel nepřistane na prázdném místě. */
+      target.classList.add('is-visible');
       target.scrollIntoView({ block: 'start', behavior: 'smooth' });
     }
   };
