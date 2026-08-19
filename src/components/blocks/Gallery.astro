@@ -106,9 +106,12 @@ const photos = [
     margin-top: var(--space-10);
   }
 
+  /* Karusel drží stejnou šířku jako zbytek stránky, ať řada nevisí doprava */
   .gallery__carousel-wrap {
     position: relative;
-    margin-top: var(--space-10);
+    max-width: var(--max-width);
+    margin: var(--space-10) auto 0;
+    padding: 0 var(--content-px);
   }
 
   .gallery__track {
@@ -118,9 +121,7 @@ const photos = [
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
-    scroll-padding-left: max(var(--content-px), (100vw - var(--max-width)) / 2);
-    /* Karusel jde do krajů obrazovky, ale první fotka lícuje s obsahem */
-    padding: 0 max(var(--content-px), (100vw - var(--max-width)) / 2) var(--space-2);
+    padding-bottom: var(--space-2);
     scrollbar-width: none;
   }
 
@@ -128,8 +129,9 @@ const photos = [
     display: none;
   }
 
+  /* Tři fotky na obrazovku, poslední tedy lícuje s pravým okrajem obsahu */
   .gallery__item {
-    flex: 0 0 clamp(240px, 26vw, 360px);
+    flex: 0 0 calc((100% - 2 * var(--space-4)) / 3);
     scroll-snap-align: start;
     overflow: hidden;
     border-radius: 2px;
@@ -184,12 +186,19 @@ const photos = [
     pointer-events: none;
   }
 
+  /* Šipky sedí na okraji fotek, ne uvnitř nich */
   .gallery__arrow--prev {
-    left: var(--space-4);
+    left: -12px;
   }
 
   .gallery__arrow--next {
-    right: var(--space-4);
+    right: -12px;
+  }
+
+  @media (max-width: 1024px) {
+    .gallery__item {
+      flex-basis: calc((100% - var(--space-4)) / 2);
+    }
   }
 
   @media (max-width: 768px) {
@@ -197,7 +206,7 @@ const photos = [
       display: none;
     }
     .gallery__item {
-      flex-basis: 74vw;
+      flex-basis: 78%;
     }
   }
 
