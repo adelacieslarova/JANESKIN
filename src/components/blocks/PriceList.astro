@@ -125,7 +125,9 @@ function parseDescription(text: string): ParsedDesc {
               const d = parseDescription(item.description);
               return (
                 <div class="price-item__body">
-                  {d.intro && <p class="price-item__desc">{d.intro}</p>}
+                  {d.intro && d.intro.split(/\n{2,}/).map((odstavec: string) => (
+                    <p class="price-item__desc">{odstavec}</p>
+                  ))}
 
                   {(d.effects || d.effectsText) && (
                     <div class="desc-block">
@@ -269,6 +271,12 @@ function parseDescription(text: string): ParsedDesc {
     line-height: 1.8;
     margin-top: var(--space-3);
     max-width: 78ch;
+  }
+
+  /* Delší popisy jdou po odstavcích — mezera mezi nimi musí být
+     zřetelně větší než rozestup řádků, jinak splynou v jeden blok. */
+  .price-item__desc + .price-item__desc {
+    margin-top: var(--space-4);
   }
 
   .price-item__desc--note {
