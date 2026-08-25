@@ -27,14 +27,14 @@ const groups: PriceSubsection[] = category.subsections
 
 /**
  * Popis ošetření je jeden dlouhý odstavec, ve kterém jsou schované dva výčty
- * ("Efekt:" a "Procedura/Aplikace zahrnuje:"). Rozebereme ho na části,
+ * ("Efekt:" a "Péče zahrnuje:"). Rozebereme ho na části,
  * ať se dá zobrazit přehledně.
  *
  * Rozdělovat umíme jen tam, kde je to bezpečné: středník je jednoznačný,
  * čárku bereme pouze u účinků a jen když v bloku nejsou tečky — jinak by
  * roztrhala věty uprostřed. Když si nejsme jistí, necháme odstavec být.
  */
-const PROC_LABELS = ['Procedura zahrnuje:', 'Aplikace zahrnuje:'];
+const PROC_LABELS = ['Péče zahrnuje:'];
 
 function splitItems(text: string, allowComma: boolean): string[] | null {
   const body = text.trim().replace(/\.$/, '');
