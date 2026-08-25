@@ -296,7 +296,10 @@ const year = 2026;
   /* ── Top grid ── */
   .footer__top {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
+    /* Poslední sloupec drží e-mail. Adresa jana.szymikova@seznam.cz je
+       s ikonou přes 200 px, takže má pevné minimum — jinak ji úzké okno
+       zmáčklo a lámala se uprostřed slova. */
+    grid-template-columns: 1.8fr 1fr 1fr minmax(230px, 1.4fr);
     gap: var(--space-10);
     padding-top: var(--space-16);
     padding-bottom: var(--space-16);
@@ -383,7 +386,7 @@ const year = 2026;
     display: flex;
     align-items: center;
     gap: var(--space-2);
-    overflow-wrap: anywhere;
+    overflow-wrap: break-word;
   }
 
   .footer__link--icon svg {
