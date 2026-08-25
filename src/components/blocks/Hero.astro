@@ -79,7 +79,12 @@ const bannerItems = [
   }
 
   /* Krémový panel vlevo drží text, vpravo fotka zůstává nedotčená —
-     plošný závoj přes celou šířku ji jen vybělil. */
+     plošný závoj přes celou šířku ji jen vybělil.
+
+     Přechod je záměrně dlouhý a po malých krocích. Dřív padal z 0,72
+     na nulu během dvanácti procent šířky a ta hrana se potkávala se
+     spojem koláže přesně v polovině — dohromady to působilo jako řez.
+     Teď se rozplývá až do 88 % a přes spoj jde s krytím 0,74. */
   .hero__veil {
     position: absolute;
     inset: 0;
@@ -87,9 +92,15 @@ const bannerItems = [
       linear-gradient(
         to right,
         rgba(253, 250, 243, 0.98) 0%,
-        rgba(253, 250, 243, 0.96) 30%,
-        rgba(253, 250, 243, 0.72) 42%,
-        rgba(253, 250, 243, 0) 54%
+        rgba(253, 250, 243, 0.96) 35%,
+        rgba(253, 250, 243, 0.90) 44%,
+        rgba(253, 250, 243, 0.74) 50%,
+        rgba(253, 250, 243, 0.52) 55%,
+        rgba(253, 250, 243, 0.32) 60%,
+        rgba(253, 250, 243, 0.16) 66%,
+        rgba(253, 250, 243, 0.06) 72%,
+        rgba(253, 250, 243, 0.01) 80%,
+        rgba(253, 250, 243, 0) 88%
       );
   }
 
