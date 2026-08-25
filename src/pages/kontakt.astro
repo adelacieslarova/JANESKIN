@@ -64,13 +64,13 @@ const practicalInfo = [
             <svg class="quick-contact__arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
           </a>
 
-          <a href="mailto:info@janeskin.cz" class="quick-contact__card">
+          <a href="mailto:jana.szymikova@seznam.cz" class="quick-contact__card">
             <div class="quick-contact__icon" aria-hidden="true">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             </div>
             <div>
               <p class="quick-contact__label">Napište nám</p>
-              <p class="quick-contact__value">info@janeskin.cz</p>
+              <p class="quick-contact__value">jana.szymikova@seznam.cz</p>
             </div>
             <svg class="quick-contact__arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
           </a>
@@ -242,6 +242,7 @@ const practicalInfo = [
   .quick-contact__card {
     display: flex;
     align-items: center;
+    min-width: 0;
     gap: var(--space-4);
     padding: var(--space-5);
     border: 1px solid var(--color-border);
@@ -281,6 +282,7 @@ const practicalInfo = [
 
   .quick-contact__value {
     font-size: var(--text-base);
+    overflow-wrap: anywhere;
     font-weight: var(--weight-medium);
     color: var(--color-text);
   }

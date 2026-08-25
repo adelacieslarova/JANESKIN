@@ -127,9 +127,9 @@ const year = 2026;
           </a>
         </li>
         <li>
-          <a href="mailto:info@janeskin.cz" class="footer__link footer__link--icon">
+          <a href="mailto:jana.szymikova@seznam.cz" class="footer__link footer__link--icon">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            info@janeskin.cz
+            jana.szymikova@seznam.cz
           </a>
         </li>
         <li class="footer__address">
@@ -383,6 +383,11 @@ const year = 2026;
     display: flex;
     align-items: center;
     gap: var(--space-2);
+    overflow-wrap: anywhere;
+  }
+
+  .footer__link--icon svg {
+    flex-shrink: 0;
   }
 
   /* ── Contact ── */
