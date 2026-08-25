@@ -78,8 +78,8 @@ const bannerItems = [
     display: block;
   }
 
-  /* Krémový panel vlevo drží text, vpravo fotka zůstává nedotčená —
-     plošný závoj přes celou šířku ji jen vybělil.
+  /* Krémový panel vlevo drží text. Barva je #F8F2E2 z banneru, ne skoro
+     bílá #FDFAF3 — ta působila studeně vedle teplé fotky.
 
      Přechod je záměrně dlouhý a po malých krocích. Dřív padal z 0,72
      na nulu během dvanácti procent šířky a ta hrana se potkávala se
@@ -91,17 +91,19 @@ const bannerItems = [
     background:
       linear-gradient(
         to right,
-        rgba(253, 250, 243, 0.98) 0%,
-        rgba(253, 250, 243, 0.96) 35%,
-        rgba(253, 250, 243, 0.90) 44%,
-        rgba(253, 250, 243, 0.74) 50%,
-        rgba(253, 250, 243, 0.52) 55%,
-        rgba(253, 250, 243, 0.32) 60%,
-        rgba(253, 250, 243, 0.16) 66%,
-        rgba(253, 250, 243, 0.06) 72%,
-        rgba(253, 250, 243, 0.01) 80%,
-        rgba(253, 250, 243, 0) 88%
-      );
+        rgba(248, 242, 226, 0.98) 0%,
+        rgba(248, 242, 226, 0.96) 35%,
+        rgba(248, 242, 226, 0.90) 44%,
+        rgba(248, 242, 226, 0.74) 50%,
+        rgba(248, 242, 226, 0.52) 55%,
+        rgba(248, 242, 226, 0.32) 60%,
+        rgba(248, 242, 226, 0.16) 66%,
+        rgba(248, 242, 226, 0.06) 72%,
+        rgba(248, 242, 226, 0.01) 80%,
+        rgba(248, 242, 226, 0) 88%
+      ),
+      /* Nádech přes celou fotku, ať hero není bílý panel vedle syté fotky. */
+      linear-gradient(rgba(248, 242, 226, 0.16), rgba(248, 242, 226, 0.16));
   }
 
   /* Content */
@@ -235,8 +237,10 @@ const bannerItems = [
       position: static;
       padding: var(--space-12) var(--space-6);
     }
+    /* Panel tu není potřeba (text je pod fotkou), ale nádech ano —
+       jinak by fotka byla na užších oknech syrová a studenější. */
     .hero__veil {
-      display: none;
+      background: rgba(248, 242, 226, 0.16);
     }
     .hero__text {
       max-width: none;
