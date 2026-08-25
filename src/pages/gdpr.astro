@@ -3,7 +3,8 @@
  * Zásady zpracování osobních údajů.
  *
  * Text vychází z dokumentu "GDPR_JANESKIN- salon-Jana-Szymikova.docx"
- * (účinnost 1. 11. 2024). Opraveny jsou jen zjevné překlepy, obsah zůstává.
+ * (účinnost 1. 11. 2024). Znění účinné od 1. 9. 2026 doplňuje článek o cookies
+ * a službách Google vložených do webu; zbytek textu zůstává.
  */
 import Layout from '../layouts/Layout.astro';
 import PageHeader from '../components/blocks/PageHeader.astro';
@@ -17,7 +18,7 @@ import LegalIdentity from '../components/blocks/LegalIdentity.astro';
   <PageHeader
     label="Dokumenty"
     title="Zpracování osobních údajů"
-    subtitle="Zásady zpracování osobních údajů (GDPR), účinné od 1. 11. 2024"
+    subtitle="Zásady zpracování osobních údajů (GDPR), účinné od 1. 9. 2026"
     breadcrumb={[{ label: 'GDPR', href: '/gdpr' }]}
   />
 
@@ -97,9 +98,50 @@ import LegalIdentity from '../components/blocks/LegalIdentity.astro';
         <li>poskytovateli webhostingu a IT podpory,</li>
         <li>orgánům veřejné moci, pokud to vyžaduje zákon.</li>
       </ul>
-      <p>Osobní údaje nejsou předávány mimo EU.</p>
+      <p>
+        V rámci samotného poskytování služeb, evidence klientů a rezervací nejsou osobní údaje
+        předávány mimo Evropskou unii. Výjimkou jsou služby společnosti Google vložené do
+        webových stránek, popsané v <a href="#cookies">článku 7</a>.
+      </p>
 
-      <h2 id="prava">7. Práva subjektu údajů</h2>
+      <h2 id="cookies">7. Cookies a služby třetích stran na webu</h2>
+      <p>
+        Webové stránky www.janeskin.cz <strong>nepoužívají vlastní cookies</strong>, neukládají
+        do prohlížeče žádné identifikátory návštěvníků a nevyužívají analytické ani reklamní
+        nástroje — provoz webu se nesleduje a chování návštěvníků se nevyhodnocuje.
+      </p>
+      <p>
+        Součástí stránek jsou nicméně dvě služby společnosti Google, které se načítají přímo
+        ze serverů Googlu. Při jejich zobrazení se Googlu odesílá IP adresa návštěvníka,
+        údaje o prohlížeči a zařízení a adresa navštívené stránky; Google si při tom může
+        do prohlížeče uložit vlastní cookies:
+      </p>
+      <ul>
+        <li>
+          <strong>Google Fonts</strong> — písma použitá na celém webu se stahují ze serverů
+          fonts.googleapis.com a fonts.gstatic.com.
+        </li>
+        <li>
+          <strong>Google Maps</strong> — mapa s umístěním salonu je vložena na úvodní stránce
+          a na stránce <a href="/kontakt">Kontakt</a>.
+        </li>
+      </ul>
+      <p>
+        Provozovatelem těchto služeb je Google Ireland Limited, Gordon House, Barrow Street,
+        Dublin 4, Irsko, která údaje předává také mateřské společnosti Google LLC ve Spojených
+        státech amerických. <strong>V tomto rozsahu tedy dochází k předání údajů mimo Evropskou
+        unii</strong>, a to na základě standardních smluvních doložek a rámce EU—U.S. Data
+        Privacy Framework. Jak Google s údaji nakládá, popisují jeho
+        <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">zásady ochrany soukromí</a>.
+      </p>
+      <p>
+        Právním základem je oprávněný zájem správce na srozumitelné prezentaci salonu
+        a na tom, aby klient snadno našel cestu do provozovny. Načítání obsahu třetích stran
+        lze omezit v nastavení prohlížeče nebo pomocí rozšíření blokujících takový obsah;
+        mapu je vždy možné otevřít až kliknutím na odkaz do Map Google.
+      </p>
+
+      <h2 id="prava">8. Práva subjektu údajů</h2>
       <p>Klient má právo:</p>
       <ul>
         <li>požadovat přístup ke svým osobním údajům,</li>
@@ -114,17 +156,18 @@ import LegalIdentity from '../components/blocks/LegalIdentity.astro';
         </li>
       </ul>
 
-      <h2 id="zabezpeceni">8. Zabezpečení osobních údajů</h2>
+      <h2 id="zabezpeceni">9. Zabezpečení osobních údajů</h2>
       <p>
         Správce přijal vhodná technická a organizační opatření k ochraně osobních údajů před
         ztrátou, zneužitím či neoprávněným přístupem. Přístup k osobním údajům mají pouze
         osoby, které je nezbytně potřebují pro výkon své práce.
       </p>
 
-      <h2 id="zaver">9. Závěrečná ustanovení</h2>
+      <h2 id="zaver">10. Závěrečná ustanovení</h2>
       <p>
-        Tyto zásady nabývají účinnosti dne 1. 11. 2024. Aktuální znění je vždy dostupné
-        v salonu a na webových stránkách www.janeskin.cz.
+        Tyto zásady nabývají účinnosti dne 1. 9. 2026 a nahrazují předchozí znění účinné
+        od 1. 11. 2024. Aktuální znění je vždy dostupné v salonu a na webových stránkách
+        www.janeskin.cz.
       </p>
 
       <p class="legal__link-note">
