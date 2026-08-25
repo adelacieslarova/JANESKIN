@@ -101,10 +101,7 @@ const bannerItems = [
         rgba(248, 242, 226, 0.06) 72%,
         rgba(248, 242, 226, 0.01) 80%,
         rgba(248, 242, 226, 0) 88%
-      ),
-      /* Jen náznak přes celou plochu, ať panel nekončí ostře proti fotce.
-         Víc než tohle už fotku zamlžuje — 0,16 dělalo opar. */
-      linear-gradient(rgba(248, 242, 226, 0.04), rgba(248, 242, 226, 0.04));
+      );
   }
 
   /* Content */
@@ -238,10 +235,9 @@ const bannerItems = [
       position: static;
       padding: var(--space-12) var(--space-6);
     }
-    /* Panel tu není potřeba (text je pod fotkou), ale nádech ano —
-       jinak by fotka byla na užších oknech syrová a studenější. */
+    /* Text je pod fotkou, panel by tu jen překážel. */
     .hero__veil {
-      background: rgba(248, 242, 226, 0.04);
+      display: none;
     }
     .hero__text {
       max-width: none;
