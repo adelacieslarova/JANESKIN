@@ -5,9 +5,11 @@ interface Props {
   subtitle?: string;
   breadcrumb?: { label: string; href: string }[];
   image?: string;
+  /** Výřez fotky (CSS object-position), výchozí „center 42 %“ */
+  imagePosition?: string;
 }
 
-const { label, title, subtitle, breadcrumb, image } = Astro.props;
+const { label, title, subtitle, breadcrumb, image, imagePosition } = Astro.props;
 ---
 
 <section class={`page-header${image ? ' page-header--photo' : ''}`} aria-label="Záhlaví stránky">
@@ -17,6 +19,7 @@ const { label, title, subtitle, breadcrumb, image } = Astro.props;
         src={image}
         alt=""
         class="page-header__bg-img"
+        style={imagePosition ? `object-position: ${imagePosition}` : undefined}
         loading="eager"
         fetchpriority="high"
         decoding="async"
