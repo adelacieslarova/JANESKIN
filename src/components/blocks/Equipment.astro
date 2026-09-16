@@ -2,6 +2,66 @@
 import SectionHeading from '../ui/SectionHeading.astro';
 import Card from '../ui/Card.astro';
 
+/* Přístroje s vlastním podrobným blokem a fotkou */
+const featured = [
+  {
+    id: 'lightpanel',
+    label: 'Světelná terapie',
+    title: 'LightPanel Professional Max Performance',
+    lead:
+      'Fotonová terapie takzvaným studeným světlem. LED diody vyzařují světlo o přesných vlnových délkách, které proniká do různé hloubky kůže a bez tepla, pálení či bolesti probouzí její přirozenou regeneraci. Během ošetření máte nasazené ochranné brýle.',
+    image: '/images/salon/pdt-lampa-cervene-svetlo-osetreni.jpg',
+    alt: 'Světelná terapie přístrojem LightPanel — klientka pod červeným LED světlem',
+    width: 1200,
+    height: 1600,
+    position: '50% 30%',
+    lights: [
+      { name: 'Červené', color: '#D2403A', text: 'Podporuje tvorbu kolagenu a prokrvení pleti, pomáhá při vráskách, zlepšuje kvalitu pleti a zmenšuje póry.' },
+      { name: 'Modré', color: '#3A78D0', text: 'Působí antibakteriálně, pomáhá při akné a zklidňuje přecitlivělou pleť.' },
+      { name: 'Fialové', color: '#8A55C0', text: 'Spojuje účinky červeného a modrého světla.' },
+      { name: 'Žluté', color: '#E2B12A', text: 'Podporuje lymfatický systém a buněčný metabolismus, redukuje začervenání, posiluje obranyschopnost pokožky a zpomaluje její stárnutí.' },
+      { name: 'Zelené', color: '#3A9E63', text: 'Sjednocuje tón pleti, působí na pigmentové skvrny a jemné vrásky.' },
+      { name: 'Oranžové', color: '#E57F35', text: 'Pomáhá zesvětlit pigmentové skvrny a rozjasňuje pleť.' },
+    ],
+  },
+  {
+    id: 'vapozone',
+    label: 'Pára, ozon a aromaterapie',
+    title: 'Vapozone',
+    lead:
+      'Parní lázeň pro pleť. Horká pára změkčí odumřelé buňky na povrchu pokožky, otevře póry a připraví pleť na čištění — a zároveň zvýší účinek veškeré další péče.',
+    image: '/images/salon/osetreni-vapozon.jpg',
+    alt: 'Napařování pleti vapozonem v kosmetickém salonu JANESKIN',
+    width: 1600,
+    height: 1200,
+    position: '50% 50%',
+    benefits: [
+      { title: 'Uvolní černé tečky a nečistoty', text: 'Teplá pára pleť zjemní a otevře póry, takže maz a nečistoty jdou ven snáze, šetrněji a bez bolesti.' },
+      { title: 'Dezinfikuje povrch pleti', text: 'Pára prochází UV lampou, která vytváří ozon s antibakteriálním účinkem. Pomáhá tak předcházet vzniku nových pupínků.' },
+      { title: 'Znásobí účinek další péče', text: 'Prohřátá a vyčištěná pleť mnohem lépe přijme séra, masky i krémy.' },
+      { title: 'Dopřeje hluboký relax', text: 'Do trysky lze přidat vonnou esenci nebo bylinky, takže se uvolní nejen pleť, ale i mysl.' },
+    ],
+  },
+  {
+    id: 'ohrivac-rucniku',
+    label: 'Teplé obklady',
+    title: 'Ohřívač ručníků',
+    lead:
+      'Hygienicky čisté a příjemně teplé ručníky k přikládání a omývání obličeje, krku a dekoltu. Drobnost, která ošetření dodá pocit luxusu a dokonalého pohodlí.',
+    image: '/images/salon/larens-rucnik-detail-kosmeticky-salon.jpg',
+    alt: 'Ručník Larens připravený na teplý obklad v kosmetickém salonu',
+    width: 1600,
+    height: 1068,
+    position: '50% 50%',
+    benefits: [
+      { title: 'Uvolnění a odpočinek', text: 'Teplý ručník na obličeji nebo dekoltu povolí napětí ve svalech, uleví od stresu a navodí hluboký odpočinek.' },
+      { title: 'Lepší prokrvení a vstřebávání', text: 'Teplo rozproudí krev v pleti a připraví ji tak, aby dokonale vstřebala séra, oleje i masky.' },
+      { title: 'Hygiena díky UV světlu', text: 'Ručníky jsou v přístroji uchovávány pod UV světlem, které ničí bakterie i plísně.' },
+      { title: 'Šetrná alternativa k páře', text: 'Jemně otevře póry a zjemní pleť před čištěním nebo masáží.' },
+    ],
+  },
+];
+
 const equipment = [
   {
     title: 'Ultrazvuková špachtle',
@@ -29,6 +89,58 @@ const equipment = [
       subtitle="Každý přístroj je cíleně vybrán pro maximální účinnost a bezpečí Vaší pleti."
     />
 
+    <div class="equipment__featured">
+      {featured.map((item, i) => (
+        <article class={`device ${i % 2 === 1 ? 'device--reverse' : ''}`} id={item.id} data-animate>
+          <div class="device__visual">
+            <img
+              src={item.image}
+              alt={item.alt}
+              class="device__img"
+              style={`object-position: ${item.position}`}
+              width={item.width}
+              height={item.height}
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+
+          <div class="device__content">
+            <p class="device__label">{item.label}</p>
+            <h3 class="device__title">{item.title}</h3>
+            <p class="device__lead">{item.lead}</p>
+
+            {item.lights && (
+              <ul class="device__lights" role="list">
+                {item.lights.map(light => (
+                  <li class="light">
+                    <span class="light__dot" style={`--light: ${light.color}`} aria-hidden="true" />
+                    <div>
+                      <h4 class="benefit__title">{light.name} světlo</h4>
+                      <p class="light__text">{light.text}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            )}
+
+            {item.benefits && (
+              <ul class="device__benefits" role="list">
+                {item.benefits.map(benefit => (
+                  <li class="benefit">
+                    <h4 class="benefit__title">{benefit.title}</h4>
+                    <p class="benefit__text">{benefit.text}</p>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <h3 class="equipment__more">A dále v salonu pracuji s</h3>
+
     <ul class="equipment__grid" role="list" data-animate>
       {equipment.map(item => (
         <li>
@@ -44,11 +156,134 @@ const equipment = [
 </section>
 
 <style>
+  /* ── Podrobné bloky přístrojů ── */
+  .equipment__featured {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-20);
+    margin-bottom: var(--space-20);
+  }
+
+  .device {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: var(--space-16);
+    align-items: start;
+  }
+
+  .device--reverse .device__visual {
+    order: 2;
+  }
+
+  .device__visual {
+    position: sticky;
+    top: 140px;
+  }
+
+  .device__img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    display: block;
+    border-radius: var(--radius-lg);
+  }
+
+  .device__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .device__label {
+    font-size: var(--text-sm);
+    font-weight: var(--weight-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-accent);
+  }
+
+  .device__title {
+    font-family: var(--font-heading);
+    font-weight: var(--weight-regular);
+    color: var(--color-text);
+    line-height: 1.15;
+    text-wrap: balance;
+  }
+
+  .device__lead {
+    font-size: var(--text-lg);
+    color: var(--color-text-soft);
+    line-height: 1.7;
+    margin-bottom: var(--space-2);
+  }
+
+  /* Barvy světla */
+  .device__lights,
+  .device__benefits {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .light {
+    display: flex;
+    gap: var(--space-4);
+    align-items: flex-start;
+    padding: var(--space-4) 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .light__dot {
+    flex-shrink: 0;
+    width: 14px;
+    height: 14px;
+    border-radius: var(--radius-full);
+    background-color: var(--light);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--light) 18%, transparent);
+    margin-top: 5px;
+  }
+
+  .light__text,
+  .benefit__text {
+    font-size: var(--text-base);
+    color: var(--color-text-soft);
+    line-height: 1.6;
+  }
+
+  /* Přínosy */
+  .benefit {
+    padding: var(--space-4) 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .benefit__title {
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    font-weight: var(--weight-medium);
+    color: var(--color-text);
+    margin-bottom: var(--space-1);
+  }
+
+  /* ── Další přístroje ── */
+  .equipment__more {
+    font-family: var(--font-heading);
+    font-weight: var(--weight-regular);
+    font-size: var(--text-3xl);
+    color: var(--color-text);
+    text-align: center;
+    margin-bottom: var(--space-8);
+  }
+
   .equipment__grid {
     list-style: none;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: var(--space-6);
+  }
+
+  .equipment__grid :global(.card) {
+    height: 100%;
   }
 
   .equipment-card__icon {
@@ -78,8 +313,37 @@ const equipment = [
   }
 
   @media (max-width: 1024px) {
+    .device {
+      gap: var(--space-10);
+    }
     .equipment__grid {
       grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .equipment__featured {
+      gap: var(--space-16);
+      margin-bottom: var(--space-16);
+    }
+    .device {
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+    }
+    .device--reverse .device__visual {
+      order: 0;
+    }
+    .device__visual {
+      position: static;
+    }
+    .device__img {
+      aspect-ratio: 4 / 3;
+    }
+    .device__lead {
+      font-size: var(--text-base);
+    }
+    .equipment__more {
+      font-size: var(--text-2xl);
     }
   }
 
