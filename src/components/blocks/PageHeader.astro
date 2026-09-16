@@ -7,12 +7,14 @@ interface Props {
   image?: string;
   /** Výřez fotky (CSS object-position), výchozí „center 42 %“ */
   imagePosition?: string;
+  /** Vyšší záhlaví, když by nízký pás fotku příliš ořízl */
+  tall?: boolean;
 }
 
-const { label, title, subtitle, breadcrumb, image, imagePosition } = Astro.props;
+const { label, title, subtitle, breadcrumb, image, imagePosition, tall = false } = Astro.props;
 ---
 
-<section class={`page-header${image ? ' page-header--photo' : ''}`} aria-label="Záhlaví stránky">
+<section class={`page-header${image ? ' page-header--photo' : ''}${image && tall ? ' page-header--tall' : ''}`} aria-label="Záhlaví stránky">
   {image && (
     <div class="page-header__bg" aria-hidden="true">
       <img
@@ -228,6 +230,40 @@ const { label, title, subtitle, breadcrumb, image, imagePosition } = Astro.props
 
   .page-header--photo .page-header__subtitle {
     color: rgba(255, 255, 255, 0.92);
+  }
+
+  .page-header--tall {
+    min-height: clamp(389px, 38vw, 600px);
+  }
+
+  /* Text drží vlevo na ztmavené části, lidé na fotce vpravo zůstanou světlí */
+  .page-header--tall .page-header__overlay {
+    background: linear-gradient(
+      to right,
+      rgba(43, 27, 7, 0.72) 0%,
+      rgba(43, 27, 7, 0.50) 40%,
+      rgba(43, 27, 7, 0.10) 75%,
+      rgba(43, 27, 7, 0.05) 100%
+    );
+  }
+
+  .page-header--tall .page-header__title {
+    max-width: 12ch;
+  }
+
+  .page-header--tall .page-header__subtitle {
+    max-width: 480px;
+  }
+
+  @media (max-width: 768px) {
+    .page-header--tall .page-header__overlay {
+      background: linear-gradient(
+        to bottom,
+        rgba(43, 27, 7, 0.40) 0%,
+        rgba(43, 27, 7, 0.60) 55%,
+        rgba(43, 27, 7, 0.75) 100%
+      );
+    }
   }
 
   /* ── Responsive ── */
