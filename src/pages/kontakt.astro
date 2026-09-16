@@ -234,7 +234,8 @@ const practicalInfo = [
   /* Quick contact */
   .quick-contact {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    /* Vedle sebe jen když se e-mail vejde na jeden řádek, jinak pod sebe */
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
     gap: var(--space-4);
   }
 
@@ -484,6 +485,21 @@ const practicalInfo = [
   @media (max-width: 768px) {
     .quick-contact {
       grid-template-columns: 1fr;
+    }
+    /* Úzký mobil: menší okraje a ikona, aby se e-mail vešel na jeden řádek */
+    .quick-contact__card {
+      padding: var(--space-4);
+      gap: var(--space-3);
+    }
+    .quick-contact__icon {
+      width: 40px;
+      height: 40px;
+    }
+    .quick-contact__value {
+      font-size: clamp(0.875rem, 4vw, 1rem);
+    }
+    .quick-contact__arrow {
+      display: none;
     }
     .booking-form__row {
       grid-template-columns: 1fr;
