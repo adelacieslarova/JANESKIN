@@ -40,12 +40,12 @@ const { label, title, subtitle, breadcrumb } = Astro.props;
 </section>
 
 <style>
-  /* Béžový pás v barvě banneru (#F8F2E2) — fotky v záhlaví podstránek rušily,
+  /* Béžový pás (--color-band, o dva odstíny tmavší než banner) — fotky v záhlaví podstránek rušily,
      tmavě hnědá byla moc těžká. Začíná na y:0 za pevnou hlavičkou, která
      má nahoře stejnou barvu, takže spolu splývají. */
   .page-header {
     position: relative;
-    background-color: var(--color-bg-alt);
+    background-color: var(--color-band);
     border-bottom: 1px solid var(--color-border);
     padding-top: calc(72px + var(--space-6));
     padding-bottom: var(--space-12);
@@ -89,7 +89,7 @@ const { label, title, subtitle, breadcrumb } = Astro.props;
   }
 
   .page-header__breadcrumb-sep {
-    color: var(--color-accent-pale);
+    color: var(--color-accent-light);
   }
 
   .page-header__breadcrumb-current {

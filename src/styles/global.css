@@ -9,6 +9,7 @@
   --color-bg:            #FDFAF3;   /* světlá krémová — základ stránky */
   --color-bg-alt:        #F8F2E2;   /* krémová z banneru — střídané sekce */
   --color-bg-warm:       #F3E7C9;   /* teplejší krém — jemné plochy */
+  --color-band:          #EDDDB5;   /* pás záhlaví podstránek — o dva odstíny tmavší, ať nesplývá */
   --color-text:          #3B290F;   /* hluboká hnědá místo černé */
   --color-text-soft:     #6B5227;
   --color-accent:        #8A6A12;   /* zlatá pro text a odkazy (kontrast AA) */
