@@ -136,11 +136,13 @@ const currentPath = Astro.url.pathname;
     left: 0;
     right: 0;
     z-index: var(--z-header);
-    background-color: rgba(253, 250, 243, 0.90);
+    /* Nahoře splývá s béžovým pásem záhlaví (#F8F2E2 z banneru),
+       po odscrollování se oddělí jako dřív. */
+    background-color: rgb(248, 242, 226);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid transparent;
-    transition: border-color var(--transition-base), box-shadow var(--transition-base);
+    transition: background-color var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
   }
 
   .header--scrolled {
@@ -201,6 +203,10 @@ const currentPath = Astro.url.pathname;
   .header__nav-link:hover {
     color: var(--color-accent);
     background-color: var(--color-bg-alt);
+  }
+
+  .header:not(.header--scrolled) .header__nav-link:hover {
+    background-color: var(--color-bg-warm);
   }
 
   .header__nav-link[aria-current="page"] {

@@ -40,11 +40,13 @@ const { label, title, subtitle, breadcrumb } = Astro.props;
 </section>
 
 <style>
-  /* Tmavě hnědý pás v barvě tlačítka „Objednat se“ a patičky —
-     fotky v záhlaví podstránek rušily. Začíná na y:0 za pevnou hlavičkou. */
+  /* Béžový pás v barvě banneru (#F8F2E2) — fotky v záhlaví podstránek rušily,
+     tmavě hnědá byla moc těžká. Začíná na y:0 za pevnou hlavičkou, která
+     má nahoře stejnou barvu, takže spolu splývají. */
   .page-header {
     position: relative;
-    background-color: var(--color-dark);
+    background-color: var(--color-bg-alt);
+    border-bottom: 1px solid var(--color-border);
     padding-top: calc(72px + var(--space-6));
     padding-bottom: var(--space-12);
   }
@@ -63,7 +65,7 @@ const { label, title, subtitle, breadcrumb } = Astro.props;
     flex-wrap: wrap;
     gap: var(--space-1);
     font-size: var(--text-sm);
-    color: rgba(248, 242, 226, 0.7);
+    color: var(--color-text-soft);
   }
 
   .page-header__breadcrumb-list li {
@@ -73,21 +75,21 @@ const { label, title, subtitle, breadcrumb } = Astro.props;
   }
 
   .page-header__breadcrumb-link {
-    color: rgba(248, 242, 226, 0.7);
+    color: var(--color-text-soft);
     text-decoration: none;
     transition: color var(--transition-fast);
   }
 
   .page-header__breadcrumb-link:hover {
-    color: var(--color-accent-light);
+    color: var(--color-accent);
   }
 
   .page-header__breadcrumb-sep {
-    color: rgba(248, 242, 226, 0.35);
+    color: var(--color-accent-pale);
   }
 
   .page-header__breadcrumb-current {
-    color: var(--color-bg-alt);
+    color: var(--color-text);
     font-weight: var(--weight-medium);
   }
 
@@ -104,20 +106,20 @@ const { label, title, subtitle, breadcrumb } = Astro.props;
     font-weight: var(--weight-medium);
     text-transform: uppercase;
     letter-spacing: 0.12em;
-    color: var(--color-accent-light);
+    color: var(--color-accent);
   }
 
   .page-header__title {
     font-family: var(--font-heading);
     font-size: clamp(2.125rem, 6vw, var(--text-5xl));
     font-weight: var(--weight-medium);
-    color: var(--color-white);
+    color: var(--color-text);
     line-height: 1.15;
   }
 
   .page-header__subtitle {
     font-size: var(--text-xl);
-    color: rgba(255, 255, 255, 0.85);
+    color: var(--color-text-soft);
     line-height: 1.6;
     max-width: 640px;
   }
