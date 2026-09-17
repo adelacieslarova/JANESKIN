@@ -53,7 +53,7 @@ export const pricingData: PriceCategory[] = [
     category: 'Kosmetická péče',
     summary:
       'Specializovaná ošetření s kosmeceutikou Larens — od hluboké hydratace přes lifting a chemické peelingy až po řešení akné, pigmentací či citlivé pleti.',
-    priceFrom: '1 100 Kč',
+    priceFrom: '1 200 Kč',
     durationRange: '30–120 min',
     image: '/images/salon/osetreni-roller.jpg',
     icon: icons.plet,
@@ -72,7 +72,7 @@ export const pricingData: PriceCategory[] = [
       },
       {
         name: 'Collagen Intensive Hydroboost – Hydratační péče s masáží',
-        price: '1 300 Kč',
+        price: '1 500 Kč',
         duration: '90 min',
         note: 'Ideální pro první návštěvu',
         description:
@@ -80,21 +80,21 @@ export const pricingData: PriceCategory[] = [
       },
       {
         name: 'Collagen Lifting Therapy – Liftingová péče s masáží',
-        price: '1 300 Kč',
+        price: '1 500 Kč',
         duration: '90 min',
         description:
           'Kosmetická péče podporující krásu a mladost Vaší pleti. Zanechává pokožku svěží, napnutou a hydratovanou. Efekt: vyhlazení vrásek a zpomalení tvorby nových; zlepšení vzhledu a kondice pleti; intenzivní hloubková hydratace, podpora tvorby vlastního kolagenu. Péče zahrnuje: odlíčení; povrchové čištění pleti; napářku; peeling; čištění pleti ultrazvukovou špachtlí / manuální dočištění; přístrojové zapracování séra/ampulky; masáž obličeje, krku a dekoltu; masku; monochromatickou světelnou terapii; oční krém, závěrečný krém a výživu na rty.',
       },
       {
         name: 'Acne Skin Therapy – Péče o aknózní pleť',
-        price: '1 300 Kč',
+        price: '1 500 Kč',
         duration: '90 min',
         description:
           'Kosmetická péče zaměřená na problematickou pleť se sklonem k akné bez masáže. Efekt: urychlení regenerace a hojení pleti; čistící, klidnící, protizánětlivý a antibakteriální účinek; minimalizace pórů a regulace sekrece kožního mazu; snížení zarudnutí a zánětu. Péče zahrnuje: odlíčení; povrchové čištění pleti; peeling; napářku; čištění pleti ultrazvukovou špachtlí; manuální čištění většího rozsahu dle stavu pleti; přístrojové zapracování séra/ampule; masku; monochromatickou světelnou terapii; oční krém, závěrečný krém a výživu na rty.',
       },
       {
         name: 'Sensitive Skin Therapy – Péče o citlivou pleť s masáží',
-        price: '1 300 Kč',
+        price: '1 500 Kč',
         duration: '90 min',
         description:
           'Kosmetická péče zaměřená na pleť citlivou, se sklonem k atopické dermatitidě nebo růžovce. Efekt: snížení zarudnutí a zánětu; zmírnění příznaků alergií a svědivosti kůže; posílení krevních vlásečnic; dodání optimální hydratace pleti; zvláčnění a vyhlazení; ochrana pleti proti škodlivým vnějším faktorům. Péče zahrnuje: odlíčení; povrchové čištění pleti; peeling; čištění pleti ultrazvukovou špachtlí; přístrojové zapracování séra/ampule; masáž obličeje, krku, dekoltu; masku; monochromatickou světelnou terapii; oční krém, závěrečný krém a výživu na rty.',
@@ -104,68 +104,57 @@ export const pricingData: PriceCategory[] = [
         price: '1 800 Kč',
         duration: '90 min',
         description:
-          'Harmonizační péče nové generace s Exosomy, hloubkově působícími mikroskopickými nosiči biologicky aktivních peptidů rybího kolagenu, antioxidantů a růstových faktorů, které cíleně podporují obnovu kožních buněk, zklidňují zánětlivé procesy a navrací pleti zdraví, pružnost a vitalitu. Nesou rovněž elixír věčného mládí, extrakt z kořene rdesna mnohokvětého, známého z tradiční východní medicíny jako elixír věčného života, silný antioxidant, který chrání buňky před stárnutím a podporuje jejich regeneraci. Dalšími složkami jsou vitamín C, niacinamid, ceramidy, bioferment nebo vzácné extrakty a rostlinné oleje. Ideální pro zralou, dehydrovanou pleť s narušenou hydrolipidovou bariérou, ale také pro pleť citlivou, reaktivní nebo pro pleť bez jasu. Efekt: obnovení harmonie pleti, hloubková výživa, regenerace a rovnováha i té nejnáročnější pleti. Péče zahrnuje: odlíčení; povrchové čištění pleti; peeling; čištění pleti ultrazvukovou špachtlí / ruční dočištění; unikátní sérum ReHarmony s exosomy; masáž obličeje, krku a dekoltu; krémovou masku s exosomy ReHarmony; oční krém, závěrečný krém a výživu na rty. Použití kosmetických přístrojů a výběr aktivních látek je přizpůsoben typu a stavu pleti. Kontraindikací kosmetické péče je alergie na bílkoviny z ryb.',
+          'Harmonizační péče nové generace s Exosomy, hloubkově působícími mikroskopickými nosiči biologicky aktivních peptidů rybího kolagenu, antioxidantů a růstových faktorů, které cíleně podporují obnovu kožních buněk, zklidňují zánětlivé procesy a navrací pleti zdraví, pružnost a vitalitu. Nesou rovněž elixír věčného mládí, extrakt z kořene rdesna mnohokvětého, známého z tradiční východní medicíny jako elixír věčného života, silný antioxidant, který chrání buňky před stárnutím a podporuje jejich regeneraci. Dalšími složkami jsou vitamín C, niacinamid, ceramidy, bioferment nebo vzácné extrakty a rostlinné oleje. Ideální pro zralou, dehydrovanou pleť s narušenou hydrolipidovou bariérou, ale také pro pleť citlivou, reaktivní nebo pro pleť bez jasu. Efekt: obnovení harmonie pleti, hloubková výživa, regenerace a rovnováha i té nejnáročnější pleti. Péče zahrnuje: odlíčení; povrchové čištění pleti; peeling; čištění pleti ultrazvukovou špachtlí / ruční dočištění; unikátní sérum ReHarmony s exosomy; masáž obličeje, krku a dekoltu; krémovou masku s exosomy ReHarmony; oční krém, závěrečný krém a výživu na rty.',
       },
       {
         name: 'Anti-Aging Express Luxe – Péče s růstovými faktory',
-        price: '1 400 Kč',
+        price: '1 600 Kč',
         duration: '60 min',
         description:
-          'Kosmetická péče s okamžitým a dlouhotrvajícím efektem za použití liftingové revitalizační masky/zábalu s růstovými faktory z rostlinné Bio-placenty. Efekt: vyhlazení a odstranění vrásek; vyplnění deficitů v kůži; podpora tvorby nového vlastního kolagenu a elastinu; zrychlení regeneračních procesů v pleti; stimulace k obnově vlastních buněk. Péče zahrnuje: odlíčení; povrchové čištění pleti; peeling; čištění pleti ultrazvukovou špachtlí; přístrojové zapracování séra/ampulky; masku/zábal s růstovými faktory; monochromatickou světelnou terapii; oční krém, závěrečný krém a výživu na rty.',
+          'Kosmetická péče s okamžitým a dlouhotrvajícím efektem za použití liftingové revitalizační masky/zábalu s růstovými faktory z rostlinné Bio-placenty. Efekt: vyhlazení a odstranění vrásek; vyplnění deficitů v kůži; podpora tvorby nového vlastního kolagenu a elastinu; zrychlení regeneračních procesů v pleti; stimulace k obnově vlastních buněk. Péče zahrnuje: odlíčení; povrchové čištění pleti; peeling; napářku; čištění pleti ultrazvukovou špachtlí; přístrojové zapracování séra a ampule; masku/zábal s růstovými faktory; monochromatickou světelnou terapii; oční krém, závěrečný krém a výživu na rty.',
       },
       {
         name: 'Anti-Aging Relax Luxe – Péče s růstovými faktory a masáží',
-        price: '1 800 Kč',
+        price: '2 000 Kč',
         duration: '120 min',
         description:
-          'Kosmetická péče s okamžitým a dlouhotrvajícím efektem za použití liftingové revitalizační masky/zábalu s růstovými faktory z rostlinné Bio-placenty. Efekt: vyhlazení a odstranění vrásek; vyplnění deficitů v kůži; podpora tvorby nového vlastního kolagenu a elastinu; zrychlení regeneračních procesů v pleti; stimulace k obnově vlastních buněk. Péče zahrnuje: odlíčení; povrchové čištění pleti; peeling; čištění pleti ultrazvukovou špachtlí / ruční dočištění; přístrojové zapracování séra/ampulky; masáž obličeje, krku a dekoltu s mikromasáží očního okolí; masku/zábal s růstovými faktory; monochromatickou světelnou terapii; oční krém, závěrečný krém a výživu na rty.',
-      },
-      {
-        name: 'Intensive Lifting Detox+ – Detoxikační péče',
-        price: '1 100 Kč',
-        duration: '60 min',
-        note: 'Kůra 5× = 5 500 Kč',
-        description:
-          'Detoxikační kosmetická péče před důležitou událostí. Ideální pro pokožku vystavenou stresu, znečištění a nedostatečné výživě. Pro pleť bez jiskry, s akné i s pigmentovými skvrnami. Efekt: detoxikuje a remineralizuje pokožku; redukuje množství volných radikálů a zpomaluje proces stárnutí; vyhlazuje, zpevňuje, dodává pleti vitalitu a energii; redukuje pigmentové skvrny a zabraňuje vzniku nových, sjednocuje barevný tón pleti; absorbuje kožní maz a matuje pokožku; zklidňuje zarudnutí a hypersenzitivní pokožku. Péče zahrnuje: odlíčení; povrchové čištění pleti; peeling; čištění pleti ultrazvukovou špachtlí; detoxikačně liftingovou masku; sérum s kyselinou ferulovou s lehkou masáží; oční krém a výživu na rty. Vhodné jako intenzivní kůra 3–5 ošetření 1× za 10 dní. Celá kůra 5 ošetření 5 500 CZK. Kůra pro udržení výsledků 1 ošetření každých 4–5 týdnů.',
+          'Kosmetická péče s okamžitým a dlouhotrvajícím efektem za použití liftingové revitalizační masky/zábalu s růstovými faktory z rostlinné Bio-placenty. Efekt: vyhlazení a odstranění vrásek; vyplnění deficitů v kůži; podpora tvorby nového vlastního kolagenu a elastinu; zrychlení regeneračních procesů v pleti; stimulace k obnově vlastních buněk. Péče zahrnuje: odlíčení; povrchové čištění pleti; peeling; napářku; čištění pleti ultrazvukovou špachtlí / ruční dočištění; přístrojové zapracování séra a ampule; masáž obličeje, krku a dekoltu s mikromasáží očního okolí; masku/zábal s růstovými faktory; monochromatickou světelnou terapii; oční krém, závěrečný krém a výživu na rty.',
       },
       {
         name: 'Intensive Lifting Detox+ – Detoxikační péče s masáží',
         price: '1 500 Kč',
         duration: '90 min',
         description:
-          'Detoxikační kosmetická péče před důležitou událostí, rozšířená o relaxační masáž obličeje, krku a dekoltu. Ideální pro pokožku vystavenou stresu, znečištění a nedostatečné výživě. Pro pleť bez jiskry, s akné i s pigmentovými skvrnami. Efekt: detoxikuje a remineralizuje pokožku; redukuje množství volných radikálů a zpomaluje proces stárnutí; vyhlazuje, zpevňuje, dodává pleti vitalitu a energii; redukuje pigmentové skvrny a zabraňuje vzniku nových, sjednocuje barevný tón pleti; absorbuje kožní maz a matuje pokožku; zklidňuje zarudnutí a hypersenzitivní pokožku. Péče zahrnuje: odlíčení; povrchové čištění pleti; peeling; čištění pleti ultrazvukovou špachtlí / ruční dočištění; detoxikačně liftingovou masku; sérum s kyselinou ferulovou s masáží obličeje, krku a dekoltu; oční krém a výživu na rty.',
+          'Detoxikační kosmetická péče před důležitou událostí, rozšířená o relaxační masáž obličeje, krku a dekoltu. Ideální pro pokožku vystavenou stresu, znečištění a nedostatečné výživě. Pro pleť bez jiskry, s akné i s pigmentovými skvrnami. Efekt: detoxikuje a remineralizuje pokožku; redukuje množství volných radikálů a zpomaluje proces stárnutí; vyhlazuje, zpevňuje, dodává pleti vitalitu a energii; redukuje pigmentové skvrny a zabraňuje vzniku nových, sjednocuje barevný tón pleti; absorbuje kožní maz a matuje pokožku; zklidňuje zarudnutí a hypersenzitivní pokožku. Péče zahrnuje: odlíčení; povrchové čištění pleti; peeling; napářku; čištění pleti ultrazvukovou špachtlí / ruční dočištění; masáž obličeje, krku a dekoltu; detoxikačně liftingovou masku; sérum s kyselinou ferulovou; oční krém a výživu na rty. Vhodné absolvovat i jako intenzivní kůru 3–5 terapií 1× za 7–10 dní. Terapie pro udržení výsledků 1× za 4 týdny.',
       },
       {
         name: 'Chemický Peeling – Povrchový chemický peeling',
-        price: '1 100 Kč',
+        price: '1 200 Kč',
         duration: '60 min',
-        note: 'Kůra 4× = 4 400 Kč',
         description:
-          'Exkluzivní omlazení s povrchovým chemickým peelingem s komplexem přírodních peptidů rybího kolagenu. Pleť se zjemní, vyhladí, projasní a zhydratuje. Nedochází k olupování pleti nebo silnému podráždění. Vhodný pro všechny typy pleti i pleť citlivou. Efekt: hloubková rekonstrukce pleti obličeje; mizí pigmentace, záněty i akné; podpora procesů hojení a vyhlazení jizev; zmírnění projevů stárnutí. Péče zahrnuje: odlíčení; povrchové čištění pleti; chemický peeling; masku; monochromatickou světelnou terapii; oční krém, závěrečný krém/krém s SPF a výživu na rty. Vhodný jako kůra 4 ošetření 1× za 10 dní v období září až duben. Celá kůra 4 ošetření 4 400 CZK.',
+          'Exkluzivní omlazení s povrchovým chemickým peelingem s komplexem přírodních peptidů rybího kolagenu. Pleť se zjemní, vyhladí, projasní a zhydratuje. Nedochází k olupování pleti nebo silnému podráždění. Vhodný pro všechny typy pleti i pleť citlivou. Efekt: hloubková rekonstrukce pleti obličeje; mizí pigmentace, záněty i akné; podpora procesů hojení a vyhlazení jizev; zmírnění projevů stárnutí. Péče zahrnuje: odlíčení; povrchové čištění pleti; chemický peeling; neutralizér; masku; monochromatickou světelnou terapii; oční krém, závěrečný krém/krém s SPF a výživu na rty. Vhodné jako kůra 4 terapií 1× za 10 dní v období září až duben.',
       },
       {
         name: 'Chemický Peeling Luxe – Povrchový chemický peeling s růstovými faktory',
         price: '1 600 Kč',
         duration: '60 min',
-        note: 'Kůra 4× = 6 400 Kč',
         description:
-          'Exkluzivní omlazení s povrchovým chemickým peelingem s komplexem přírodních peptidů rybího kolagenu a liftingovou revitalizační maskou/zábalem s růstovými faktory z rostlinné Bio-placenty. Pleť se zjemní, vyhladí, projasní a zhydratuje. Nedochází k olupování pleti nebo silnému podráždění. Vhodný pro všechny typy pleti i pleť citlivou. Efekt: hloubková rekonstrukce pleti obličeje; mizí pigmentace, záněty i akné; podpora procesů hojení a vyhlazení jizev; zmírnění projevů stárnutí. Péče zahrnuje: odlíčení; povrchové čištění pleti; chemický peeling; masku/zábal s růstovými faktory; monochromatickou světelnou terapii; oční krém, závěrečný krém/krém s SPF a výživu na rty. Vhodný jako kůra 4 ošetření 1× za 10 dní v období září až duben. Celá kůra 4 ošetření 6 400 CZK.',
+          'Exkluzivní omlazení s povrchovým chemickým peelingem s komplexem přírodních peptidů rybího kolagenu a liftingovou revitalizační maskou/zábalem s růstovými faktory z rostlinné Bio-placenty. Pleť se zjemní, vyhladí, projasní a zhydratuje. Nedochází k olupování pleti nebo silnému podráždění. Vhodný pro všechny typy pleti i pleť citlivou. Efekt: hloubková rekonstrukce pleti obličeje; mizí pigmentace, záněty i akné; podpora procesů hojení a vyhlazení jizev; zmírnění projevů stárnutí. Péče zahrnuje: odlíčení; povrchové čištění pleti; chemický peeling; neutralizér; masku/zábal s růstovými faktory; monochromatickou světelnou terapii; oční krém, závěrečný krém/krém s SPF a výživu na rty. Vhodné jako kůra 4 terapií 1× za 10 dní v období září až duben.',
       },
       {
         name: 'Anti Spot Therapy – Depigmentační péče',
-        price: '1 100 Kč',
-        duration: '60 min',
-        note: 'Kůra 6× = 6 600 Kč',
+        price: '1 300 Kč',
+        duration: '70 min',
         description:
-          'Rozjasňující procedura zaměřená na odstranění pigmentových skvrn různého původu souvisejících se sluncem; věkem; hormony nebo následky kožních onemocnění jako je akné nebo atopická dermatitida. Efekt: redukce skvrn; sjednocení barevného tónu pleti bez nepřirozeného zesvětlení celé pleti; potlačení vzniku nových skvrn. Hydratuje; poskytuje potřebnou dávku antioxidantů; stimuluje k obnově a regeneraci pleti. Péče zahrnuje: odlíčení; povrchové čištění pleti; detoxikační masku; depigmentační sérum a neutralizér; oční krém, závěrečný depigmentační krém/krém s SPF a výživu na rty. Intenzivní kůra 3–6 ošetření 1× za 10 dní v období září do konce května. Celá kůra 6 ošetření 6 600 CZK.',
+          'Rozjasňující procedura zaměřená na odstranění pigmentových skvrn různého původu souvisejících se sluncem; věkem; hormony nebo následky kožních onemocnění jako je akné nebo atopická dermatitida. Efekt: redukce skvrn; sjednocení barevného tónu pleti bez nepřirozeného zesvětlení celé pleti; potlačení vzniku nových skvrn; hydratuje; poskytuje potřebnou dávku antioxidantů; stimuluje k obnově a regeneraci pleti. Péče zahrnuje: odlíčení; povrchové čištění pleti; detoxikační masku; depigmentační sérum a neutralizér; oční krém, závěrečný depigmentační krém/krém s SPF a výživu na rty. Intenzivní kůra 3–6 terapií 1× za 10 dní v období od září do konce května.',
       },
       {
         name: 'Zvýhodněný balíček krásy pro nastávající nevěstu',
-        price: '1 300 Kč',
+        price: '1 500 Kč',
         duration: '60 min',
-        note: 'Balíček 3× = 3 500 Kč',
+        note: 'Balíček 3× = 4 100 Kč',
         description:
-          'Vaše pleť si v období před svatbou zaslouží pozornost a to nejen kvůli krásnému make-upu a svatebním fotkám, ale především kvůli vašemu pocitu jedinečnosti a sebevědomí. Každá pleť má jiné potřeby a ať se už chystáte na kosmetické ošetření poprvé, nebo už máte nějaké kosmetické ošetření za sebou, ráda Vám pomůžu se zorientovat v nabídce kosmetických ošetření a vybrat přesně to pravé pro Vás před vaším velkým dnem. Pokud nedocházíte pravidelně na kosmetickou péči a chtěla byste stav své pleti zlepšit, 3 měsíce předem je ten ideální čas naplánovat první návštěvu. Vaši pleti sestavím na míru péči, která pleť zklidní a rozzáří. Budete odcházet se zdravou a krásnou pletí, která bude působit svěže a hydratovaně. Zvýhodněná služba pro nevěsty, které se chystají na svatební zkoušku líčení v našem salonu. Proceduru je vhodné absolvovat 1× za 4 týdny. 1× péče 1 300 CZK, doba trvání 60 min. Balíček 3× ošetření = 3 500 CZK.',
+          'Vaše pleť si v období před svatbou zaslouží pozornost a to nejen kvůli krásnému make-upu a svatebním fotkám, ale především kvůli vašemu pocitu jedinečnosti a sebevědomí. Každá pleť má jiné potřeby a ať se už chystáte na kosmetické ošetření poprvé, nebo už máte nějaké kosmetické ošetření za sebou, ráda Vám pomůžu se zorientovat v nabídce kosmetických ošetření a vybrat přesně to pravé pro Vás před vaším velkým dnem. Pokud nedocházíte pravidelně na kosmetickou péči a chtěla byste stav své pleti zlepšit, 3 měsíce předem je ten ideální čas naplánovat první návštěvu. Vaši pleti sestavím na míru péči, která pleť zklidní a rozzáří. Budete odcházet se zdravou a krásnou pletí, která bude působit svěže a hydratovaně. Zvýhodněná služba pro nevěsty, které se chystají na svatební zkoušku líčení v našem salonu. Proceduru je vhodné absolvovat 1× za 4 týdny. 1× péče 1 500 CZK, doba trvání 60 min. Balíček 3× ošetření = 4 100 CZK.',
       },
     ],
   },
@@ -174,7 +163,7 @@ export const pricingData: PriceCategory[] = [
     category: 'Microneedling s Exosomy',
     summary:
       'Moderní estetická procedura spojující exosomy, kyselinu hyaluronovou a růstové faktory pro omlazení a zpevnění pleti.',
-    priceFrom: '2 300 Kč',
+    priceFrom: '2 500 Kč',
     durationRange: '90 min',
     image: '/images/salon/osetreni-vapozon.jpg',
     icon: icons.needle,
@@ -182,7 +171,7 @@ export const pricingData: PriceCategory[] = [
     items: [
       {
         name: 'Microneedling s Exosomy',
-        price: '2 300 Kč',
+        price: '2 500 Kč',
         duration: '90 min',
         description:
           'Moderní estetická procedura spojující mikrojehličkování s exosomy, kyselinou hyaluronovou a růstovými faktory. Podporuje tvorbu vlastního kolagenu, zpevňuje a omlazuje pleť. Termín i vhodnost ošetření domlouvám vždy po osobní konzultaci.',
@@ -194,34 +183,34 @@ export const pricingData: PriceCategory[] = [
     category: 'Kosmetické masáže',
     summary:
       'Tři typy masáží obličeje, krku a dekoltu — klasická, liftingová a mikromasáž očního okolí. Relaxace i omlazení.',
-    priceFrom: '600 Kč',
-    durationRange: '45–90 min',
+    priceFrom: '1 200 Kč',
+    durationRange: '50–90 min',
     image: '/images/salon/osetreni-masaz.jpg',
     icon: icons.masaz,
     items: [
       {
         name: 'Kosmetická masáž obličeje, krku a dekoltu s pleťovou maskou',
-        price: '1 000 Kč',
+        price: '1 200 Kč',
         duration: '60 min',
-        note: 'Balíček 5× = 4 500 Kč · 10× = 8 000 Kč',
+        note: 'Balíček 3× = 3 300 Kč',
         description:
-          'Patří mezi nejúčinnější a nejpříjemnější prostředek v boji proti stárnutí pokožky obličeje, krku a dekoltu. Masáž působí na velké množství nervových zakončení v obličeji, ale také příznivě ovlivňuje celou nervovou soustavu. Během masáže dochází ke zklidnění pleti i celého organismu a k relaxačnímu účinku na centrální nervovou soustavu i celé tělo. Efekt: zlepšení prokrvení pleti a efektivnější přísun kyslíku a živin. Odplavení odpadních látek a zmírnění únavy pleti. Jemná exfoliace zrohovatělých vrstev kůže, kožní buňky jsou tak lépe vyživovány, pokožka se stává vláčnější, pevnější, pružnější a zpomaluje se tvorba vrásek. Zlepšení látkové výměny a úpravy tvorby mazových žláz. Uvolnění napětí svalů, které jsou napojeny na kůži v obličeji a celkové zjemní výrazu tváře. Péče zahrnuje: odlíčení, povrchové čištění pleti, krku a dekoltu, masáž za použití masážního oleje nebo krému, aplikaci pleťové masky pro posílení účinků masáže, závěrečný krém, oční krém a výživu na rty. Proceduru je vhodné absolvovat 1× za 3–4 týdny. 1× masáž 1 000 CZK, doba trvání 60 min. Balíček 5× masáž = 4 500 CZK. Balíček 10× masáž = 8 000 CZK.',
+          'Patří mezi nejúčinnější a nejpříjemnější prostředek v boji proti stárnutí pokožky obličeje, krku a dekoltu. Masáž působí na velké množství nervových zakončení v obličeji, ale také příznivě ovlivňuje celou nervovou soustavu. Během masáže dochází ke zklidnění pleti i celého organismu a k relaxačnímu účinku na centrální nervovou soustavu i celé tělo. Efekt: zlepšení prokrvení pleti a efektivnější přísun kyslíku a živin. Odplavení odpadních látek a zmírnění únavy pleti. Jemná exfoliace zrohovatělých vrstev kůže, kožní buňky jsou tak lépe vyživovány, pokožka se stává vláčnější, pevnější, pružnější a zpomaluje se tvorba vrásek. Zlepšení látkové výměny a úpravy tvorby mazových žláz. Uvolnění napětí svalů, které jsou napojeny na kůži v obličeji a celkové zjemní výrazu tváře. Péče zahrnuje: odlíčení, povrchové čištění pleti, krku a dekoltu, masáž za použití masážního oleje nebo krému, aplikaci pleťové masky pro posílení účinků masáže, závěrečný krém, oční krém a výživu na rty. Proceduru je vhodné absolvovat 1× za 3 týdny. 1× masáž 1 200 CZK, doba trvání 60 min. Balíček 3× masáž = 3 300 CZK.',
       },
       {
         name: 'Liftingová masáž obličeje s pleťovou maskou',
-        price: '1 200 Kč',
+        price: '1 500 Kč',
         duration: '90 min',
-        note: 'Balíček 5× = 5 500 Kč · 10× = 10 000 Kč',
+        note: 'Balíček 3× = 4 200 Kč',
         description:
-          'Je způsob, jak omladit obličej pomocí velmi jemných a pomalých speciálních masážních tahů. Masáž je velmi odpočinková a následný efekt je viditelný již po první proceduře. Výsledkem je svěží vzhled, zjemněné rysy obličeje zbavené únavy bez použití skalpelu. Efekt: zlepšení prokrvení svalů v oblasti obličeje, pleť se projasní. Masáží dochází k zvýšení pružnosti kůže, zpomalení tvorby vrásek a k odstranění svalového napětí. Působí příznivě na psychiku, na celou nervovou soustavu. Odplavuje kyselinu mléčnou, dochází k poklesu únavy. Je vhodná pro zdravou, ale unavenou pleť s vráskami jak mimickými, tak i senilními, ale také i při obrně nervů. Péče zahrnuje: odlíčení, povrchové čištění pleti, masáž za použití masážního oleje nebo krému, aplikaci liftingové masky s collagenem pro posílení účinků masáže, závěrečný krém, oční krém a výživu na rty. Proceduru je vhodné absolvovat 2× v týdnu po dobu 4–6 týdnů a následně 1× měsíčně pro udržení výsledků. 1× masáž 1 200 CZK, doba trvání 90 min. Balíček 5× manuální lifting = 5 500 CZK. Balíček 10× manuální lifting = 10 000 CZK.',
+          'Je způsob, jak omladit obličej pomocí velmi jemných a pomalých speciálních masážních tahů. Masáž je velmi odpočinková a následný efekt je viditelný již po první proceduře. Výsledkem je svěží vzhled, zjemněné rysy obličeje zbavené únavy bez použití skalpelu. Efekt: zlepšení prokrvení svalů v oblasti obličeje, pleť se projasní. Masáží dochází k zvýšení pružnosti kůže, zpomalení tvorby vrásek a k odstranění svalového napětí. Působí příznivě na psychiku, na celou nervovou soustavu. Odplavuje kyselinu mléčnou, dochází k poklesu únavy. Je vhodná pro zdravou, ale unavenou pleť s vráskami jak mimickými, tak i senilními, ale také i při obrně nervů. Péče zahrnuje: odlíčení, povrchové čištění pleti, masáž za použití masážního oleje nebo krému, aplikaci liftingové masky s collagenem pro posílení účinků masáže, závěrečný krém, oční krém a výživu na rty. Proceduru je vhodné absolvovat 2× v týdnu po dobu 4–6 týdnů a následně 1× měsíčně pro udržení výsledků. 1× masáž 1 500 CZK, doba trvání 90 min. Balíček 3× masáž = 4 200 CZK.',
       },
       {
-        name: 'Mikromasáž očního okolí s alginátovou pleťovou maskou',
-        price: '600 Kč',
-        duration: '45 min',
-        note: 'Balíček 5× = 2 500 Kč · 10× = 4 000 Kč',
+        name: 'Mikromasáž očního okolí s kompresem pod oči',
+        price: '1 200 Kč',
+        duration: '50 min',
+        note: 'Balíček 3× = 3 300 Kč',
         description:
-          'Jedná se o jemnou a pomalou masáž pokožky očního okolí. Masáž působí jako prevence stárnutí pleti, má příznivý vliv na omezení tvorby vrásek okolo očí. Po této masáži dochází k omezení tvorby kruhů a vodnatých váčků pod očima, k snížení nitroočního tlaku a při pravidelné aplikaci také ke zlepšení zraku. Působí proti migréně a je vhodná při dlouhodobé práci s počítači nebo práci při umělém světle. Uvolňuje a pročišťuje dutiny. Efekt: masáží dochází k působení na lymfatický systém a k odplavení toxických látek. K projasnění očního okolí a ústupu viditelných známek únavy. K uvolnění napětí očních svalů a jejich zrelaxování. Po masáži budou Vaše oči zářit. Péče zahrnuje: odlíčení, povrchové čištění pleti, masáž za použití masážního oleje nebo krému, aplikaci alginátové masky na oční okolí, závěrečný krém, oční krém a výživu na rty. Proceduru je vhodné absolvovat 1× za 14 dní. 1× mikromasáž 600 CZK, doba trvání 45 min. Balíček 5× mikromasáž = 2 500 CZK. Balíček 10× mikromasáž = 4 000 CZK.',
+          'Jedná se o jemnou a pomalou masáž pokožky očního okolí. Masáž působí jako prevence stárnutí pleti, má příznivý vliv na omezení tvorby vrásek okolo očí. Po této masáži dochází k omezení tvorby kruhů a vodnatých váčků pod očima, k snížení nitroočního tlaku a při pravidelné aplikaci také ke zlepšení zraku. Působí proti migréně a je vhodná při dlouhodobé práci s počítači nebo práci při umělém světle. Uvolňuje a pročišťuje dutiny. Efekt: masáží dochází k působení na lymfatický systém a k odplavení toxických látek. K projasnění očního okolí a ústupu viditelných známek únavy. K uvolnění napětí očních svalů a jejich zrelaxování. Po masáži budou Vaše oči zářit. Závěrem masáže aplikuji prémiové polštářky pod oči ve formě kompresu. Kompres působí liftingově, proti vráskám, intenzivně hydratuje a projasňuje, zlepšuje elasticitu pokožky a pomáhá redukovat tmavé kruhy, otoky i známky únavy. Péče zahrnuje: odlíčení; povrchové čištění pleti; masáž za použití masážního oleje nebo krému; aplikaci polštářků/kompresu pod oči; masku dle stavu pleti; sérum a krém pro oční okolí a výživu na rty. Proceduru je vhodné absolvovat 1× za 14 dní. 1× mikromasáž 1 200 CZK, doba trvání 50 min. Balíček 3× mikromasáž = 3 300 CZK.',
       },
     ],
   },
@@ -230,28 +219,28 @@ export const pricingData: PriceCategory[] = [
     category: 'Laminace obočí a řas',
     summary:
       'Pokročilá laminace od InLei® — natočení, barvení a výživa řas i obočí. Zahušťuje řasy až o 25 %.',
-    priceFrom: '1 000 Kč',
+    priceFrom: '1 100 Kč',
     durationRange: '90–120 min',
     image: '/images/salon/liceni-zrcadlo.jpg',
     icon: icons.oko,
     items: [
       {
         name: 'Lash Filler – Laminace řas s barvením a výživou',
-        price: '1 000 Kč',
+        price: '1 100 Kč',
         duration: '90 min',
         description:
           'Je procedura pokročilé laminace řas, při níž dochází nejen k jemnému, ale účinnému natočení přirozených řas a jejich barvení, ale také k dodání potřebné výživy a posílení řasy zevnitř. Díky patentovanému složení od InLei® se řasy průměrně zahustí až o 25 % a prodlouží o 9 % už po 3 aplikacích. Řasy jsou po ošetření zdravější, pružnější, vyživené a objemnější. Postup zahrnuje: čištění, nanesení laminačních produktů, barvení obočí, nanesení filleru – výživy, která řasy obnovuje, opravuje a udržuje optimální hydrataci, zpevňuje, vyplňuje a zahušťuje strukturu řasy, nanesení závěrečného kroku lash molecular – molekulární rekonstrukce pro řasy, která zlepšuje hydrataci, lesk, sílu a flexibilitu řas, ale také posiluje trvanlivost barvy.',
       },
       {
         name: 'Brow Bomber – Laminace obočí s barvením a výživou',
-        price: '1 000 Kč',
+        price: '1 100 Kč',
         duration: '90 min',
         description:
           'Je procedura, při níž se přírodní chloupky obočí vyčešou v požadovaném směru a fixují pomocí kombinace přípravků InLei®. Všechny produkty se svou účinností vzájemně podporují a zajišťují efektivní růst chloupků. Ideální procedura pro dokonalou úpravu obočí. Postup zahrnuje: čištění, nanesení laminačních produktů, vyměření obočí s barvením v tzv. ombre efektu, aby bylo dosaženo opravdové přirozenosti. Epilaci voskem, barevnou korekci a nanesení závěrečné výživy.',
       },
       {
         name: 'Zvýhodněný balíček Lash Filler & Brow Bomber – Laminace řas a obočí',
-        price: '1 800 Kč',
+        price: '2 000 Kč',
         duration: '120 min',
         note: 'Zvýhodněná cena',
         description:
@@ -326,21 +315,21 @@ export const pricingData: PriceCategory[] = [
         items: [
           {
             name: 'Poradenství v oblasti péče o pleť a líčení',
-            price: '1 200 Kč',
+            price: '1 500 Kč',
             duration: '90 min',
             description:
               'Ztrácíte se v nabídce kosmetických produktů? Nevíte si rady s nastavením vhodné kosmetické péče právě pro Vás? U šálku něčeho dobrého si povíme jaké přípravky použít na denní bázi dle stavu Vaši pleti a věku, jak pleť správně odličovat a čistit, jaké jsou pro Vás vhodné séra nebo krémy. Dále si nastíníme, jak můžete péči o Vaši pleť ještě více vylepšit, pokud se chcete více rozmazlit a dopřát si nadstandartní péči. Jak je to s peelingem v domácích podmínkách a jaké masky můžete zařadit pro podporu udržení salónních procedur. Jaké pomůcky pleti prospívají a jaké ji naopak škodí. Co vás čeká při návštěvě kosmetického salónu a jaké stavy lze možno salonním ošetřením ovlivnit a kdy je už nutné jít k dermatologovi. Poradím Vám i s kosmetickou péčí pro Vaši drahou polovičku nebo dospívajícího potomka. V rámci konzultace probereme také produkty dekorativní péče vhodné pro Váš typ pleti. V rámci konzultace je možno vyzkoušet vybrané dostupné kosmetické přípravky.',
           },
           {
             name: 'Mini kurz líčení s Larens Colour',
-            price: '1 500 Kč',
+            price: '2 000 Kč',
             duration: '120 min',
             description:
               'Krása začíná uvnitř a pokračuje s Larens Colour, což není jen značka dekorativní kosmetiky, je to víc než jen make-up. Je pokračováním vašeho pečujícího rituálu a investicí do kvality vaší pleti. Základ make-upů a korektorů Larens Colour tvoří Liposomal Collagen Complex, Phytodermina H Lifting™ a rovnou 3 typy kyseliny hyaluronové. Produkty jsou určené pro všechny věkové kategorie, tak i pro osoby s citlivou, alergickou, aknózní či dehydratovanou pletí. Během inspirativního kurzu líčení se naučíte, jak správně připravit pleť před líčením, jak si správně zvolit odstín make-upu a korektoru k Vaši pleti a jak make-up správně aplikovat, aby vypadal jako Vaše druhá kůže bez efektu masky. Vytvoříme spolu klasický každodenní look, tak i výraznější variantu pro speciální příležitosti.',
           },
           {
             name: 'Proměna s Larens Colour',
-            price: '2 000 Kč',
+            price: '3 000 Kč',
             duration: '180 min',
             description:
               'Zatoužila jste ve svém životě po změně? Chtěla byste vyzkoušet úplně něco nového? Postarám se o Vaši kompletní make-up proměnu s Larens Colour, kterou doplníme o úpravu vlasů ve formě vhodného účesu (nezahrnuje složitější účesy, barvení ani střih). Chtěla byste si užít hezké odpoledne spolu s kamarádkou nebo dcerou? Přijďte si společně užít den v příjemné atmosféře s kapkou něčeho dobrého. Pro možnost absolvovat proměnu pro více osob mě kontaktujte a domluvíme vše potřebné.',
@@ -353,7 +342,7 @@ export const pricingData: PriceCategory[] = [
     id: 'doplnkove',
     category: 'Doplňkové služby',
     summary:
-      'Barvení a epilace obočí a řas, nadstandardní masky a ampule, lehké denní líčení po ošetření.',
+      'Barvení a epilace obočí a řas, nadstandardní masky, lehké denní líčení po ošetření.',
     priceFrom: '100 Kč',
     durationRange: '15–30 min',
     image: '/images/salon/osetreni-guasha.jpg',
@@ -382,8 +371,8 @@ export const pricingData: PriceCategory[] = [
         items: [
           {
             name: 'Lehké denní líčení',
-            price: '250 Kč',
-            duration: '15 min',
+            price: '400 Kč',
+            duration: '30 min',
             description: 'Lehké denní líčení s Larens Colour po kosmetické péči.',
           },
         ],
@@ -391,9 +380,8 @@ export const pricingData: PriceCategory[] = [
       {
         title: 'Nadstandardní aplikace',
         items: [
-          { name: 'Aplikace alginátové masky', price: '250 Kč', duration: '20 min' },
-          { name: 'Aplikace Bio Renew masky', price: '450 Kč', duration: '30 min' },
-          { name: 'Aplikace ampule Anti Acne / Anti-Aging', price: null, duration: '30 min' },
+          { name: 'Aplikace alginátové masky', price: '400 Kč', duration: '20 min' },
+          { name: 'Aplikace Bio Renew masky', price: '600 Kč', duration: '30 min' },
         ],
       },
     ],
