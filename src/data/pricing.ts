@@ -65,7 +65,7 @@ export const pricingData: PriceCategory[] = [
         note: 'Přidejte k vybrané službě',
         description:
           'Při Vaší první návštěvě salonu během krátké vstupní konzultace probereme Vaši současnou péči o pleť, Vaše očekávání a přání. Jsem tu pro Vás, pomůžu Vám se zorientovat v široké nabídce služeb a společně vybereme to nejvhodnější ošetření a nastavíme plán salonní a domácí péče.\n\n' +
-          'Jako první ošetření pro své klienty nejčastěji volím Collagen Intensive Hydroboost – Hydratační ošetření, kterým dodáme pleti potřebnou hydrataci, zářivost a jemnost. Je to ideální ošetření pro seznámení Vaší pleti s přípravky kosmeceutik Larens Professional Line. Není to však vždy pravidlem, vše se odvíjí od aktuální kondice Vaší pleti.\n\n' +
+          'Jako první ošetření pro své klienty nejčastěji volím Collagen Intensive Hydroboost – Hydratační ošetření, kterým dodám pleti potřebnou hydrataci, zářivost a jemnost. Je to ideální ošetření pro seznámení Vaší pleti s přípravky kosmeceutik Larens Professional Line. Není to však vždy pravidlem, vše se odvíjí od aktuální kondice Vaší pleti.\n\n' +
           'Ošetření, které v salonu nabízím, jsou vhodné pro ženy i muže bez rozdílu věku.\n\n' +
           'Kontraindikací pro veškerou kosmetickou péči je alergie na bílkoviny z ryb.\n\n' +
           'Prosím nevolte si při první návštěvě jako první péči o pleť mikrojehličkování, chemický peeling nebo anti-spot ošetření. Tato ošetření vyžadují důkladné seznámení s Vaší pletí a probrání možných kontraindikací, tak abyste byli předem obeznámeni s průběhem a výsledkem procedury. Takováto ošetření neprovádím novým klientům při první návštěvě.',
