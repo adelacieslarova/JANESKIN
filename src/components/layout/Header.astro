@@ -166,8 +166,9 @@ const currentPath = Astro.url.pathname;
     flex-shrink: 0;
   }
 
+  /* Větší logo, ať je zřetelné — výška hlavičky (72 px) zůstává */
   .header__logo-img {
-    width: 180px;
+    width: clamp(190px, 17vw, 230px);
     height: auto;
     display: block;
   }
