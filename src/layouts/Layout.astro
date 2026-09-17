@@ -1,6 +1,7 @@
 ---
 import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
+import CookieConsent from '../components/layout/CookieConsent.astro';
 import '../styles/global.css';
 
 interface Props {
@@ -60,14 +61,38 @@ const fullTitle = `${title} | JANESKIN`;
     rel="stylesheet"
   />
 
-  <!-- Google Analytics -->
-  <!-- is:inline — Astro jinak skript zabalí do modulu a gtag() by nebyla globální -->
-  <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-1K66Z5KE38"></script>
+  <!-- Google Analytics G-1K66Z5KE38 — načte se AŽ po souhlasu v cookie liště
+       (CookieConsent.astro). Bez souhlasu se skript od Googlu vůbec nestahuje.
+       is:inline — Astro jinak skript zabalí do modulu a gtag() by nebyla globální. -->
   <script is:inline>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-1K66Z5KE38');
+    gtag('consent', 'default', {
+      analytics_storage: 'denied',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied'
+    });
+    (function () {
+      var GA_ID = 'G-1K66Z5KE38';
+      window.janeskinLoadAnalytics = function () {
+        if (window.janeskinAnalyticsLoaded) {
+          gtag('consent', 'update', { analytics_storage: 'granted' });
+          return;
+        }
+        window.janeskinAnalyticsLoaded = true;
+        gtag('consent', 'update', { analytics_storage: 'granted' });
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+        document.head.appendChild(s);
+        gtag('js', new Date());
+        gtag('config', GA_ID);
+      };
+      try {
+        if (localStorage.getItem('janeskin-cookies') === 'granted') window.janeskinLoadAnalytics();
+      } catch (e) {}
+    })();
   </script>
 </head>
 
@@ -81,6 +106,7 @@ const fullTitle = `${title} | JANESKIN`;
   </main>
 
   <Footer />
+  <CookieConsent />
 </body>
 </html>
 

@@ -3,8 +3,9 @@
  * Zásady zpracování osobních údajů.
  *
  * Text vychází z dokumentu "GDPR_JANESKIN- salon-Jana-Szymikova.docx"
- * (účinnost 1. 11. 2024). Znění účinné od 1. 9. 2026 doplňuje článek o cookies
- * a službách Google vložených do webu; zbytek textu zůstává.
+ * (účinnost 1. 11. 2024). Znění účinné od 1. 9. 2026 doplnilo článek o cookies
+ * a službách Google vložených do webu. Znění účinné od 17. 9. 2026 přidává
+ * Google Analytics se souhlasem přes cookie lištu (CookieConsent.astro).
  */
 import Layout from '../layouts/Layout.astro';
 import PageHeader from '../components/blocks/PageHeader.astro';
@@ -18,7 +19,7 @@ import LegalIdentity from '../components/blocks/LegalIdentity.astro';
   <PageHeader
     label="Dokumenty"
     title="Zpracování osobních údajů"
-    subtitle="Zásady zpracování osobních údajů (GDPR), účinné od 1. 9. 2026"
+    subtitle="Zásady zpracování osobních údajů (GDPR), účinné od 17. 9. 2026"
     breadcrumb={[{ label: 'GDPR', href: '/gdpr' }]}
   />
 
@@ -79,7 +80,8 @@ import LegalIdentity from '../components/blocks/LegalIdentity.astro';
         <li>plnění smlouvy (objednání a poskytnutí služby),</li>
         <li>splnění zákonné povinnosti (např. uchování účetních dokladů),</li>
         <li>oprávněného zájmu správce (např. ochrana práv, přímý marketing),</li>
-        <li>souhlasu klienta (v případě fotografií, marketingové komunikace nebo sdílení recenzí).</li>
+        <li>souhlasu klienta (v případě fotografií, marketingové komunikace nebo sdílení recenzí),</li>
+        <li>souhlasu návštěvníka webových stránek (analytické cookies Google Analytics, viz <a href="#cookies">článek 7</a>).</li>
       </ul>
 
       <h2 id="doba">5. Doba uchování osobních údajů</h2>
@@ -87,7 +89,8 @@ import LegalIdentity from '../components/blocks/LegalIdentity.astro';
       <ul>
         <li>nezbytnou pro poskytování služeb a vedení klientského účtu,</li>
         <li>stanovenou právními předpisy (např. 10 let u účetních dokladů),</li>
-        <li>nebo do doby odvolání souhlasu klienta, pokud byl udělen (např. pro zveřejnění fotografií).</li>
+        <li>nebo do doby odvolání souhlasu klienta, pokud byl udělen (např. pro zveřejnění fotografií),</li>
+        <li>u údajů z Google Analytics nejvýše 14 měsíců; cookies Google Analytics zůstávají v prohlížeči nejvýše 2 roky, pokud souhlas neodvoláte dříve.</li>
       </ul>
 
       <h2 id="prijemci">6. Příjemci osobních údajů</h2>
@@ -96,6 +99,7 @@ import LegalIdentity from '../components/blocks/LegalIdentity.astro';
         <li>poskytovateli online rezervačního systému Noona (Noona HQ Ltd.),</li>
         <li>poskytovateli účetních služeb,</li>
         <li>poskytovateli webhostingu a IT podpory,</li>
+        <li>společnosti Google Ireland Limited jako poskytovateli nástroje Google Analytics, pokud k tomu návštěvník webu udělil souhlas,</li>
         <li>orgánům veřejné moci, pokud to vyžaduje zákon.</li>
       </ul>
       <p>
@@ -106,12 +110,35 @@ import LegalIdentity from '../components/blocks/LegalIdentity.astro';
 
       <h2 id="cookies">7. Cookies a služby třetích stran na webu</h2>
       <p>
-        Webové stránky www.janeskin.cz <strong>nepoužívají vlastní cookies</strong>, neukládají
-        do prohlížeče žádné identifikátory návštěvníků a nevyužívají analytické ani reklamní
-        nástroje — provoz webu se nesleduje a chování návštěvníků se nevyhodnocuje.
+        Webové stránky www.janeskin.cz používají <strong>analytické cookies pouze s Vaším
+        souhlasem</strong> a nepoužívají žádné reklamní nástroje. Při první návštěvě se zobrazí
+        lišta, ve které můžete měření přijmout, nebo odmítnout. Dokud souhlas neudělíte,
+        analytický nástroj se vůbec nenačte. Svou volbu si web pamatuje v úložišti Vašeho
+        prohlížeče (localStorage), aby se lišta nezobrazovala při každé návštěvě; tento záznam
+        slouží jen k zapamatování volby a neobsahuje žádné osobní údaje.
       </p>
       <p>
-        Součástí stránek jsou nicméně dvě služby společnosti Google, které se načítají přímo
+        Souhlas můžete kdykoli změnit nebo odvolat přes odkaz
+        <button type="button" class="legal__cookie-btn" data-cookie-settings>Nastavení cookies</button>
+        v patičce webu. Odvoláním souhlasu není dotčena zákonnost zpracování před jeho odvoláním.
+      </p>
+
+      <h3>Google Analytics</h3>
+      <p>
+        S Vaším souhlasem web používá nástroj Google Analytics 4, který pomáhá zjistit, kolik
+        lidí web navštěvuje, které stránky je zajímají a z jakého zařízení nebo zdroje
+        přicházejí. Údaje slouží pouze ke zlepšování webu, nejsou využívány k reklamě ani
+        k identifikaci konkrétních osob. Zpracovávají se zejména pseudonymní identifikátor
+        uložený v cookies (_ga, _ga_*), navštívené stránky, doba a průběh návštěvy, přibližná
+        poloha odvozená z IP adresy (samotnou IP adresu Google Analytics 4 neukládá), typ
+        zařízení, prohlížeče a operačního systému a zdroj návštěvy. Údaje v Google Analytics
+        se uchovávají nejvýše 14 měsíců, cookies v prohlížeči nejvýše 2 roky. Právním základem
+        je Váš souhlas.
+      </p>
+
+      <h3>Google Fonts a Google Maps</h3>
+      <p>
+        Součástí stránek jsou dále dvě služby společnosti Google, které se načítají přímo
         ze serverů Googlu. Při jejich zobrazení se Googlu odesílá IP adresa návštěvníka,
         údaje o prohlížeči a zařízení a adresa navštívené stránky; Google si při tom může
         do prohlížeče uložit vlastní cookies:
@@ -127,7 +154,7 @@ import LegalIdentity from '../components/blocks/LegalIdentity.astro';
         </li>
       </ul>
       <p>
-        Provozovatelem těchto služeb je Google Ireland Limited, Gordon House, Barrow Street,
+        Provozovatelem těchto služeb i Google Analytics je Google Ireland Limited, Gordon House, Barrow Street,
         Dublin 4, Irsko, která údaje předává také mateřské společnosti Google LLC ve Spojených
         státech amerických. <strong>V tomto rozsahu tedy dochází k předání údajů mimo Evropskou
         unii</strong>, a to na základě standardních smluvních doložek a rámce EU—U.S. Data
@@ -135,7 +162,7 @@ import LegalIdentity from '../components/blocks/LegalIdentity.astro';
         <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">zásady ochrany soukromí</a>.
       </p>
       <p>
-        Právním základem je oprávněný zájem správce na srozumitelné prezentaci salonu
+        Právním základem načítání písem a mapy je oprávněný zájem správce na srozumitelné prezentaci salonu
         a na tom, aby klient snadno našel cestu do provozovny. Načítání obsahu třetích stran
         lze omezit v nastavení prohlížeče nebo pomocí rozšíření blokujících takový obsah;
         mapu je vždy možné otevřít až kliknutím na odkaz do Map Google.
@@ -165,8 +192,8 @@ import LegalIdentity from '../components/blocks/LegalIdentity.astro';
 
       <h2 id="zaver">10. Závěrečná ustanovení</h2>
       <p>
-        Tyto zásady nabývají účinnosti dne 1. 9. 2026 a nahrazují předchozí znění účinné
-        od 1. 11. 2024. Aktuální znění je vždy dostupné v salonu a na webových stránkách
+        Tyto zásady nabývají účinnosti dne 17. 9. 2026 a nahrazují předchozí znění účinné
+        od 1. 9. 2026. Aktuální znění je vždy dostupné v salonu a na webových stránkách
         www.janeskin.cz.
       </p>
 
@@ -227,5 +254,17 @@ import LegalIdentity from '../components/blocks/LegalIdentity.astro';
     margin-top: var(--space-10);
     padding-top: var(--space-6);
     border-top: 1px solid var(--color-border);
+  }
+
+  /* Odkaz na nastavení cookies v textu zásad — vypadá jako ostatní odkazy */
+  .legal__cookie-btn {
+    background: none;
+    border: 0;
+    padding: 0;
+    font: inherit;
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    cursor: pointer;
   }
 </style>
