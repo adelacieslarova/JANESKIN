@@ -1,152 +1,277 @@
 ---
 import SectionHeading from '../ui/SectionHeading.astro';
-import Card from '../ui/Card.astro';
 
-const testimonials = [
+/**
+ * Jen skutečné recenze, převzaté beze změn z Map Google a Firmy.cz (stav 17. 9. 2026, Google 13 recenzí, Seznam 8).
+ * Vymyšlené reference zákon o ochraně spotřebitele zakazuje — nové sem přidávej
+ * jen zkopírované z veřejného profilu, se zdrojem. Příjmení zkracujeme na iniciálu.
+ */
+const GOOGLE_URL =
+  'https://www.google.com/maps/place/JANESKIN-+SALON+JANA+SZYMIKOV%C3%81/@49.8975948,18.4221274,17z/data=!4m8!3m7!1s0x471157340ba6c399:0x5527b06384e96700!8m2!3d49.8975914!4d18.4247077!9m1!1b1!16s%2Fg%2F11x2kr9xfq';
+const SEZNAM_URL = 'https://www.firmy.cz/detail/13747453-janeskin-salon-jana-szymikova-dolni-lutyne.html';
+
+type Source = 'Google' | 'Seznam';
+
+const reviews: { author: string; source: Source; text: string }[] = [
   {
-    text: 'Krásný salón a hlavně úžasná kosmetička, vše vysvětlí, doporučí nejlepší péči. Pleť se mi po ní krásně zlepšila. Jsem alergik a tato kosmetika mi opravdu sedla.',
-    author: 'Klára',
-    detail: 'Klientka salonu',
+    author: 'Natálie O.',
+    source: 'Google',
+    text: 'V salonu jsem byla poprvé a rozhodně ne naposledy. Krásné prostředí, profesionální přístup a hlavně skvělý výsledek. Celou dobu jsem se cítila velmi příjemně a opečovávaně. Kosmetička Janča mi vše hezky vysvětlila, poradila s péčí o pleť i s výběrem vhodné kosmetiky pro můj typ pleti. Oceňuji její milý a profesionální přístup. 100% spokojenost, moc doporučuji!',
   },
   {
-    text: 'Jana je naprosto skvělá profesionálka. Její holistický přístup a osobní péče mě nadchly. Salon je nádherný a útulný, cítíte se tam jako doma.',
-    author: 'Markéta',
-    detail: 'Klientka salonu',
+    author: 'Gabriela S.',
+    source: 'Google',
+    text: 'Paní Jana má velice profesionální přístup k zákazníci a to že před prvním ošetřením s vámi dělá dotazník mě opravdu mile překvapilo. Svým klientům se věnuje na 150% ,ochotně s vámi probere vaše kosmetické problémy a doporučí kosmetiku. Já jsem z první návštěvy byla unešená. Nejlepší na tom všem byl výsledek po ošetření. Moje pleť jen zářila, bylo to ohromující. Budu se opakovaně vracet. Tento salon doporučuji !!!',
   },
   {
-    text: 'Po první návštěvě jsem věděla, že jsem našla svou kosmetičku. Profesionální přístup, příjemné prostředí a výsledky, které mluví samy za sebe.',
-    author: 'Petra',
-    detail: 'Klientka salonu',
+    author: 'Irena B.',
+    source: 'Google',
+    text: 'Do salonu Janeskin jsem šla poprvé a byla jsem naprosto nadšená. Paní Janka je skutečná profesionálka, která svou práci dělá srdcem – je to vidět na každém detailu. Cítila jsem se v jejích rukou maximálně opečovávaná a zároveň v luxusním prostředí, kde nechybí příjemná atmosféra. Výsledek předčil moje očekávání a určitě se sem budu ráda vracet. Mohu jen doporučit! 💛',
+  },
+  {
+    author: 'Andrea S.',
+    source: 'Google',
+    text: 'Kosmetický salón mohu jen doporučit. Prostředí je čisté, moderní a velmi útulné, takže se člověk hned cítí pohodlně a může si skutečně odpočinout. Paní kosmetička mi vše podrobně vysvětlila, doporučila vhodné ošetření podle potřeb mé pleti a po celou dobu se věnovala maximálně pečlivě. Velmi se těším na další návštěvu.',
+  },
+  {
+    author: 'Markéta K.',
+    source: 'Seznam',
+    text: 'Kosmetické ošetření jsem si moc užila. Byla jsem velmi spokojená - odnesla si spoustu užitečných informací, ošetření bylo kvalitní a profesionální. Jako bonus jsem si krásně odpočinula a zrelaxovala. Určitě doporučuji!',
+  },
+  {
+    author: 'Radmila N.',
+    source: 'Google',
+    text: 'Paní Jana je velice milá a příjemná, v jejím salonu si člověk vždy odpočine a v příjemném prostředí se pod jejíma rukama cítí opravdu hýčkán. Doporučuji návštěvu jeji salonu všemi deseti. ☘️Zároveň vždy poradí jak se správně starat o svou pleť.',
+  },
+  {
+    author: 'Karolína K.',
+    source: 'Google',
+    text: 'Po první návštěvě jsem odcházela nadšená. Prostředí, přístup, analýza pleti, produkty - maximální spokojenost. Konečně jsem se o své pleti něco dozvěděla a vybraly jsme další vhodný postup. Děkuji.',
+  },
+  {
+    author: 'Radka K.',
+    source: 'Google',
+    text: 'Salon Janeskin jsem navštívila poprvé a odcházela jsem velice spokojená. Prostředí je opravdu příjemné, péče a poradenství na vysoké úrovni a majitelka salonu moc milá. Už se těším na další návštěvu!!',
+  },
+  {
+    author: 'Kateřina H.',
+    source: 'Google',
+    text: 'Moc doporučuji salon Janeskin. Péče je skvělá a na velmi vysoké úrovni. Salon jsem navštívila již opakovaně a pokaždé veliká spokojenost. Pokud hledáte kvalitní péči o vaši pleť a relaxaci v krásném prostředí, vřele doporučuji 🤗',
+  },
+  {
+    author: 'Lenka Č.',
+    source: 'Google',
+    text: 'Krásně strávené dvě hodinky, kdy se o mě Janička krásně starala. Výsledek líčení naprostá spokojenost a vřele doporučuji i dalším ženám, pokud hledají relaxaci, péči a Top výsledek, tak tady jste na správné adrese. 🌸',
+  },
+  {
+    author: 'Zuzana W.',
+    source: 'Seznam',
+    text: 'Velmi kvalitní a osobní přístup. Pani ví co dělá, masáže luxusní a kosmetická péče se vším všudy :) doporučuji',
+  },
+  {
+    author: 'K. Juri',
+    source: 'Google',
+    text: 'Skvělá péče a luxusní kosmetika, určitě se oplatí do ni investovat 😊 nebyla jsem spokojena s texturou pleti a po této kosmetice se mi krásně zlepšila, můžu jen doporučit a vyzdvihnout taky skvělý přístup kosmetičky 😊',
+  },
+  {
+    author: 'Jana K.',
+    source: 'Google',
+    text: 'V salonu Janeskin jsem byla poprvé a byla jsem velmi spokojená, péče o mě byla na vysoké úrovni. Mohu všem vřele doporučit.',
+  },
+  {
+    author: 'Šárka M.',
+    source: 'Google',
+    text: 'Salon mohu jen doporučit. Moc krásné prostředí, profesionální přístup a příjemná atmosféra. Byla jsem poprvé a určitě se vrátím.',
+  },
+  {
+    author: 'Lucie S.',
+    source: 'Google',
+    text: 'Velká spokojenost. Příjemné prostředí a perfektní péče.',
   },
 ];
+
+const star = `<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>`;
+const stars = star.repeat(5);
 ---
 
-<section class="testimonials section section--alt" id="recenze" aria-label="Recenze klientek">
+<section class="testimonials section" id="recenze" aria-label="Recenze klientek">
   <div class="container">
     <SectionHeading
-      label="Reference"
+      label="Recenze"
       title="Co říkají moje klientky"
     />
 
-    <div class="testimonials__track-wrapper" aria-label="Recenze zákaznic" data-animate>
-      <ul class="testimonials__track" id="testimonials-track" role="list">
-        {testimonials.map((t, i) => (
-          <li class="testimonials__slide" id={`slide-${i}`} aria-label={`Recenze ${i + 1} z ${testimonials.length}`}>
-            <Card variant="testimonial">
-              <div class="testimonial__body">
-                <p class="testimonial__text">{t.text}</p>
-                <footer class="testimonial__footer">
-                  <div class="testimonial__avatar" aria-hidden="true">
-                    {t.author.charAt(0)}
-                  </div>
-                  <div>
-                    <p class="testimonial__author">{t.author}</p>
-                    <p class="testimonial__detail">{t.detail}</p>
-                  </div>
-                </footer>
-              </div>
-            </Card>
+    <div class="testimonials__ratings">
+      <a href={GOOGLE_URL} class="rating" target="_blank" rel="noopener noreferrer">
+        <span class="rating__stars" set:html={stars} />
+        <span class="rating__text"><strong>5,0</strong> na Googlu (13 recenzí)</span>
+      </a>
+      <a href={SEZNAM_URL} class="rating" target="_blank" rel="noopener noreferrer">
+        <span class="rating__stars" set:html={stars} />
+        <span class="rating__text"><strong>5,0</strong> na Seznamu (8 hodnocení)</span>
+      </a>
+    </div>
+
+    <div class="testimonials__carousel" data-animate>
+      <ul class="testimonials__track" id="testimonials-track" role="list" tabindex="0" aria-label="Recenze klientek — posuňte do strany">
+        {reviews.map(r => (
+          <li class="review">
+            <span class="review__stars" role="img" aria-label="5 hvězdiček z 5" set:html={stars} />
+            <p class="review__text">{r.text}</p>
+            <footer class="review__footer">
+              <span class="review__avatar" aria-hidden="true">{r.author.charAt(0)}</span>
+              <span class="review__meta">
+                <span class="review__author">{r.author}</span>
+                <span class="review__source">Recenze na {r.source === 'Google' ? 'Googlu' : 'Seznamu'}</span>
+              </span>
+            </footer>
           </li>
         ))}
       </ul>
+
+      <div class="testimonials__controls">
+        <button class="testimonials__btn" id="testimonials-prev" type="button" aria-label="Předchozí recenze">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button class="testimonials__btn" id="testimonials-next" type="button" aria-label="Další recenze">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
     </div>
 
-    <div class="testimonials__controls" role="group" aria-label="Navigace recenzí">
-      <button class="testimonials__btn" id="testimonials-prev" aria-label="Předchozí recenze">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
-      </button>
-      <div class="testimonials__dots" role="tablist" aria-label="Výběr recenze">
-        {testimonials.map((_, i) => (
-          <button
-            class={`testimonials__dot${i === 0 ? ' testimonials__dot--active' : ''}`}
-            role="tab"
-            aria-selected={i === 0 ? 'true' : 'false'}
-            aria-controls={`slide-${i}`}
-            aria-label={`Recenze ${i + 1}`}
-            data-index={i}
-          ></button>
-        ))}
-      </div>
-      <button class="testimonials__btn" id="testimonials-next" aria-label="Další recenze">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
-      </button>
-    </div>
+    <p class="testimonials__note">
+      Recenze jsou převzaté beze změn z&nbsp;<a href={GOOGLE_URL} target="_blank" rel="noopener noreferrer">Map Google</a>
+      a&nbsp;<a href={SEZNAM_URL} target="_blank" rel="noopener noreferrer">Firmy.cz</a>, kde je zveřejnily samy klientky.
+    </p>
   </div>
 </section>
 
 <style>
-  .testimonials__track-wrapper {
-    overflow: hidden;
+  /* ── Souhrnné hodnocení ── */
+  .testimonials__ratings {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-3) var(--space-6);
+    margin-top: calc(-1 * var(--space-6));
+    margin-bottom: var(--space-10);
+  }
+
+  .rating {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    background-color: var(--color-white);
+    color: var(--color-text-soft);
+    font-size: var(--text-sm);
+    text-decoration: none;
+    transition: border-color var(--transition-fast);
+  }
+
+  .rating:hover {
+    border-color: var(--color-accent-light);
+  }
+
+  .rating strong {
+    color: var(--color-text);
+    font-weight: var(--weight-semibold);
+  }
+
+  .rating__stars,
+  .review__stars {
+    display: inline-flex;
+    gap: 1px;
+    color: var(--color-accent-light);
+  }
+
+  /* ── Karusel ── */
+  .testimonials__track {
+    --gap: var(--space-6);
+    list-style: none;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% - 2 * var(--gap)) / 3);
+    gap: var(--gap);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    padding-block: var(--space-1);
+  }
+
+  .testimonials__track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .testimonials__track:focus-visible {
+    outline: 2px solid var(--color-accent-light);
+    outline-offset: 4px;
     border-radius: var(--radius-lg);
   }
 
-  .testimonials__track {
-    list-style: none;
-    display: flex;
-    transition: transform var(--transition-slow);
-  }
-
-  .testimonials__slide {
-    flex: 0 0 100%;
-    padding: var(--space-2);
-  }
-
-  /* Testimonial card internals */
-  .testimonial__body {
+  .review {
+    scroll-snap-align: start;
     display: flex;
     flex-direction: column;
-    gap: var(--space-6);
-    padding-top: var(--space-8);
+    gap: var(--space-4);
+    padding: var(--space-6);
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
   }
 
-  .testimonial__text {
-    font-family: var(--font-heading);
-    font-size: var(--text-xl);
-    font-weight: var(--weight-regular);
+  .review__text {
+    flex: 1;
+    font-size: var(--text-base);
     color: var(--color-text);
-    line-height: 1.6;
+    line-height: 1.7;
   }
 
-  .testimonial__footer {
+  .review__footer {
     display: flex;
     align-items: center;
-    gap: var(--space-4);
-    border-top: 1px solid var(--color-border);
+    gap: var(--space-3);
     padding-top: var(--space-4);
+    border-top: 1px solid var(--color-border);
   }
 
-  .testimonial__avatar {
-    width: 44px;
-    height: 44px;
+  .review__avatar {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
     border-radius: var(--radius-full);
-    background-color: var(--color-accent-light);
+    background-color: var(--color-bg-warm);
     color: var(--color-accent-hover);
     font-family: var(--font-heading);
-    font-size: var(--text-xl);
-    font-weight: var(--weight-semibold);
+    font-size: var(--text-lg);
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
   }
 
-  .testimonial__author {
+  .review__meta {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .review__author {
     font-weight: var(--weight-medium);
     color: var(--color-text);
-    font-size: var(--text-base);
   }
 
-  .testimonial__detail {
-    font-size: var(--text-sm);
+  .review__source {
+    font-size: var(--text-xs);
     color: var(--color-text-soft);
   }
 
-  /* Controls */
+  /* ── Šipky ── */
   .testimonials__controls {
     display: flex;
-    align-items: center;
     justify-content: center;
-    gap: var(--space-4);
+    gap: var(--space-3);
     margin-top: var(--space-8);
   }
 
@@ -161,69 +286,68 @@ const testimonials = [
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all var(--transition-fast);
+    transition: border-color var(--transition-fast), color var(--transition-fast), opacity var(--transition-fast);
   }
 
-  .testimonials__btn:hover {
+  .testimonials__btn:hover:not(:disabled) {
     border-color: var(--color-accent);
     color: var(--color-accent);
-    box-shadow: var(--shadow-sm);
   }
 
-  .testimonials__dots {
-    display: flex;
-    gap: var(--space-2);
+  .testimonials__btn:disabled {
+    opacity: 0.35;
+    cursor: default;
   }
 
-  .testimonials__dot {
-    width: 8px;
-    height: 8px;
-    border-radius: var(--radius-full);
-    border: none;
-    background-color: var(--color-border);
-    cursor: pointer;
-    padding: 0;
-    transition: all var(--transition-fast);
+  .testimonials__note {
+    margin-top: var(--space-6);
+    text-align: center;
+    font-size: var(--text-xs);
+    color: var(--color-text-soft);
   }
 
-  .testimonials__dot--active,
-  .testimonials__dot:hover {
-    background-color: var(--color-accent);
-    width: 24px;
+  .testimonials__note a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 2px;
   }
 
-  @media (min-width: 769px) {
+  @media (max-width: 1024px) {
     .testimonials__track {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      transform: none !important;
+      grid-auto-columns: calc((100% - var(--gap)) / 2);
     }
-    .testimonials__controls {
-      display: none;
+  }
+
+  @media (max-width: 640px) {
+    .testimonials__track {
+      --gap: var(--space-4);
+      grid-auto-columns: 85%;
+    }
+    .review {
+      padding: var(--space-5);
     }
   }
 </style>
 
 <script>
   const track = document.getElementById('testimonials-track');
-  const dots = document.querySelectorAll<HTMLButtonElement>('.testimonials__dot');
-  const prevBtn = document.getElementById('testimonials-prev');
-  const nextBtn = document.getElementById('testimonials-next');
-  const total = dots.length;
-  let current = 0;
+  const prev = document.getElementById('testimonials-prev') as HTMLButtonElement | null;
+  const next = document.getElementById('testimonials-next') as HTMLButtonElement | null;
 
-  function go(index: number) {
-    current = (index + total) % total;
-    if (track) {
-      (track as HTMLElement).style.transform = `translateX(-${current * 100}%)`;
-    }
-    dots.forEach((dot, i) => {
-      dot.classList.toggle('testimonials__dot--active', i === current);
-      dot.setAttribute('aria-selected', i === current ? 'true' : 'false');
-    });
+  if (track && prev && next) {
+    const step = () => {
+      const card = track.querySelector<HTMLElement>('.review');
+      const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+      return card ? card.offsetWidth + gap : track.clientWidth;
+    };
+    const update = () => {
+      prev.disabled = track.scrollLeft <= 2;
+      next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
+    };
+    prev.addEventListener('click', () => track.scrollBy({ left: -step() }));
+    next.addEventListener('click', () => track.scrollBy({ left: step() }));
+    track.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
   }
-
-  prevBtn?.addEventListener('click', () => go(current - 1));
-  nextBtn?.addEventListener('click', () => go(current + 1));
-  dots.forEach((dot, i) => dot.addEventListener('click', () => go(i)));
 </script>
