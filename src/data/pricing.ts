@@ -271,42 +271,80 @@ export const pricingData: PriceCategory[] = [
     id: 'makeup',
     category: 'Make-up a vizážistika',
     summary:
-      'Svatební líčení, kurzy líčení s Larens Colour, poradenství v péči o pleť i kompletní make-up proměny včetně účesu.',
-    priceFrom: '800 Kč',
-    durationRange: '60–210 min',
+      'Svatební líčení a účesy, líčení i účesy na zvláštní příležitost, kurzy líčení s Larens Colour, poradenství v péči o pleť a make-up proměny.',
+    priceFrom: '1 000 Kč',
+    durationRange: '60–180 min',
     image: '/images/salon/liceni-koutek.jpg',
     icon: icons.makeup,
+    note: 'Líčení i účesy probíhají v salonu. Doprava na jiné místo 10 Kč/km. Rezervaci svatební zkoušky doporučuji 1–2 měsíce před svatbou.',
     items: [],
     subsections: [
       {
-        title: 'Svatební vizáž',
+        title: 'Svatební vizáž — nevěsta',
         items: [
           {
-            name: 'Vizáž nevěsta',
-            price: '3 500 Kč',
+            name: 'Svatební líčení',
+            price: 'od 2 000 Kč',
             duration: '120 min',
             description:
-              'Vizáž obsahuje předsvatební konzultaci a zkoušku, make-up v den svatby, nalepení jednorázových řas. U svatebního líčení je nutné uhradit rezervační poplatek ve výši 1 500 CZK v den zkoušky, odečítá se od celkové ceny nebo slouží jako úhrada za zkoušku. Rezervace zkoušky před událostí 1–2 měsíce.',
+              'Profesionální svatební líčení v den svatby, včetně přípravy pleti a nalepení jednorázových řas. Líčím kosmetikou Larens Colour, která pleť zároveň ošetřuje. Cena se odvíjí od náročnosti líčení.',
           },
           {
-            name: 'Vizáž nevěsta komplet',
-            price: '4 500 Kč',
-            duration: '210 min',
+            name: 'Zkouška svatebního líčení',
+            price: 'od 1 500 Kč',
+            duration: '90 min',
             description:
-              'Vizáž obsahuje předsvatební konzultaci a zkoušku vizáže, make-up a účes v den svatby, nalepení jednorázových řas, možnost zakoupení nebo zapůjčení ozdob do účesu za vratnou kauci. U svatebního líčení je nutné uhradit rezervační poplatek ve výši 1 500 CZK v den zkoušky, odečítá se od celkové ceny nebo slouží jako úhrada za zkoušku. Rezervaci zkoušky před událostí 1–2 měsíce.',
+              'Zkouška líčení před svatbou, při které společně najdeme ideální výsledek a zaznamenám si každý krok, aby bylo líčení v den svatby přesně podle Vašich představ. Objednává se zvlášť, ideálně 1–2 měsíce před svatbou.',
           },
           {
-            name: 'Vizáž svatebčanka',
-            price: '800 Kč',
+            name: 'Svatební účes',
+            price: 'od 2 000 Kč',
+            duration: '120 min',
+            description:
+              'Svatební účes v den svatby. Ozdoby do vlasů je možné zakoupit nebo zapůjčit za vratnou kauci. Cena se odvíjí od náročnosti účesu.',
+          },
+          {
+            name: 'Zkouška svatebního účesu',
+            price: 'od 1 500 Kč',
+            duration: '90 min',
+            description:
+              'Zkouška účesu před svatbou. Vyzkoušíme varianty, vybereme ozdoby a postup si zaznamenám, aby byl účes v den svatby stejný. Objednává se zvlášť, ideálně 1–2 měsíce před svatbou.',
+          },
+        ],
+      },
+      {
+        title: 'Svatební vizáž — svatebčanka',
+        items: [
+          {
+            name: 'Líčení svatebčanky',
+            price: 'od 1 000 Kč',
             duration: '60 min',
-            description:
-              'Make-up od 800 CZK / 60 minut. Účes od 800 CZK / 60 minut. Lepení řas od 150 CZK.',
+            description: 'Líčení pro svatebčanky, svědkyni, maminku nebo družičky. Lepení řas od 150 CZK.',
           },
           {
-            name: 'Vizáž svatebčanka komplet',
-            price: '1 500 Kč',
-            duration: '120 min',
-            description: 'Make-up a účes od 1 500 CZK / 120 minut. Lepení řas od 150 CZK.',
+            name: 'Účes svatebčanky',
+            price: 'od 1 000 Kč',
+            duration: '60 min',
+            description: 'Účes pro svatebčanky, svědkyni, maminku nebo družičky.',
+          },
+        ],
+      },
+      {
+        title: 'Vizáž na zvláštní příležitost',
+        items: [
+          {
+            name: 'Líčení (denní, večerní, maturitní, na fotografování)',
+            price: '1 000–1 300 Kč',
+            duration: '60 min',
+            note: 'Dle náročnosti',
+            description: 'Líčení kosmetikou Larens Colour na jakoukoli příležitost. Cena se odvíjí od náročnosti líčení.',
+          },
+          {
+            name: 'Účes (vlny, culík, drdol)',
+            price: '1 000–1 300 Kč',
+            duration: '60 min',
+            note: 'Dle náročnosti',
+            description: 'Společenský účes na jakoukoli příležitost. Cena se odvíjí od náročnosti účesu.',
           },
         ],
       },
