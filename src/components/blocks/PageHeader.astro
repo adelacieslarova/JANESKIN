@@ -115,6 +115,15 @@ const bleed = Boolean(image) && fullBleed;
       );
   }
 
+  /* Pod průhledným menu je fotka o něco světlejší, ať je logo a menu čitelné. */
+  .page-header--bleed .page-header__veil::after {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 130px;
+    background: linear-gradient(to bottom, rgba(237, 221, 181, 0.55) 0%, rgba(237, 221, 181, 0) 100%);
+  }
+
   /* Fotka jde až nahoru pod průhledné menu — text potřebuje větší odstup. */
   .page-header--bleed {
     padding-top: calc(72px + var(--space-10));
