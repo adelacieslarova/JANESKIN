@@ -9,9 +9,10 @@ import SectionHeading from '../ui/SectionHeading.astro';
 import Button from '../ui/Button.astro';
 import { pricingData } from '../../data/pricing';
 
-/* Poukazy mají vlastní sekci a doplňky patří k ošetření — na homepage
-   by jen rozbily mřížku. Zbylých šest kategorií vyplní dva čisté řádky. */
-const hiddenOnHome = ['voucher', 'doplnkove'];
+/* Poukazy mají vlastní sekci a doplňky ke kosmetické péči se samostatně
+   neobjednávají — na homepage by jen rozbily mřížku. Zbylých šest kategorií
+   vyplní dva čisté řádky. */
+const hiddenOnHome = ['voucher', 'doplnkove-k-peci'];
 const services = pricingData.filter(s => !hiddenOnHome.includes(s.id));
 ---
 

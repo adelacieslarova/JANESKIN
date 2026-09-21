@@ -159,6 +159,61 @@ export const pricingData: PriceCategory[] = [
     ],
   },
   {
+    id: 'doplnkove-k-peci',
+    category: 'Doplňkové služby ke kosmetické péči',
+    summary:
+      'Epilace, barvení obočí a řas, nadstandardní masky a kompres pod oči nebo lehké líčení — vše jako doplněk k vybranému ošetření.',
+    priceFrom: '100 Kč',
+    durationRange: '15–30 min',
+    image: '/images/salon/osetreni-guasha.jpg',
+    icon: icons.doplnky,
+    note: 'Tyto služby je možné zakoupit pouze jako doplněk ke kosmetické péči. Samostatně je najdete v kategorii Doplňkové služby samostatně.',
+    items: [],
+    subsections: [
+      {
+        title: 'Epilace',
+        items: [
+          { name: 'Epilace obočí', price: '100 Kč', duration: '15 min' },
+          { name: 'Epilace horního rtu', price: '100 Kč', duration: '15 min' },
+          { name: 'Epilace brady', price: '100 Kč', duration: '15 min' },
+        ],
+      },
+      {
+        title: 'Obočí a řasy',
+        items: [
+          { name: 'Barvení obočí', price: '100 Kč', duration: '30 min' },
+          { name: 'Barvení řas', price: '100 Kč', duration: '30 min' },
+          { name: 'Společné barvení obočí a řas', price: '150 Kč', duration: '30 min' },
+        ],
+      },
+      {
+        title: 'Nadstandardní aplikace',
+        items: [
+          { name: 'Aplikace alginátové masky', price: '400 Kč', duration: '20 min' },
+          { name: 'Aplikace Bio Renew masky', price: '600 Kč', duration: '30 min' },
+          {
+            name: 'Beauty Eye kompres',
+            price: '200 Kč',
+            duration: '20 min',
+            description:
+              'Prémiové polštářky pod oči ve formě kompresu. Působí liftingově, proti vráskám, intenzivně hydratují a projasňují, zlepšují elasticitu pokožky a pomáhají redukovat tmavé kruhy, otoky i známky únavy.',
+          },
+        ],
+      },
+      {
+        title: 'Líčení po kosmetické péči',
+        items: [
+          {
+            name: 'Lehké denní líčení',
+            price: '400 Kč',
+            duration: '30 min',
+            description: 'Lehké denní líčení s Larens Colour po kosmetické péči.',
+          },
+        ],
+      },
+    ],
+  },
+  {
     id: 'microneedling',
     category: 'Microneedling s Exosomy',
     summary:
@@ -245,25 +300,6 @@ export const pricingData: PriceCategory[] = [
         note: 'Zvýhodněná cena',
         description:
           'Balíček laminace řas a obočí od InLei® v jedné proceduře. Při laminaci řas dochází k natočení přirozených řas a k jejich barvení, ale také k dodání potřebné výživy a posílení řasy zevnitř. Při laminaci obočí se přírodní chloupky obočí vyčešou v požadovaném směru a zafixují. Postup zahrnuje úpravu a barvení obočí v tzv. ombre efektu.',
-      },
-    ],
-  },
-  {
-    id: 'uprava-oboci',
-    category: 'Celková úprava obočí',
-    summary:
-      'Vyměření tvaru, barvení hybridní barvou s ombre efektem, epilace a závěrečná korekce.',
-    priceFrom: '450 Kč',
-    durationRange: '45 min',
-    image: '/images/gold-maska.webp',
-    icon: icons.oboci,
-    items: [
-      {
-        name: 'Celková úprava obočí',
-        price: '450 Kč',
-        duration: '45 min',
-        description:
-          'Péče zahrnuje: čištění, vyměření obočí, barvení hybridní barvou, ombre efekt, epilace, korekce.',
       },
     ],
   },
@@ -377,49 +413,36 @@ export const pricingData: PriceCategory[] = [
     ],
   },
   {
-    id: 'doplnkove',
-    category: 'Doplňkové služby',
+    id: 'doplnkove-samostatne',
+    category: 'Doplňkové služby samostatně',
     summary:
-      'Barvení a epilace obočí a řas, nadstandardní masky, lehké denní líčení po ošetření.',
-    priceFrom: '100 Kč',
-    durationRange: '15–30 min',
-    image: '/images/salon/osetreni-guasha.jpg',
-    icon: icons.doplnky,
-    note: 'Doplňkové služby je možné zakoupit pouze ke kosmetické aplikaci.',
+      'Celková úprava obočí, barvení obočí a řas i epilace — bez nutnosti objednat kosmetické ošetření.',
+    priceFrom: '200 Kč',
+    durationRange: '15–45 min',
+    image: '/images/salon/detail-oci-profesionalni-liceni.jpg',
+    icon: icons.oboci,
+    note: 'Tyto služby je možné objednat samostatně, bez kosmetické péče.',
     items: [],
     subsections: [
       {
-        title: 'Epilace',
-        items: [
-          { name: 'Epilace obočí', price: '100 Kč', duration: '15 min' },
-          { name: 'Epilace horního rtu', price: '100 Kč', duration: '15 min' },
-          { name: 'Epilace brady', price: '100 Kč', duration: '15 min' },
-        ],
-      },
-      {
         title: 'Obočí a řasy',
         items: [
-          { name: 'Barvení obočí', price: '100 Kč', duration: '30 min' },
-          { name: 'Barvení řas', price: '100 Kč', duration: '30 min' },
-          { name: 'Barvení obočí a řas', price: '150 Kč', duration: '30 min' },
-        ],
-      },
-      {
-        title: 'Líčení po kosmetické péči',
-        items: [
           {
-            name: 'Lehké denní líčení',
-            price: '400 Kč',
-            duration: '30 min',
-            description: 'Lehké denní líčení s Larens Colour po kosmetické péči.',
+            name: 'Celková úprava obočí',
+            price: '450 Kč',
+            duration: '45 min',
+            description:
+              'Péče zahrnuje: čištění, vyměření obočí, barvení hybridní barvou, ombre efekt, epilace, korekce.',
           },
+          { name: 'Barvení řas nebo obočí', price: '250 Kč', duration: '30 min' },
         ],
       },
       {
-        title: 'Nadstandardní aplikace',
+        title: 'Epilace',
         items: [
-          { name: 'Aplikace alginátové masky', price: '400 Kč', duration: '20 min' },
-          { name: 'Aplikace Bio Renew masky', price: '600 Kč', duration: '30 min' },
+          { name: 'Epilace obočí', price: '200 Kč', duration: '15 min' },
+          { name: 'Epilace horního rtu', price: '200 Kč', duration: '15 min' },
+          { name: 'Epilace brady', price: '200 Kč', duration: '15 min' },
         ],
       },
     ],
@@ -454,8 +477,8 @@ export const categoryTags: Record<string, string> = {
   microneedling: 'Omlazení',
   masaze: 'Relaxace',
   laminace: 'Řasy & Obočí',
-  'uprava-oboci': 'Obočí',
+  'doplnkove-samostatne': 'Obočí & řasy',
   makeup: 'Vizáž',
-  doplnkove: 'Doplňky',
+  'doplnkove-k-peci': 'Doplňky k péči',
   voucher: 'Dárek',
 };
