@@ -84,8 +84,43 @@ import { pricingData, BOOKING_URL } from '../data/pricing';
   <Equipment />
   <Larens />
 
+  <!-- Larens Colour sekce -->
+  <section class="colour-strip section section--alt" id="larens-colour" aria-label="Dekorativní kosmetika Larens Colour">
+    <div class="container">
+      <SectionHeading
+        label="Dekorativní kosmetika"
+        title="Larens Colour — make-up, který pečuje"
+        subtitle="Víc než jen dekorativní kosmetika. Líčení jako pokračování pečujícího rituálu a investice do kvality Vaší pleti."
+      />
+      <div class="colour-strip__features">
+        <InfoBox
+          title="Pečující složení"
+          text="Liposomal Collagen Complex, Phytodermina H Lifting™ a rovnou tři typy kyseliny hyaluronové."
+          icon={`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3c2.5 3 5 5.5 5 8.5a5 5 0 0 1-10 0C7 8.5 9.5 6 12 3z"/></svg>`}
+        />
+        <InfoBox
+          title="Pro každou pleť"
+          text="Pro všechny věkové kategorie i pro pleť citlivou, alergickou, aknózní nebo dehydratovanou."
+          icon={`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`}
+        />
+        <InfoBox
+          title="Odstín vybereme spolu"
+          text="Make-up i korektor doladíme k Vaší pleti tak, aby působil jako druhá kůže, bez efektu masky."
+          icon={`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>`}
+        />
+      </div>
+      <p class="colour-strip__note">
+        Larens Colour používám při líčení v salonu a naučím Vás s ním pracovat i doma —
+        na <a href="#makeup">mini kurzu líčení</a> nebo při make-up proměně.
+      </p>
+      <div class="colour-strip__cta">
+        <Button href="/kontakt" variant="primary" size="md">Zeptat se na Larens Colour</Button>
+      </div>
+    </div>
+  </section>
+
   <!-- Nutrivi sekce -->
-  <section class="nutrivi-strip section section--alt" id="nutrivi" aria-label="Doplňky Nutrivi">
+  <section class="nutrivi-strip section" id="nutrivi" aria-label="Doplňky Nutrivi">
     <div class="container">
       <SectionHeading
         label="Doplňky stravy"
@@ -278,15 +313,32 @@ import { pricingData, BOOKING_URL } from '../data/pricing';
   }
 
   /* Nutrivi strip */
-  .nutrivi-strip__features {
+  .nutrivi-strip__features,
+  .colour-strip__features {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: var(--space-8);
     margin-bottom: var(--space-8);
   }
 
-  .nutrivi-strip__cta {
+  .nutrivi-strip__cta,
+  .colour-strip__cta {
     text-align: center;
+  }
+
+  .colour-strip__note {
+    max-width: 640px;
+    margin: 0 auto var(--space-8);
+    text-align: center;
+    font-size: var(--text-base);
+    color: var(--color-text-soft);
+    line-height: 1.7;
+  }
+
+  .colour-strip__note a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
   }
 
   @media (max-width: 900px) {
@@ -307,7 +359,8 @@ import { pricingData, BOOKING_URL } from '../data/pricing';
   }
 
   @media (max-width: 768px) {
-    .nutrivi-strip__features {
+    .nutrivi-strip__features,
+    .colour-strip__features {
       grid-template-columns: 1fr;
       gap: var(--space-5);
     }
