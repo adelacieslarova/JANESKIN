@@ -8,12 +8,25 @@ interface Props {
   image?: string;
   /** Výřez fotky (CSS object-position), výchozí „center center“ */
   imagePosition?: string;
+  /** Fotka pokračuje až nahoru pod menu; menu je nahoře průhledné a po odscrollování se zase zbarví */
+  fullBleed?: boolean;
 }
 
-const { label, title, subtitle, breadcrumb, image, imagePosition } = Astro.props;
+const { label, title, subtitle, breadcrumb, image, imagePosition, fullBleed = false } = Astro.props;
+const bleed = Boolean(image) && fullBleed;
 ---
 
-<section class={`page-header${image ? ' page-header--photo' : ''}`} aria-label="Záhlaví stránky">
+{bleed && (
+  <style
+    is:inline
+    set:html={
+      '.header--band:not(.header--scrolled){background-color:transparent!important;' +
+      'backdrop-filter:none!important;-webkit-backdrop-filter:none!important}'
+    }
+  />
+)}
+
+<section class={`page-header${image ? ' page-header--photo' : ''}${bleed ? ' page-header--bleed' : ''}`} aria-label="Záhlaví stránky">
   {image && (
     <div class="page-header__bg" aria-hidden="true">
       <img
@@ -100,6 +113,12 @@ const { label, title, subtitle, breadcrumb, image, imagePosition } = Astro.props
         rgba(237, 221, 181, 0.62) 55%,
         rgba(237, 221, 181, 0.48) 100%
       );
+  }
+
+  /* Fotka jde až nahoru pod průhledné menu — text potřebuje větší odstup. */
+  .page-header--bleed {
+    padding-top: calc(72px + var(--space-10));
+    padding-bottom: var(--space-16);
   }
 
   .page-header__inner {
