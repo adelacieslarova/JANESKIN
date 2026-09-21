@@ -86,19 +86,20 @@ const { label, title, subtitle, breadcrumb, image, imagePosition } = Astro.props
     object-fit: cover;
     object-position: center center;
     display: block;
-    filter: blur(2px) saturate(0.85);
-    transform: scale(1.03);
+    filter: saturate(0.92);
   }
 
   .page-header__veil {
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-      to bottom,
-      rgba(237, 221, 181, 0.84) 0%,
-      rgba(237, 221, 181, 0.76) 55%,
-      rgba(237, 221, 181, 0.82) 100%
-    );
+    /* Uprostřed, kde je text, je závoj hustší; ke krajům fotku pouští víc. */
+    background:
+      radial-gradient(
+        70% 130% at 50% 50%,
+        rgba(237, 221, 181, 0.82) 0%,
+        rgba(237, 221, 181, 0.62) 55%,
+        rgba(237, 221, 181, 0.48) 100%
+      );
   }
 
   .page-header__inner {
