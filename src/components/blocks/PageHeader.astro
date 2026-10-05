@@ -10,14 +10,14 @@ interface Props {
   imagePosition?: string;
   /** Fotka pokračuje až nahoru pod menu; menu je nahoře průhledné a po odscrollování se zase zbarví */
   fullBleed?: boolean;
-  /** Poměr stran fotky (šířka/výška). Když je zadaný, pás je vysoký tak, aby se fotka vešla celá a nic se neuřízlo. */
-  imageRatio?: number;
+  /** „contain“ = fotka se zmenší, aby byla v pásu celá, a po stranách se rozplyne do béžové.
+      Výchozí „cover“ fotku roztáhne přes celý pás a okraje ořízne. */
+  imageFit?: 'cover' | 'contain';
 }
 
-const { label, title, subtitle, breadcrumb, image, imagePosition, fullBleed = false, imageRatio } = Astro.props;
+const { label, title, subtitle, breadcrumb, image, imagePosition, fullBleed = false, imageFit = 'cover' } = Astro.props;
 const bleed = Boolean(image) && fullBleed;
-// Pás se roztáhne podle šířky okna, aby se fotka vešla celá; nad 1730 px už se dál nezvětšuje.
-const bandHeight = image && imageRatio ? `min-height: min(calc(100vw / ${imageRatio}), 520px)` : undefined;
+const contain = Boolean(image) && imageFit === 'contain';
 ---
 
 {bleed && (
@@ -30,7 +30,7 @@ const bandHeight = image && imageRatio ? `min-height: min(calc(100vw / ${imageRa
   />
 )}
 
-<section class={`page-header${image ? ' page-header--photo' : ''}${bleed ? ' page-header--bleed' : ''}${bandHeight ? ' page-header--fit' : ''}`} style={bandHeight} aria-label="Záhlaví stránky">
+<section class={`page-header${image ? ' page-header--photo' : ''}${bleed ? ' page-header--bleed' : ''}${contain ? ' page-header--contain' : ''}`} aria-label="Záhlaví stránky">
   {image && (
     <div class="page-header__bg" aria-hidden="true">
       <img
@@ -128,11 +128,23 @@ const bandHeight = image && imageRatio ? `min-height: min(calc(100vw / ${imageRa
     background: linear-gradient(to bottom, rgba(237, 221, 181, 0.55) 0%, rgba(237, 221, 181, 0) 100%);
   }
 
-  /* Pás vysoký podle fotky — text drž uprostřed, ať se nelepí nahoru. */
-  .page-header--fit {
+  /* Pás zůstává stejně vysoký jako na ostatních podstránkách, takže se do něj
+     fotka musí vejít celá — zmenší se na výšku pásu a po stranách i dole
+     se rozplyne do béžové, aby neměla tvrdé hrany. */
+  .page-header--contain .page-header__bg {
     display: flex;
-    flex-direction: column;
     justify-content: center;
+    align-items: flex-end;
+  }
+
+  .page-header--contain .page-header__bg-img {
+    width: auto;
+    max-width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center bottom;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 14%, #000 86%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, #000 14%, #000 86%, transparent 100%);
   }
 
   /* Fotka jde až nahoru pod průhledné menu — text potřebuje větší odstup. */
