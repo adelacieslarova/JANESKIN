@@ -11,7 +11,7 @@ const navItems = [
 const currentPath = Astro.url.pathname;
 ---
 
-<header class:list={["header", { "header--band": currentPath !== "/" }]} id="header" role="banner">
+<header class:list={["header", currentPath === "/" ? "header--video" : "header--band"]} id="header" role="banner">
   <div class="header__inner container">
 
     <!-- Logo -->
@@ -129,7 +129,8 @@ const currentPath = Astro.url.pathname;
 
 <style>
   /* ── Header base ── */
-  /* Hlavička je světlá pořád — hero je nově krémový, bílé texty by na něm zanikly. */
+  /* Hlavička je světlá; jen na úvodní stránce je nahoře průhledná nad videem
+     (viz .header--video níže) a po odscrollování se vrátí do světlé. */
   .header {
     position: fixed;
     top: 0;
@@ -300,6 +301,50 @@ const currentPath = Astro.url.pathname;
   }
   .header__hamburger[aria-expanded="true"] .header__hamburger-bar:nth-child(3) {
     transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* ── Úvodní stránka: menu leží průhledně na videu ──
+     Platí jen nahoře; po odscrollování přebírá .header--scrolled. Logo je
+     jednobarevné SVG, takže ho do světlé převede filtr. */
+  .header--video:not(.header--scrolled) {
+    background-color: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .header--video:not(.header--scrolled) .header__logo-img {
+    filter: brightness(0) invert(1);
+    opacity: 0.94;
+  }
+
+  .header--video:not(.header--scrolled) .header__nav-link {
+    color: var(--color-bg-alt);
+    text-shadow: 0 1px 12px rgba(30, 20, 6, 0.5);
+  }
+
+  .header--video:not(.header--scrolled) .header__nav-link:hover {
+    color: var(--color-white);
+    background-color: rgba(248, 242, 226, 0.16);
+  }
+
+  .header--video:not(.header--scrolled) .header__cta {
+    color: var(--color-dark);
+    background-color: var(--color-bg-alt);
+    border-color: var(--color-bg-alt);
+  }
+
+  .header--video:not(.header--scrolled) .header__cta:hover {
+    background-color: var(--color-white);
+    border-color: var(--color-white);
+    color: var(--color-dark);
+  }
+
+  .header--video:not(.header--scrolled) .header__hamburger-bar {
+    background-color: var(--color-bg-alt);
+  }
+
+  .header--video:not(.header--scrolled) .header__hamburger:focus-visible {
+    outline-color: var(--color-bg-alt);
   }
 
   /* ── Mobile menu ── */

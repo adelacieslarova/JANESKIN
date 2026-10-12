@@ -13,21 +13,24 @@ const bannerItems = [
 
 <section class="hero" aria-label="Uvítací sekce">
   <div class="hero__bg">
-    <!-- Na mobilu je široká koláž jen tenký proužek — tam jde svislý výřez ošetření -->
-    <picture>
-      <source media="(max-width: 768px)" srcset="/images/hero-salon-mobil.jpg" width="810" height="1013" />
-      <img
-        src="/images/hero-salon.webp"
-        alt="Kosmetický salon JANESKIN — kosmeceutika Larens a ošetření pleti"
-        class="hero__img"
-        loading="eager"
-        fetchpriority="high"
-        decoding="async"
-        width="2160"
-        height="1013"
-      />
-    </picture>
-    <!-- Krémový závoj místo tmavého překryvu: fotka zůstane světlá, text čitelný -->
+    <!-- Video je jen kulisa: bez zvuku, ve smyčce, čtečky ho přeskočí.
+         Na mobilu jde svislá verze, ať se z široké nevyřízne jen proužek. -->
+    <video
+      class="hero__video"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="metadata"
+      poster="/video/janeskin-hero-poster.jpg"
+      aria-hidden="true"
+      tabindex="-1"
+    >
+      <source media="(max-width: 768px)" src="/video/janeskin-hero-mobil.mp4" type="video/mp4" />
+      <source src="/video/janeskin-hero.webm" type="video/webm" />
+      <source src="/video/janeskin-hero.mp4" type="video/mp4" />
+    </video>
+    <!-- Tmavý překryv, ať je světlý text na videu čitelný -->
     <div class="hero__veil" aria-hidden="true"></div>
 
     <div class="hero__content">
@@ -66,61 +69,56 @@ const bannerItems = [
     background-color: var(--color-bg);
   }
 
-  /* Obrázek je v toku a určuje výšku, aby byl vidět celý */
+  /* Video jde až nahoru pod průhledné menu; dole zbude místo na pruh se službami */
   .hero__bg {
     position: relative;
     z-index: 0;
+    min-height: max(600px, calc(100svh - 64px));
+    display: flex;
+    overflow: hidden;
+    background-color: var(--color-dark);
   }
 
-  .hero__img {
+  .hero__video {
+    position: absolute;
+    inset: 0;
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
     display: block;
   }
 
-  /* Krémový panel vlevo drží text. Barva je #F8F2E2 z banneru, ne skoro
-     bílá #FDFAF3 — ta působila studeně vedle teplé fotky.
-
-     Přechod je záměrně dlouhý a po malých krocích. Dřív padal z 0,72
-     na nulu během dvanácti procent šířky a ta hrana se potkávala se
-     spojem koláže přesně v polovině — dohromady to působilo jako řez.
-     Teď se rozplývá až do 88 % a přes spoj jde s krytím 0,74. */
+  /* Hnědý překryv v barvě spodního pruhu (#3B290F), ne černý — drží teplý tón
+     salonu. Uprostřed, kde leží text, je o něco hustší. */
   .hero__veil {
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(
-        to right,
-        rgba(248, 242, 226, 0.98) 0%,
-        rgba(248, 242, 226, 0.96) 35%,
-        rgba(248, 242, 226, 0.90) 44%,
-        rgba(248, 242, 226, 0.74) 50%,
-        rgba(248, 242, 226, 0.52) 55%,
-        rgba(248, 242, 226, 0.32) 60%,
-        rgba(248, 242, 226, 0.16) 66%,
-        rgba(248, 242, 226, 0.06) 72%,
-        rgba(248, 242, 226, 0.01) 80%,
-        rgba(248, 242, 226, 0) 88%
-      );
+      /* nahoře tmavší pruh, ať je čitelné i průhledné menu */
+      linear-gradient(to bottom, rgba(30, 20, 6, 0.45) 0%, rgba(30, 20, 6, 0) 22%),
+      radial-gradient(ellipse at center, rgba(30, 20, 6, 0.30) 0%, rgba(30, 20, 6, 0) 70%),
+      rgba(40, 27, 9, 0.58);
   }
 
-  /* Content */
+  /* Content — horní odsazení o 72 px větší, text se středí pod menu */
   .hero__content {
-    position: absolute;
-    inset: 0;
+    position: relative;
     z-index: 1;
-    padding: 120px var(--space-6) var(--space-10);
+    padding: calc(72px + var(--space-12)) var(--space-6) var(--space-12);
     max-width: var(--max-width);
     margin: 0 auto;
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
   }
 
   .hero__text {
-    max-width: 620px;
-    text-align: left;
+    max-width: 760px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .hero__label {
@@ -129,7 +127,7 @@ const bannerItems = [
     font-weight: var(--weight-regular);
     text-transform: uppercase;
     letter-spacing: 0.24em;
-    color: var(--color-accent);
+    color: var(--color-accent-pale);
     margin-bottom: var(--space-5);
   }
 
@@ -138,7 +136,8 @@ const bannerItems = [
     font-size: clamp(2.125rem, 5vw, var(--text-5xl));
     font-weight: var(--weight-regular);
     line-height: 1.15;
-    color: var(--color-text);
+    color: var(--color-bg);
+    text-shadow: 0 2px 24px rgba(30, 20, 6, 0.45);
     margin-bottom: var(--space-6);
   }
 
@@ -153,9 +152,9 @@ const bannerItems = [
   .hero__subtitle {
     font-size: var(--text-lg);
     font-weight: var(--weight-light);
-    color: var(--color-text-soft);
+    color: var(--color-bg-alt);
     line-height: 1.7;
-    max-width: 460px;
+    max-width: 520px;
     margin-bottom: var(--space-8);
   }
 
@@ -164,6 +163,30 @@ const bannerItems = [
     flex-wrap: wrap;
     gap: var(--space-4);
     align-items: center;
+    justify-content: center;
+  }
+
+  /* Tlačítka na tmavém videu: hnědé by zaniklo, proto krémové a světlý obrys */
+  .hero__actions :global(.btn--primary) {
+    background-color: var(--color-bg-alt);
+    border-color: var(--color-bg-alt);
+    color: var(--color-dark);
+  }
+  .hero__actions :global(.btn--primary:hover) {
+    background-color: var(--color-white);
+    border-color: var(--color-white);
+    color: var(--color-dark);
+  }
+  .hero__actions :global(.btn--outline) {
+    color: var(--color-bg-alt);
+    border-color: rgba(248, 242, 226, 0.7);
+  }
+  .hero__actions :global(.btn--outline:hover) {
+    background-color: rgba(248, 242, 226, 0.14);
+    border-color: var(--color-bg-alt);
+  }
+  .hero__actions :global(.btn:focus-visible) {
+    outline-color: var(--color-bg-alt);
   }
 
   /* Pruh se službami — hnědý jako spodní lišta banneru */
@@ -224,36 +247,13 @@ const bannerItems = [
     transform: translate(-50%, -50%);
   }
 
-  /* Fotka je široká (2160×1013): pod 1280px se text nevejde → jde pod obrázek */
-  @media (max-width: 1280px) {
-    /* Text už neleží na fotce, takže fotka musí začít pod fixní hlavičkou —
-       jinak jí hlavička ukrojí horních 72 px i s hlavami. */
-    .hero {
-      padding-top: 72px;
-    }
-    .hero__content {
-      position: static;
-      padding: var(--space-12) var(--space-6);
-    }
-    /* Text je pod fotkou, panel by tu jen překážel. */
-    .hero__veil {
-      display: none;
-    }
-    .hero__text {
-      max-width: none;
-    }
-  }
-
-  @media (min-width: 1281px) and (max-width: 1500px) {
-    .hero__title {
-      font-size: var(--text-4xl);
-    }
-    .hero__content {
-      padding-top: 110px;
-    }
-  }
-
   @media (max-width: 768px) {
+    .hero__bg {
+      min-height: max(520px, 78svh);
+    }
+    .hero__content {
+      padding: calc(72px + var(--space-8)) var(--space-6) var(--space-10);
+    }
     .hero__subtitle {
       font-size: var(--text-base);
     }
@@ -273,6 +273,16 @@ const bannerItems = [
     .hero__actions {
       flex-direction: column;
       align-items: stretch;
+    }
+  }
+
+  /* Kdo má v systému omezené animace, uvidí místo videa jen úvodní snímek */
+  @media (prefers-reduced-motion: reduce) {
+    .hero__video {
+      display: none;
+    }
+    .hero__bg {
+      background: var(--color-dark) url('/video/janeskin-hero-poster.jpg') center / cover no-repeat;
     }
   }
 </style>
