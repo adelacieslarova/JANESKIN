@@ -21,7 +21,7 @@ const benefits = [
 ];
 ---
 
-<section class="larens section" id="larens" aria-label="Kosmeceutika Larens">
+<section class="larens section section--alt" id="larens" aria-label="Kosmeceutika Larens">
   <div class="larens__inner container">
     <div class="larens__content" data-animate>
       <SectionHeading
@@ -93,8 +93,10 @@ const benefits = [
     gap: var(--space-5);
   }
 
-  /* Visual */
+  /* Fotka je vlevo — poslední přístroj nad tím ji má vpravo, takže se
+     fotky dál střídají a neleží dvě pod sebou na stejné straně. */
   .larens__visual {
+    order: -1;
     height: 100%;
   }
 

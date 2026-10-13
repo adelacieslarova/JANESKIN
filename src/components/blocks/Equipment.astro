@@ -1,8 +1,7 @@
 ---
 import SectionHeading from '../ui/SectionHeading.astro';
-import Card from '../ui/Card.astro';
 
-/* Přístroje s vlastním podrobným blokem a fotkou */
+/* Každý přístroj má vlastní podrobný blok s fotkou */
 const featured = [
   {
     id: 'lightpanel',
@@ -60,23 +59,62 @@ const featured = [
       { title: 'Šetrná alternativa k páře', text: 'Jemně otevře póry a zjemní pleť před čištěním nebo masáží.' },
     ],
   },
-];
-
-const equipment = [
   {
+    id: 'ultrazvukova-spachtle',
+    label: 'Ultrazvukové čištění',
     title: 'Ultrazvuková špachtle',
-    description: 'Hloubkové čištění pórů a efektivní zapracování aktivních látek do pleti bez podráždění.',
-    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4.5 16.5c-1.5 1.5-1.5 3 0 4.5s3 1.5 4.5 0l11-11c1.5-1.5 1.5-3 0-4.5s-3-1.5-4.5 0L4.5 16.5z"/><path d="M15 5l4 4"/></svg>`,
+    lead:
+      'Šetrné hloubkové čištění bez mačkání. Kovová špachtle kmitá ultrazvukovou frekvencí a na navlhčené pleti uvolňuje maz a nečistoty z pórů. Stejným přístrojem pak do pleti zapracuji aktivní látky.',
+    image: '/images/salon/ultrazvukova-spachtle-cisteni-pleti.jpg',
+    alt: 'Hloubkové čištění pleti ultrazvukovou špachtlí v salonu JANESKIN',
+    width: 901,
+    height: 1600,
+    position: '50% 45%',
+    benefits: [
+      { title: 'Vyčistí póry bez mačkání', text: 'Ultrazvukové kmity uvolní maz, černé tečky a nečistoty, které špachtle jemně setře z povrchu pleti.' },
+      { title: 'Jemný peeling', text: 'Odstraní odumřelé buňky z povrchu pokožky, takže je pleť hladší, rozjasněná a na dotek jemná.' },
+      { title: 'Zapracuje aktivní látky', text: 'Otočenou špachtlí vpravuji do pleti séra a ampule, aby se účinné látky dostaly tam, kde mají působit.' },
+      { title: 'Bez podráždění', text: 'Čištění probíhá bez tlaku a bez tepla, proto je vhodné i pro citlivou pleť.' },
+    ],
   },
   {
+    id: 'mikrojehlickovaci-pero',
+    label: 'Microneedling',
     title: 'Mikrojehličkovací pero',
-    description: 'Přesná stimulace přirozené tvorby kolagenu a elastinu. Ideální pro lifting, jizvy i pigmentace.',
-    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="2" x2="12" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>`,
+    lead:
+      'Pero s velmi jemnými jehličkami vytváří v pleti mikroskopické kanálky. Pleť na ně odpoví přirozenou obnovou — tvorbou vlastního kolagenu a elastinu — a zároveň mnohem lépe přijme aktivní látky.',
+    image: '/images/salon/mikrojehlickovaci-pero-microneedling-ampule.jpg',
+    alt: 'Mikrojehličkovací pero a ampule s aktivními látkami pro microneedling',
+    width: 1280,
+    height: 1600,
+    position: '50% 60%',
+    benefits: [
+      { title: 'Zpevnění a lifting', text: 'Podporuje tvorbu vlastního kolagenu a elastinu, pleť je postupně pevnější a pružnější.' },
+      { title: 'Jizvičky a rozšířené póry', text: 'Pomáhá vyhladit strukturu pleti, zjemnit jizvičky po akné a zmenšit viditelnost pórů.' },
+      { title: 'Pigmentace a tón pleti', text: 'Pomáhá sjednotit tón pleti a zesvětlit pigmentové skvrny.' },
+      { title: 'Hlubší účinek aktivních látek', text: 'Mikrokanálky dovolí exosomům, kyselině hyaluronové a růstovým faktorům působit tam, kam by se z povrchu nedostaly.' },
+      { title: 'Vždy po konzultaci', text: 'Termín i vhodnost ošetření domlouvám po osobní konzultaci a seznámení s Vaší pletí.' },
+    ],
   },
   {
+    id: 'galvanicka-zehlicka',
+    label: 'Galvanika, ionoforéza a světlo',
     title: 'Galvanická žehlička s LED terapií',
-    description: 'Tři účinky v jednom přístroji — hloubkové čištění galvanikou, ionoforéza pro vstřebání látek a fotonová terapie.',
-    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="5"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>`,
+    lead:
+      'Tři účinky v jednom přístroji. Jemný galvanický proud pomáhá pleť hloubkově vyčistit a vpravit do ní aktivní látky, LED světlo k tomu přidává fotonovou terapii.',
+    /* Fotka žehličky zatím není — než ji dostaneme, zastupují ji ampule,
+       které se přístrojem do pleti zapracovávají. */
+    image: '/images/salon/ampule-larens-ucinne-latky-kosmeticke-osetreni.jpg',
+    alt: 'Ampule Larens s aktivními látkami, které se do pleti zapracovávají ionoforézou',
+    width: 1200,
+    height: 1600,
+    position: '50% 60%',
+    benefits: [
+      { title: 'Hloubkové čištění galvanikou', text: 'Galvanický proud změkčí maz usazený v pórech, takže se pleť vyčistí důkladně a přitom šetrně.' },
+      { title: 'Ionoforéza', text: 'Pomocí proudu se aktivní látky ze sér a ampulí dostanou hlouběji do pleti, než kdyby se jen nanesly na povrch.' },
+      { title: 'Fotonová terapie', text: 'LED světlo podporuje regeneraci pleti a doplňuje účinek zapracovaných látek.' },
+      { title: 'Příjemné a bezbolestné', text: 'Ošetření nebolí — nanejvýš ucítíte jemné teplo nebo lehké mravenčení.' },
+    ],
   },
 ];
 ---
@@ -138,20 +176,6 @@ const equipment = [
         </article>
       ))}
     </div>
-
-    <h3 class="equipment__more">A dále v salonu pracuji s</h3>
-
-    <ul class="equipment__grid" role="list" data-animate>
-      {equipment.map(item => (
-        <li>
-          <Card variant="info">
-            <div class="equipment-card__icon" aria-hidden="true" set:html={item.icon} />
-            <h3 class="equipment-card__title">{item.title}</h3>
-            <p class="equipment-card__desc">{item.description}</p>
-          </Card>
-        </li>
-      ))}
-    </ul>
   </div>
 </section>
 
@@ -161,7 +185,6 @@ const equipment = [
     display: flex;
     flex-direction: column;
     gap: var(--space-20);
-    margin-bottom: var(--space-20);
   }
 
   .device {
@@ -265,66 +288,15 @@ const equipment = [
     margin-bottom: var(--space-1);
   }
 
-  /* ── Další přístroje ── */
-  .equipment__more {
-    font-family: var(--font-heading);
-    font-weight: var(--weight-regular);
-    font-size: var(--text-3xl);
-    color: var(--color-text);
-    text-align: center;
-    margin-bottom: var(--space-8);
-  }
-
-  .equipment__grid {
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-6);
-  }
-
-  .equipment__grid :global(.card) {
-    height: 100%;
-  }
-
-  .equipment-card__icon {
-    width: 48px;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--color-accent-light);
-    border-radius: var(--radius-md);
-    color: var(--color-accent-hover);
-    flex-shrink: 0;
-  }
-
-  .equipment-card__title {
-    font-family: var(--font-heading);
-    font-size: var(--text-2xl);
-    font-weight: var(--weight-regular);
-    color: var(--color-text);
-    line-height: 1.2;
-  }
-
-  .equipment-card__desc {
-    font-size: var(--text-sm);
-    color: var(--color-text-soft);
-    line-height: 1.65;
-  }
-
   @media (max-width: 1024px) {
     .device {
       gap: var(--space-10);
-    }
-    .equipment__grid {
-      grid-template-columns: 1fr 1fr;
     }
   }
 
   @media (max-width: 768px) {
     .equipment__featured {
       gap: var(--space-16);
-      margin-bottom: var(--space-16);
     }
     .device {
       grid-template-columns: 1fr;
@@ -342,14 +314,6 @@ const equipment = [
     .device__lead {
       font-size: var(--text-base);
     }
-    .equipment__more {
-      font-size: var(--text-2xl);
-    }
   }
 
-  @media (max-width: 640px) {
-    .equipment__grid {
-      grid-template-columns: 1fr;
-    }
-  }
 </style>
