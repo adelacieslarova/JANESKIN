@@ -1,6 +1,9 @@
 ---
 import SectionHeading from '../ui/SectionHeading.astro';
 import { GOOGLE_URL, SEZNAM_URL, ratings, reviews } from '../../data/reviews';
+/* Loga jsou jednobarevná (fill="currentColor"), barvu jim dává CSS */
+import googleLogo from '../../assets/logos/google.svg?raw';
+import seznamLogo from '../../assets/logos/seznam.svg?raw';
 
 const star = `<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>`;
 const stars = star.repeat(5);
@@ -15,12 +18,14 @@ const stars = star.repeat(5);
 
     <div class="testimonials__ratings">
       <a href={GOOGLE_URL} class="rating" target="_blank" rel="noopener noreferrer">
-        <span class="rating__stars" set:html={stars} />
-        <span class="rating__text"><strong>{ratings.google.score}</strong> na Googlu ({ratings.google.count} hodnocení)</span>
+        <span class="rating__logo rating__logo--google" role="img" aria-label="Google" set:html={googleLogo} />
+        <span class="rating__stars" aria-hidden="true" set:html={stars} />
+        <span class="rating__text"><strong>{ratings.google.score}</strong> ({ratings.google.count} hodnocení)</span>
       </a>
       <a href={SEZNAM_URL} class="rating" target="_blank" rel="noopener noreferrer">
-        <span class="rating__stars" set:html={stars} />
-        <span class="rating__text"><strong>{ratings.seznam.score}</strong> na Seznamu ({ratings.seznam.count} hodnocení)</span>
+        <span class="rating__logo rating__logo--seznam" role="img" aria-label="Seznam.cz" set:html={seznamLogo} />
+        <span class="rating__stars" aria-hidden="true" set:html={stars} />
+        <span class="rating__text"><strong>{ratings.seznam.score}</strong> ({ratings.seznam.count} hodnocení)</span>
       </a>
     </div>
 
@@ -95,6 +100,28 @@ const stars = star.repeat(5);
   .rating strong {
     color: var(--color-text);
     font-weight: var(--weight-semibold);
+  }
+
+  /* Loga Googlu a Seznamu ve zlaté JANESKIN, stejně jako na stránce /recenze;
+     různé výšky vyrovnávají opticky stejnou velikost písma obou nápisů. */
+  .rating__logo {
+    display: inline-flex;
+    align-items: center;
+    margin-right: var(--space-1);
+    color: var(--color-gold);
+  }
+
+  .rating__logo :global(svg) {
+    display: block;
+    width: auto;
+  }
+
+  .rating__logo--google :global(svg) {
+    height: 20px;
+  }
+
+  .rating__logo--seznam :global(svg) {
+    height: 17px;
   }
 
   .rating__stars,
