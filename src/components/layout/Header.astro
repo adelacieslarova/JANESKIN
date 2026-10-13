@@ -4,6 +4,7 @@ const navItems = [
   { label: 'O mně',       href: '/#o-mne' },
   { label: 'Ceník',       href: '/cenik' },
   { label: 'Galerie',     href: '/galerie' },
+  { label: 'Recenze',     href: '/recenze' },
   { label: 'Pro nevěsty', href: '/pro-nevesty' },
   { label: 'Kontakt',     href: '/kontakt' },
 ];
@@ -496,8 +497,9 @@ const currentPath = Astro.url.pathname;
     to   { transform: translateX(0); }
   }
 
-  /* ── Responsive ── */
-  @media (max-width: 1024px) {
+  /* ── Responsive ──
+     Se sedmi položkami se menu pod 1100 px nevejde vedle loga a tlačítka. */
+  @media (max-width: 1100px) {
     .header__nav {
       display: none;
     }
