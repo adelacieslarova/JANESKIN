@@ -59,7 +59,7 @@ export const pricingData: PriceCategory[] = [
     id: 'kosmeticka-pece',
     category: 'Kosmetická péče',
     summary:
-      'Specializovaná ošetření s kosmeceutikou Larens — od hluboké hydratace přes lifting a chemické peelingy až po řešení akné, pigmentací či citlivé pleti.',
+      'Specializovaná ošetření s kosmeceutikou Larens, od hluboké hydratace přes lifting a chemické peelingy až po řešení akné, pigmentací či citlivé pleti.',
     priceFrom: '1 500 Kč',
     durationRange: '30–120 min',
     image: '/images/salon/osetreni-roller.jpg',
@@ -163,7 +163,7 @@ export const pricingData: PriceCategory[] = [
         duration: '60 min',
         note: 'Jako doplněk 990 Kč',
         description:
-          'Luxusní anti-ageing rituál pro obnovu pleti v oblasti krku a dekoltu s okamžitým a dlouhodobým účinkem mladistvé, pevné a zářivé pokožky s liftingovou revitalizační maskou/zábalem s bioaktivními růstovými faktory z rostlinné Bio-placenty, regeneračními kolagenovými peptidy Biopeptide Complex a liftingovými oligosacharidy Phytodermina H Lifting™. Efekt: vyhlazení a odstranění vrásek; zlepšení hydratace a vyplnění deficitů v kůži; podpora nového vlastního kolagenu; zrychlení regeneračních procesů v pleti; stimulace k obnově vlastních buněk; redukce pigmentových nerovností v oblasti krku. Péče zahrnuje: povrchové čištění pleti; peeling dle potřeb pokožky; čištění pleti ultrazvukovou špachtlí; přístrojové zapracování ampulky anti-aging; masku/zábal s růstovými faktory; monochromatickou světelnou terapii pro podporu kolagenu; závěrečný krém/krém s SPF. Jako doplněk ke kosmetické péči je možné rituál zakoupit za zvýhodněnou cenu 990 Kč — najdete ho v kategorii Doplňkové služby ke kosmetické péči.',
+          'Luxusní anti-ageing rituál pro obnovu pleti v oblasti krku a dekoltu s okamžitým a dlouhodobým účinkem mladistvé, pevné a zářivé pokožky s liftingovou revitalizační maskou/zábalem s bioaktivními růstovými faktory z rostlinné Bio-placenty, regeneračními kolagenovými peptidy Biopeptide Complex a liftingovými oligosacharidy Phytodermina H Lifting™. Efekt: vyhlazení a odstranění vrásek; zlepšení hydratace a vyplnění deficitů v kůži; podpora nového vlastního kolagenu; zrychlení regeneračních procesů v pleti; stimulace k obnově vlastních buněk; redukce pigmentových nerovností v oblasti krku. Péče zahrnuje: povrchové čištění pleti; peeling dle potřeb pokožky; čištění pleti ultrazvukovou špachtlí; přístrojové zapracování ampulky anti-aging; masku/zábal s růstovými faktory; monochromatickou světelnou terapii pro podporu kolagenu; závěrečný krém/krém s SPF. Jako doplněk ke kosmetické péči je možné rituál zakoupit za zvýhodněnou cenu 990 Kč, najdete ho v kategorii Doplňkové služby ke kosmetické péči.',
       },
       {
         name: 'Zvýhodněný balíček krásy pro nastávající nevěstu',
@@ -180,7 +180,7 @@ export const pricingData: PriceCategory[] = [
     id: 'doplnkove-k-peci',
     category: 'Doplňkové služby ke kosmetické péči',
     summary:
-      'Epilace, barvení obočí a řas, nadstandardní masky, kompres pod oči, péče o krk a dekolt nebo lehké líčení — vše jako doplněk k vybranému ošetření.',
+      'Epilace, barvení obočí a řas, nadstandardní masky, kompres pod oči, péče o krk a dekolt nebo lehké líčení, vše jako doplněk k vybranému ošetření.',
     priceFrom: '100 Kč',
     durationRange: '15–60 min',
     image: '/images/salon/osetreni-guasha.jpg',
@@ -247,7 +247,7 @@ export const pricingData: PriceCategory[] = [
     durationRange: '90 min',
     image: '/images/salon/osetreni-vapozon.jpg',
     icon: icons.needle,
-    note: 'Ošetření je dostupné od prosince 2026. Neprovádím ho novým klientům při první návštěvě — vyžaduje předchozí konzultaci.',
+    note: 'Ošetření je dostupné od prosince 2026. Neprovádím ho novým klientům při první návštěvě, vyžaduje předchozí konzultaci.',
     items: [
       {
         name: 'Microneedling s Exosomy',
@@ -262,7 +262,7 @@ export const pricingData: PriceCategory[] = [
     id: 'masaze',
     category: 'Kosmetické masáže',
     summary:
-      'Tři typy masáží obličeje, krku a dekoltu — klasická, liftingová a mikromasáž očního okolí. Relaxace i omlazení.',
+      'Klasická a liftingová masáž obličeje, krku a dekoltu a mikromasáž očního okolí. Relaxace i omlazení.',
     priceFrom: '1 200 Kč',
     durationRange: '50–90 min',
     image: '/images/salon/osetreni-masaz.jpg',
@@ -296,7 +296,7 @@ export const pricingData: PriceCategory[] = [
   },
   {
     id: 'makeup',
-    category: 'Vizáž — make-up a účesy',
+    category: 'Vizáž, make-up a účesy',
     summary:
       'Svatební líčení a účesy, líčení i účesy na zvláštní příležitost, kurzy líčení s Larens Colour, poradenství v péči o pleť a make-up proměny.',
     priceFrom: '1 000 Kč',
@@ -307,7 +307,7 @@ export const pricingData: PriceCategory[] = [
     items: [],
     subsections: [
       {
-        title: 'Svatební vizáž — nevěsta',
+        title: 'Svatební vizáž pro nevěstu',
         items: [
           {
             name: 'Svatební líčení',
@@ -340,7 +340,7 @@ export const pricingData: PriceCategory[] = [
         ],
       },
       {
-        title: 'Svatební vizáž — svatebčanka',
+        title: 'Svatební vizáž pro svatebčanky',
         items: [
           {
             name: 'Líčení svatebčanky',
@@ -407,7 +407,7 @@ export const pricingData: PriceCategory[] = [
     id: 'laminace',
     category: 'Laminace obočí a řas',
     summary:
-      'Pokročilá laminace od InLei® — natočení, barvení a výživa řas i obočí. Zahušťuje řasy až o 25 %.',
+      'Pokročilá laminace od InLei® pro natočení, barvení a výživu řas i obočí. Zahušťuje řasy až o 25 %.',
     priceFrom: '1 100 Kč',
     durationRange: '90–120 min',
     image: '/images/salon/liceni-zrcadlo.jpg',
@@ -418,7 +418,7 @@ export const pricingData: PriceCategory[] = [
         price: '1 100 Kč',
         duration: '90 min',
         description:
-          'Je procedura pokročilé laminace řas, při níž dochází nejen k jemnému, ale účinnému natočení přirozených řas a jejich barvení, ale také k dodání potřebné výživy a posílení řasy zevnitř. Díky patentovanému složení od InLei® se řasy průměrně zahustí až o 25 % a prodlouží o 9 % už po 3 aplikacích. Řasy jsou po ošetření zdravější, pružnější, vyživené a objemnější. Postup zahrnuje: čištění, nanesení laminačních produktů, barvení obočí, nanesení filleru – výživy, která řasy obnovuje, opravuje a udržuje optimální hydrataci, zpevňuje, vyplňuje a zahušťuje strukturu řasy, nanesení závěrečného kroku lash molecular – molekulární rekonstrukce pro řasy, která zlepšuje hydrataci, lesk, sílu a flexibilitu řas, ale také posiluje trvanlivost barvy.',
+          'Je procedura pokročilé laminace řas, při níž dochází nejen k jemnému, ale účinnému natočení přirozených řas a jejich barvení, ale také k dodání potřebné výživy a posílení řasy zevnitř. Díky patentovanému složení od InLei® se řasy průměrně zahustí až o 25 % a prodlouží o 9 % už po 3 aplikacích. Řasy jsou po ošetření zdravější, pružnější, vyživené a objemnější. Postup zahrnuje: čištění, nanesení laminačních produktů, barvení obočí, nanesení filleru, výživy, která řasy obnovuje, opravuje a udržuje optimální hydrataci, zpevňuje, vyplňuje a zahušťuje strukturu řasy, nanesení závěrečného kroku lash molecular, molekulární rekonstrukce pro řasy, která zlepšuje hydrataci, lesk, sílu a flexibilitu řas, ale také posiluje trvanlivost barvy.',
       },
       {
         name: 'Brow Bomber – Laminace obočí s barvením a výživou',
@@ -441,7 +441,7 @@ export const pricingData: PriceCategory[] = [
     id: 'doplnkove-samostatne',
     category: 'Doplňkové služby samostatně',
     summary:
-      'Celková úprava obočí, barvení obočí a řas i epilace — bez nutnosti objednat kosmetické ošetření.',
+      'Celková úprava obočí, barvení obočí a řas i epilace bez nutnosti objednat kosmetické ošetření.',
     priceFrom: '200 Kč',
     durationRange: '15–45 min',
     image: '/images/salon/detail-oci-profesionalni-liceni.jpg',
