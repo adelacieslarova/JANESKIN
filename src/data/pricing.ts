@@ -13,6 +13,8 @@ export interface PriceItem {
   price: string | null;
   duration: string | null;
   note?: string;
+  /** Ukázat poznámku i ve zkráceném ceníku (jinak tam jdou jen poznámky s cenou) */
+  noteInPriceList?: boolean;
   description?: string;
 }
 
@@ -479,6 +481,7 @@ export const pricingData: PriceCategory[] = [
         price: null,
         duration: null,
         note: 'V luxusním dárkovém provedení nebo elektronicky, hodnota dle Vašeho výběru',
+        noteInPriceList: true,
       },
     ],
   },

@@ -19,7 +19,8 @@ const { category, variant = 'full' } = Astro.props;
 const compact = variant === 'compact';
 
 /** V ceníku ukazujeme z poznámek jen ty cenové (balíčky, kúry) — zbytek patří k popisu na /sluzby. */
-const showNote = (item: PriceItem) => Boolean(item.note) && (!compact || /Kč/.test(item.note!));
+const showNote = (item: PriceItem) =>
+  Boolean(item.note) && (!compact || item.noteInPriceList || /Kč/.test(item.note!));
 
 const groups: PriceSubsection[] = category.subsections
   ? category.subsections
