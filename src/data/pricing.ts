@@ -478,7 +478,7 @@ export const pricingData: PriceCategory[] = [
         name: 'Dárkový poukaz',
         price: null,
         duration: null,
-        note: 'Hodnotu si volíte sami',
+        note: 'V luxusním dárkovém provedení nebo elektronicky, hodnota dle Vašeho výběru',
       },
     ],
   },
