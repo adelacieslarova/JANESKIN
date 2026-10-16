@@ -12,6 +12,8 @@ export interface PriceItem {
   name: string;
   price: string | null;
   duration: string | null;
+  /** Text místo „Na dotaz“, když položka nemá pevnou cenu */
+  priceLabel?: string;
   note?: string;
   /** Ukázat poznámku i ve zkráceném ceníku (jinak tam jdou jen poznámky s cenou) */
   noteInPriceList?: boolean;
@@ -479,8 +481,9 @@ export const pricingData: PriceCategory[] = [
       {
         name: 'Dárkový poukaz',
         price: null,
+        priceLabel: 'Hodnota dle Vašeho výběru',
         duration: null,
-        note: 'V luxusním dárkovém provedení nebo elektronicky, hodnota dle Vašeho výběru',
+        note: 'V luxusním dárkovém provedení nebo elektronicky',
         noteInPriceList: true,
       },
     ],

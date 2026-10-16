@@ -118,7 +118,7 @@ function parseDescription(text: string): ParsedDesc {
                 {item.duration && <span class="price-item__duration">{item.duration}</span>}
                 {item.price
                   ? <Badge text={item.price} variant="gold" />
-                  : <span class="price-item__ondemand">Na dotaz</span>
+                  : <span class="price-item__ondemand">{item.priceLabel ?? 'Na dotaz'}</span>
                 }
               </div>
             </div>
