@@ -64,7 +64,7 @@ export const pricingData: PriceCategory[] = [
     items: [
       {
         name: 'První návštěva salonu',
-        price: null,
+        price: 'Zdarma',
         duration: '30 min',
         note: 'Přidejte k vybrané službě',
         description:
