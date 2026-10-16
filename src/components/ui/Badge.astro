@@ -5,9 +5,12 @@ interface Props {
 }
 
 const { text, variant = 'gold' } = Astro.props;
+
+/* Štítek je verzálkami, ale zkratka měny se píše vždy „Kč“ — z verzálek ji vyjmeme */
+const parts = text.split(/(Kč)/);
 ---
 
-<span class={`badge badge--${variant}`}>{text}</span>
+<span class={`badge badge--${variant}`}><span>{parts.map(part => part === 'Kč' ? <span class="badge__currency">Kč</span> : part)}</span></span>
 
 <style>
   .badge {
@@ -22,6 +25,10 @@ const { text, variant = 'gold' } = Astro.props;
     padding: var(--space-1) var(--space-3);
     white-space: nowrap;
     line-height: 1.4;
+  }
+
+  .badge__currency {
+    text-transform: none;
   }
 
   .badge--gold {
