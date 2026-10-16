@@ -30,7 +30,7 @@ const stars = star.repeat(5);
     </div>
 
     <div class="testimonials__carousel" data-animate>
-      <ul class="testimonials__track" id="testimonials-track" role="list" tabindex="0" aria-label="Recenze klientek, posuňte do strany">
+      <ul class="testimonials__track" id="testimonials-track" role="list" tabindex="0" aria-label="Recenze klientek — posuňte do strany">
         {reviews.map(r => (
           <li class="review">
             <span class="review__stars" role="img" aria-label="5 hvězdiček z 5" set:html={stars} />
