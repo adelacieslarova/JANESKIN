@@ -149,6 +149,7 @@ function parseDescription(text: string): ParsedDesc {
                   )}
 
                   {d.note && <p class="price-item__desc price-item__desc--note">{d.note}</p>}
+                  {item.footnote && <p class="price-item__desc price-item__desc--note">{item.footnote}</p>}
                 </div>
               );
             })()}

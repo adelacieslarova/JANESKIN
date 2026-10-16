@@ -18,6 +18,9 @@ export interface PriceItem {
   /** Ukázat poznámku i ve zkráceném ceníku (jinak tam jdou jen poznámky s cenou) */
   noteInPriceList?: boolean;
   description?: string;
+  /** Řádek na konec popisu (kůra, balíček) — u popisů bez „Péče zahrnuje:“,
+      kde se nedá oddělit automaticky */
+  footnote?: string;
 }
 
 export interface PriceSubsection {
@@ -168,7 +171,8 @@ export const pricingData: PriceCategory[] = [
         duration: '60 min',
         note: 'Balíček 3× = 4 200 Kč',
         description:
-          'Vaše pleť si v období před svatbou zaslouží pozornost a to nejen kvůli krásnému make-upu a svatebním fotkám, ale především kvůli vašemu pocitu jedinečnosti a sebevědomí. Každá pleť má jiné potřeby a ať se už chystáte na kosmetické ošetření poprvé, nebo už máte nějaké kosmetické ošetření za sebou, ráda Vám pomůžu se zorientovat v nabídce kosmetických ošetření a vybrat přesně to pravé pro Vás před vaším velkým dnem. Pokud nedocházíte pravidelně na kosmetickou péči a chtěla byste stav své pleti zlepšit, 3 měsíce předem je ten ideální čas naplánovat první návštěvu. Vaši pleti sestavím na míru péči, která pleť zklidní a rozzáří. Budete odcházet se zdravou a krásnou pletí, která bude působit svěže a hydratovaně. Zvýhodněná služba pro nevěsty, které se chystají na svatební zkoušku líčení v našem salonu. Proceduru je vhodné absolvovat 1× za 4 týdny. 1× péče 1 500 CZK, doba trvání 60 min. Balíček 3× ošetření = 4 200 CZK.',
+          'Vaše pleť si v období před svatbou zaslouží pozornost a to nejen kvůli krásnému make-upu a svatebním fotkám, ale především kvůli vašemu pocitu jedinečnosti a sebevědomí. Každá pleť má jiné potřeby a ať se už chystáte na kosmetické ošetření poprvé, nebo už máte nějaké kosmetické ošetření za sebou, ráda Vám pomůžu se zorientovat v nabídce kosmetických ošetření a vybrat přesně to pravé pro Vás před vaším velkým dnem. Pokud nedocházíte pravidelně na kosmetickou péči a chtěla byste stav své pleti zlepšit, 3 měsíce předem je ten ideální čas naplánovat první návštěvu. Vaši pleti sestavím na míru péči, která pleť zklidní a rozzáří. Budete odcházet se zdravou a krásnou pletí, která bude působit svěže a hydratovaně. Zvýhodněná služba pro nevěsty, které se chystají na svatební zkoušku líčení v našem salonu.',
+        footnote: 'Proceduru je vhodné absolvovat 1× za 4 týdny. 1× péče 1 500 Kč, doba trvání 60 min. Balíček 3× ošetření = 4 200 Kč.',
       },
     ],
   },
