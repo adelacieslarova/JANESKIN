@@ -38,6 +38,9 @@ const classes = ['btn', `btn--${variant}`, `btn--${size}`].join(' ');
   .btn {
     display: inline-flex;
     align-items: center;
+    /* Na mobilu se tlačítka roztahují na celou šířku — text musí zůstat uprostřed */
+    justify-content: center;
+    text-align: center;
     gap: var(--space-2);
     font-family: var(--font-body);
     font-size: var(--text-sm);

@@ -249,5 +249,16 @@ const contain = Boolean(image) && imageFit === 'contain';
     .page-header__subtitle {
       font-size: var(--text-lg);
     }
+
+    /* Na mobilu je pás vyšší než široký — zmenšená fotka by byla jen úzký
+       proužek u spodního okraje. Tady ji proto roztáhneme přes celý pás. */
+    .page-header--contain .page-header__bg-img {
+      width: 100%;
+      max-width: none;
+      object-fit: cover;
+      object-position: center center;
+      -webkit-mask-image: none;
+      mask-image: none;
+    }
   }
 </style>
