@@ -1,0 +1,152 @@
+---
+/**
+ * Lepivé menu kategorií pod hlavičkou (/sluzby a /cenik).
+ *
+ * Když se kategorie nevejdou na šířku, menu jde posunout do strany.
+ * Na kraji, kde ještě něco pokračuje, se ukáže přechod do ztracena
+ * a šipka — jinak by uříznutá položka vypadala jako chyba.
+ */
+import { pricingData } from '../../data/pricing';
+
+interface Props {
+  /** Užší odsazení položek (ceník) */
+  tight?: boolean;
+}
+
+const { tight = false } = Astro.props;
+---
+
+<nav class:list={['cat-nav', tight && 'cat-nav--tight']} aria-label="Kategorie služeb">
+  <div class="container">
+    <div class="cat-nav__scroller">
+      <ul class="cat-nav__list" role="list">
+        {pricingData.map(cat => (
+          <li>
+            <a href={`#${cat.id}`} class="cat-nav__link">{cat.category}</a>
+          </li>
+        ))}
+      </ul>
+
+      {/* Šipky jsou jen pomůcka pro myš a prst — klávesnicí se dá projít odkazy */}
+      <button type="button" class="cat-nav__arrow cat-nav__arrow--prev" tabindex="-1" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button type="button" class="cat-nav__arrow cat-nav__arrow--next" tabindex="-1" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<style>
+  .cat-nav {
+    background-color: var(--color-white);
+    border-bottom: 1px solid var(--color-border);
+    position: sticky;
+    top: 72px;
+    z-index: calc(var(--z-header) - 1);
+  }
+
+  .cat-nav__scroller {
+    position: relative;
+  }
+
+  .cat-nav__list {
+    list-style: none;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-behavior: smooth;
+  }
+
+  .cat-nav__list::-webkit-scrollbar { display: none; }
+
+  .cat-nav__link {
+    display: block;
+    font-size: var(--text-sm);
+    font-weight: var(--weight-medium);
+    color: var(--color-text-soft);
+    text-decoration: none;
+    padding: var(--space-4) var(--space-5);
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    transition: color var(--transition-fast), border-color var(--transition-fast);
+  }
+
+  .cat-nav--tight .cat-nav__link {
+    padding-inline: var(--space-4);
+  }
+
+  .cat-nav__link:hover {
+    color: var(--color-accent);
+    border-bottom-color: var(--color-accent);
+  }
+
+  /* Šipka sedí na přechodu z bílé do ztracena; ukáže se jen na straně,
+     kam jde menu ještě posunout (třídy přidává skript). */
+  .cat-nav__arrow {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 72px;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    border: 0;
+    color: var(--color-accent);
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-fast), color var(--transition-fast);
+  }
+
+  .cat-nav__arrow--prev {
+    left: 0;
+    justify-content: flex-start;
+    background: linear-gradient(to right, var(--color-white) 35%, rgba(255, 255, 255, 0));
+  }
+
+  .cat-nav__arrow--next {
+    right: 0;
+    justify-content: flex-end;
+    background: linear-gradient(to left, var(--color-white) 35%, rgba(255, 255, 255, 0));
+  }
+
+  .cat-nav__arrow:hover {
+    color: var(--color-accent-hover);
+  }
+
+  .cat-nav__scroller.can-prev .cat-nav__arrow--prev,
+  .cat-nav__scroller.can-next .cat-nav__arrow--next {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cat-nav__list { scroll-behavior: auto; }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.cat-nav__scroller').forEach(scroller => {
+    const list = scroller.querySelector<HTMLElement>('.cat-nav__list');
+    const prev = scroller.querySelector<HTMLButtonElement>('.cat-nav__arrow--prev');
+    const next = scroller.querySelector<HTMLButtonElement>('.cat-nav__arrow--next');
+    if (!list || !prev || !next) return;
+
+    const update = () => {
+      scroller.classList.toggle('can-prev', list.scrollLeft > 2);
+      scroller.classList.toggle('can-next', list.scrollLeft + list.clientWidth < list.scrollWidth - 2);
+    };
+    const step = () => Math.max(list.clientWidth * 0.6, 120);
+
+    prev.addEventListener('click', () => list.scrollBy({ left: -step() }));
+    next.addEventListener('click', () => list.scrollBy({ left: step() }));
+    list.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    document.fonts?.ready.then(update);
+    update();
+  });
+</script>

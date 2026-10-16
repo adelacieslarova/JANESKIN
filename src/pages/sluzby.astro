@@ -9,6 +9,7 @@ import Equipment from '../components/blocks/Equipment.astro';
 import FirstVisit from '../components/blocks/FirstVisit.astro';
 import Larens from '../components/blocks/Larens.astro';
 import PriceList from '../components/blocks/PriceList.astro';
+import CategoryNav from '../components/blocks/CategoryNav.astro';
 import { pricingData, BOOKING_URL } from '../data/pricing';
 ---
 
@@ -26,17 +27,7 @@ import { pricingData, BOOKING_URL } from '../data/pricing';
   />
 
   <!-- Rychlá navigace -->
-  <div class="services-nav">
-    <div class="container">
-      <ul class="services-nav__list" role="list">
-        {pricingData.map(cat => (
-          <li>
-            <a href={`#${cat.id}`} class="services-nav__link">{cat.category}</a>
-          </li>
-        ))}
-      </ul>
-    </div>
-  </div>
+  <CategoryNav />
 
   <section class="services-section section" aria-label="Nabídka služeb">
     <div class="container">
@@ -156,43 +147,6 @@ import { pricingData, BOOKING_URL } from '../data/pricing';
 </Layout>
 
 <style>
-  /* Rychlá navigace */
-  .services-nav {
-    background-color: var(--color-white);
-    border-bottom: 1px solid var(--color-border);
-    position: sticky;
-    top: 72px;
-    z-index: calc(var(--z-header) - 1);
-  }
-
-  .services-nav__list {
-    list-style: none;
-    display: flex;
-    gap: 0;
-    overflow-x: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-
-  .services-nav__list::-webkit-scrollbar { display: none; }
-
-  .services-nav__link {
-    display: block;
-    font-size: var(--text-sm);
-    font-weight: var(--weight-medium);
-    color: var(--color-text-soft);
-    text-decoration: none;
-    padding: var(--space-4) var(--space-5);
-    border-bottom: 2px solid transparent;
-    white-space: nowrap;
-    transition: color var(--transition-fast), border-color var(--transition-fast);
-  }
-
-  .services-nav__link:hover {
-    color: var(--color-accent);
-    border-bottom-color: var(--color-accent);
-  }
-
   /* Rozbalovací karty */
   .services-acc {
     display: flex;

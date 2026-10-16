@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import PageHeader from '../components/blocks/PageHeader.astro';
 import Button from '../components/ui/Button.astro';
 import PriceList from '../components/blocks/PriceList.astro';
+import CategoryNav from '../components/blocks/CategoryNav.astro';
 import { pricingData, BOOKING_URL } from '../data/pricing';
 ---
 
@@ -20,17 +21,7 @@ import { pricingData, BOOKING_URL } from '../data/pricing';
   />
 
   <!-- Kategorie navigace -->
-  <div class="cenik-nav">
-    <div class="container">
-      <ul class="cenik-nav__list" role="list">
-        {pricingData.map(cat => (
-          <li>
-            <a href={`#${cat.id}`} class="cenik-nav__link">{cat.category}</a>
-          </li>
-        ))}
-      </ul>
-    </div>
-  </div>
+  <CategoryNav tight />
 
   <div class="cenik-content section">
     <div class="container">
@@ -50,42 +41,6 @@ import { pricingData, BOOKING_URL } from '../data/pricing';
 </Layout>
 
 <style>
-  /* Category nav */
-  .cenik-nav {
-    background-color: var(--color-white);
-    border-bottom: 1px solid var(--color-border);
-    position: sticky;
-    top: 72px;
-    z-index: calc(var(--z-header) - 1);
-  }
-
-  .cenik-nav__list {
-    list-style: none;
-    display: flex;
-    gap: 0;
-    overflow-x: auto;
-    scrollbar-width: none;
-  }
-
-  .cenik-nav__list::-webkit-scrollbar { display: none; }
-
-  .cenik-nav__link {
-    display: block;
-    font-size: var(--text-sm);
-    font-weight: var(--weight-medium);
-    color: var(--color-text-soft);
-    text-decoration: none;
-    padding: var(--space-4) var(--space-4);
-    border-bottom: 2px solid transparent;
-    white-space: nowrap;
-    transition: color var(--transition-fast), border-color var(--transition-fast);
-  }
-
-  .cenik-nav__link:hover {
-    color: var(--color-accent);
-    border-bottom-color: var(--color-accent);
-  }
-
   /* Price categories */
   .price-category {
     margin-bottom: var(--space-16);
