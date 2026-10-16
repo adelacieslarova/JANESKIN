@@ -115,7 +115,7 @@ export const pricingData: PriceCategory[] = [
         price: '1 500 Kč',
         duration: '70 min',
         description:
-          'Rozjasňující procedura zaměřená na odstranění pigmentových skvrn různého původu souvisejících se sluncem, věkem, hormony nebo následky kožních onemocnění jako je akné nebo atopická dermatitida. Efekt: redukce skvrn; sjednocení barevného tónu pleti bez nepřirozeného zesvětlení celé pleti; potlačení vzniku nových skvrn; hydratuje; poskytuje potřebnou dávku antioxidantů; stimuluje k obnově a regeneraci pleti. Péče zahrnuje: odlíčení; povrchové čištění pleti; detoxikační masku; depigmentační sérum a neutralizér; oční krém, závěrečný depigmentační krém/krém s SPF a výživu na rty. Intenzivní kůra 3–6 terapií 1× za 10 dní v období od září do konce května.',
+          'Rozjasňující procedura zaměřená na odstranění pigmentových skvrn různého původu souvisejících se sluncem, věkem, hormony nebo následky kožních onemocnění jako je akné, nebo atopická dermatitida. Efekt: redukce skvrn; sjednocení barevného tónu pleti bez nepřirozeného zesvětlení celé pleti; potlačení vzniku nových skvrn; hydratuje; poskytuje potřebnou dávku antioxidantů; stimuluje k obnově a regeneraci pleti. Péče zahrnuje: odlíčení; povrchové čištění pleti; detoxikační masku; depigmentační sérum a neutralizér; oční krém, závěrečný depigmentační krém/krém s SPF a výživu na rty. Intenzivní kůra 3–6 terapií 1× za 10 dní v období od září do konce května.',
       },
       {
         name: 'ReHarmony Treatment – Elixír harmonie a mládí s Exosomy',
