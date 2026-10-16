@@ -155,11 +155,12 @@ export const pricingData: PriceCategory[] = [
           'Exkluzivní omlazení s povrchovým chemickým peelingem s komplexem přírodních peptidů rybího kolagenu a liftingovou revitalizační maskou/zábalem s růstovými faktory z rostlinné Bio-placenty. Pleť se zjemní, vyhladí, projasní a zhydratuje. Nedochází k olupování pleti nebo silnému podráždění. Vhodný pro všechny typy pleti i pleť citlivou. Efekt: hloubková rekonstrukce pleti obličeje; mizí pigmentace, záněty i akné; podpora procesů hojení a vyhlazení jizev; zmírnění projevů stárnutí. Péče zahrnuje: odlíčení; povrchové čištění pleti; chemický peeling; neutralizér; masku/zábal s růstovými faktory; monochromatickou světelnou terapii; oční krém, závěrečný krém/krém s SPF a výživu na rty. Vhodné jako kůra 3 terapií 1× za 10 dní v období září až duben. Kůra 3 terapií 5 400 CZK.',
       },
       {
-        name: 'Ritual Neck & Décolleté – Péče o krk a dekolt',
+        name: 'Rituál Neck & Décolleté – Péče o krk a dekolt',
         price: '1 600 Kč',
-        duration: null,
+        duration: '60 min',
+        note: 'Jako doplněk 990 Kč',
         description:
-          'Samostatné ošetření krku a dekoltu. Jako doplněk k jiné kosmetické péči je za zvýhodněnou cenu 800 CZK — najdete ho v kategorii Doplňkové služby ke kosmetické péči.',
+          'Luxusní anti-ageing rituál pro obnovu pleti v oblasti krku a dekoltu s okamžitým a dlouhodobým účinkem mladistvé, pevné a zářivé pokožky s liftingovou revitalizační maskou/zábalem s bioaktivními růstovými faktory z rostlinné Bio-placenty, regeneračními kolagenovými peptidy Biopeptide Complex a liftingovými oligosacharidy Phytodermina H Lifting™. Efekt: vyhlazení a odstranění vrásek; zlepšení hydratace a vyplnění deficitů v kůži; podpora nového vlastního kolagenu; zrychlení regeneračních procesů v pleti; stimulace k obnově vlastních buněk; redukce pigmentových nerovností v oblasti krku. Péče zahrnuje: povrchové čištění pleti; peeling dle potřeb pokožky; čištění pleti ultrazvukovou špachtlí; přístrojové zapracování ampulky anti-aging; masku/zábal s růstovými faktory; monochromatickou světelnou terapii pro podporu kolagenu; závěrečný krém/krém s SPF. Jako doplněk ke kosmetické péči je možné rituál zakoupit za zvýhodněnou cenu 990 Kč — najdete ho v kategorii Doplňkové služby ke kosmetické péči.',
       },
       {
         name: 'Zvýhodněný balíček krásy pro nastávající nevěstu',
@@ -205,10 +206,11 @@ export const pricingData: PriceCategory[] = [
           { name: 'Aplikace alginátové masky', price: '400 Kč', duration: '20 min' },
           { name: 'Aplikace Bio Renew masky', price: '600 Kč', duration: '30 min' },
           {
-            name: 'Ritual Neck & Décolleté – Péče o krk a dekolt',
-            price: '800 Kč',
-            duration: null,
-            description: 'Zvýhodněná cena platí jako doplněk k jiné kosmetické péči. Samostatně 1 600 CZK.',
+            name: 'Rituál Neck & Décolleté – Péče o krk a dekolt',
+            price: '990 Kč',
+            duration: '60 min',
+            description:
+              'Luxusní anti-ageing rituál pro obnovu pleti v oblasti krku a dekoltu s okamžitým a dlouhodobým účinkem mladistvé, pevné a zářivé pokožky s liftingovou revitalizační maskou/zábalem s bioaktivními růstovými faktory z rostlinné Bio-placenty, regeneračními kolagenovými peptidy Biopeptide Complex a liftingovými oligosacharidy Phytodermina H Lifting™. Efekt: vyhlazení a odstranění vrásek; zlepšení hydratace a vyplnění deficitů v kůži; podpora nového vlastního kolagenu; zrychlení regeneračních procesů v pleti; stimulace k obnově vlastních buněk; redukce pigmentových nerovností v oblasti krku. Péče zahrnuje: povrchové čištění pleti; peeling dle potřeb pokožky; čištění pleti ultrazvukovou špachtlí; přístrojové zapracování ampulky anti-aging; masku/zábal s růstovými faktory; monochromatickou světelnou terapii pro podporu kolagenu; závěrečný krém/krém s SPF. Zvýhodněná cena platí jako doplněk ke kosmetické péči, samostatně stojí rituál 1 600 Kč.',
           },
           {
             name: 'Beauty Eye kompres',
