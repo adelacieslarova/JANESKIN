@@ -314,7 +314,7 @@ export const pricingData: PriceCategory[] = [
             price: 'od 2 000 Kč',
             duration: '120 min',
             description:
-              'Profesionální svatební líčení v den svatby, včetně přípravy pleti a nalepení jednorázových řas. Líčím kosmetikou Larens Colour, která pleť zároveň ošetřuje. Cena se odvíjí od náročnosti líčení.',
+              'Profesionální svatební líčení v den svatby, včetně přípravy pleti a nalepení jednorázových řas. Cena se odvíjí od náročnosti líčení.',
           },
           {
             name: 'Zkouška svatebního líčení',
