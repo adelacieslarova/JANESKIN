@@ -25,7 +25,7 @@ import { pricingData, BOOKING_URL, PRICES_VALID_FROM } from '../data/pricing';
 
   <div class="cenik-content section">
     <div class="container">
-      <p class="cenik-valid">Ceník je platný od {PRICES_VALID_FROM}</p>
+      <p class="cenik-valid">Ceník s účinností od {PRICES_VALID_FROM}</p>
 
       {pricingData.map(cat => (
         <section class="price-category" id={cat.id} aria-label={cat.category} data-animate>
