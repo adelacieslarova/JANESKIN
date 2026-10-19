@@ -18,8 +18,40 @@ const {
   noIndex = false,
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://janeskin.cz');
+const site = Astro.site ?? 'https://janeskin.cz';
+const canonicalURL = new URL(Astro.url.pathname, site);
 const fullTitle = `${title} | JANESKIN`;
+/* Facebook a spol. berou náhledový obrázek jen s plnou adresou */
+const ogImageURL = new URL(ogImage, site);
+
+/* Strukturovaná data pro Google: salon jako místní firma (adresa, telefon,
+   poloha na mapě, profily). Hodnocení sem schválně nedáváme — Google
+   u vlastních recenzí na webu firmy hvězdičky nezobrazuje a bere to jako spam. */
+const businessData = {
+  '@context': 'https://schema.org',
+  '@type': 'BeautySalon',
+  '@id': 'https://janeskin.cz/#salon',
+  name: 'JANESKIN – Salon Jana Szymiková',
+  url: 'https://janeskin.cz/',
+  image: new URL('/images/salon/kosmeticky-salon-janeskin-osetrovna.jpg', site).href,
+  telephone: '+420724239998',
+  email: 'jana.szymikova@seznam.cz',
+  priceRange: '$$',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'U Koupaliště 472',
+    addressLocality: 'Dolní Lutyně',
+    postalCode: '735 53',
+    addressCountry: 'CZ',
+  },
+  geo: { '@type': 'GeoCoordinates', latitude: 49.8975914, longitude: 18.4247077 },
+  founder: { '@type': 'Person', name: 'Jana Szymiková' },
+  sameAs: [
+    'https://www.instagram.com/salon_janaszymikova/',
+    'https://www.facebook.com/profile.php?id=61569339962095',
+    'https://www.firmy.cz/detail/13747453-janeskin-salon-jana-szymikova-dolni-lutyne.html',
+  ],
+};
 ---
 
 <!DOCTYPE html>
@@ -39,7 +71,7 @@ const fullTitle = `${title} | JANESKIN`;
   <meta property="og:url"         content={canonicalURL} />
   <meta property="og:title"       content={fullTitle} />
   <meta property="og:description" content={description} />
-  <meta property="og:image"       content={ogImage} />
+  <meta property="og:image"       content={ogImageURL} />
   <meta property="og:locale"      content="cs_CZ" />
   <meta property="og:site_name"   content="JANESKIN" />
 
@@ -47,7 +79,9 @@ const fullTitle = `${title} | JANESKIN`;
   <meta name="twitter:card"        content="summary_large_image" />
   <meta name="twitter:title"       content={fullTitle} />
   <meta name="twitter:description" content={description} />
-  <meta name="twitter:image"       content={ogImage} />
+  <meta name="twitter:image"       content={ogImageURL} />
+
+  {!noIndex && <script type="application/ld+json" set:html={JSON.stringify(businessData)} />}
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

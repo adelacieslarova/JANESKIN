@@ -6,6 +6,8 @@ export default defineConfig({
   output: 'static',
   integrations: [
     sitemap({
+      // interní přehled stylů do vyhledávání nepatří
+      filter: (page) => !page.includes('/styleguide'),
       changefreq: 'weekly',
       priority: 0.7,
       lastmod: new Date(),
