@@ -243,7 +243,7 @@ export const pricingData: PriceCategory[] = [
     category: 'Microneedling s Exosomy',
     summary:
       'Moderní estetická procedura spojující exosomy, kyselinu hyaluronovou a růstové faktory pro omlazení a zpevnění pleti.',
-    priceFrom: '2 500 Kč',
+    priceFrom: '3 000 Kč',
     durationRange: '90 min',
     image: '/images/salon/osetreni-vapozon.jpg',
     icon: icons.needle,
@@ -251,7 +251,7 @@ export const pricingData: PriceCategory[] = [
     items: [
       {
         name: 'Microneedling s Exosomy',
-        price: '2 500 Kč',
+        price: '3 000 Kč',
         duration: '90 min',
         description:
           'Moderní estetická procedura spojující mikrojehličkování s exosomy, kyselinou hyaluronovou a růstovými faktory. Podporuje tvorbu vlastního kolagenu, zpevňuje a omlazuje pleť. Termín i vhodnost ošetření domlouvám vždy po osobní konzultaci.',
