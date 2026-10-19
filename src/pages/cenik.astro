@@ -25,7 +25,10 @@ import { pricingData, BOOKING_URL, PRICES_VALID_FROM } from '../data/pricing';
 
   <div class="cenik-content section">
     <div class="container">
-      <p class="cenik-valid">Ceník s účinností od {PRICES_VALID_FROM}</p>
+      <p class="cenik-valid">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+        <span>Ceník s účinností od {PRICES_VALID_FROM}.</span>
+      </p>
 
       {pricingData.map(cat => (
         <section class="price-category" id={cat.id} aria-label={cat.category} data-animate>
@@ -43,11 +46,23 @@ import { pricingData, BOOKING_URL, PRICES_VALID_FROM } from '../data/pricing';
 </Layout>
 
 <style>
+  /* Stejný rámeček jako upozornění na /sluzby */
   .cenik-valid {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
     margin-bottom: var(--space-10);
-    text-align: center;
-    font-size: var(--text-sm);
-    color: var(--color-text-soft);
+    padding: var(--space-4) var(--space-5);
+    background-color: var(--color-accent-pale);
+    border: 1px solid var(--color-accent-light);
+    border-radius: var(--radius-lg);
+    color: var(--color-text);
+    font-size: var(--text-base);
+  }
+
+  .cenik-valid svg {
+    flex-shrink: 0;
+    color: var(--color-accent);
   }
 
   /* Price categories */
