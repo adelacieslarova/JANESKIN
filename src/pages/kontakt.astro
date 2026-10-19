@@ -597,7 +597,10 @@ const practicalInfo = [
         headers: { Accept: 'application/json' },
         body: data,
       });
-      if (!res.ok) throw new Error(String(res.status));
+      /* FormSubmit vrací 200 i při chybě (např. neaktivovaný formulář),
+         rozhoduje až pole success v odpovědi */
+      const result = await res.json().catch(() => ({}));
+      if (!res.ok || String(result.success) !== 'true') throw new Error(result.message || String(res.status));
       form.reset();
       show(THANKS);
     } catch {
