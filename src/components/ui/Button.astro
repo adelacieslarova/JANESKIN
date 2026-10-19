@@ -112,7 +112,11 @@ const classes = ['btn', `btn--${variant}`, `btn--${size}`].join(' ');
   }
 
   /* --- Text --- */
+  /* Textový odkaz se šipkou drží zarovnání okolního textu (doleva),
+     i když ho rodič roztáhne na celou šířku */
   .btn--text {
+    justify-content: flex-start;
+    text-align: left;
     background-color: transparent;
     color: var(--color-accent);
     border-color: transparent;
