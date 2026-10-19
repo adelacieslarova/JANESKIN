@@ -83,7 +83,24 @@ const practicalInfo = [
           <h2 class="booking-form-wrap__title">Objednejte se online</h2>
           <p class="booking-form-wrap__note">Formulář je nezávazný. Ozvu se Vám do 24 hodin s potvrzením termínu.</p>
 
-          <form class="booking-form" name="objednavka" method="POST" novalidate>
+          {/* Web je statický, takže formulář sám nic neodešle. Obsah přepošle
+              služba FormSubmit e-mailem na adresu salonu. Úplně první odeslání
+              přijde jako aktivační e-mail — ten je potřeba jednou potvrdit. */}
+          <form
+            class="booking-form"
+            name="objednavka"
+            method="POST"
+            action="https://formsubmit.co/janeskin@seznam.cz"
+            data-ajax="https://formsubmit.co/ajax/janeskin@seznam.cz"
+            novalidate
+          >
+            <input type="hidden" name="_subject" value="Nová objednávka z webu janeskin.cz" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_next" value="https://janeskin.cz/kontakt/?odeslano=1" />
+            {/* past na roboty — člověk pole nevidí ani nevyplní */}
+            <input type="text" name="_honey" class="booking-form__honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
             <div class="booking-form__row">
               <div class="booking-form__field">
                 <label class="booking-form__label" for="name">Jméno a příjmení <span aria-hidden="true">*</span></label>
@@ -153,6 +170,7 @@ const practicalInfo = [
             </div>
 
             <Button type="submit" variant="primary" size="lg">Odeslat objednávku</Button>
+            <p class="booking-form__status" role="status" aria-live="polite" hidden></p>
           </form>
         </div>
       </div>
@@ -315,6 +333,29 @@ const practicalInfo = [
     font-size: var(--text-sm);
     color: var(--color-text-soft);
     margin-bottom: var(--space-6);
+  }
+
+  .booking-form__honey {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+  }
+
+  .booking-form__status {
+    margin-top: var(--space-4);
+    padding: var(--space-4) var(--space-5);
+    border-radius: var(--radius-lg);
+    font-size: var(--text-base);
+    background-color: var(--color-accent-pale);
+    border: 1px solid var(--color-accent-light);
+    color: var(--color-text);
+  }
+
+  .booking-form__status.is-error {
+    background-color: #fbeaea;
+    border-color: #e3b4b4;
   }
 
   .booking-form {
@@ -513,3 +554,56 @@ const practicalInfo = [
     }
   }
 </style>
+
+<script>
+  /* Odeslání formuláře bez opuštění stránky. Bez JavaScriptu formulář odejde
+     klasicky na FormSubmit a ten klientku vrátí sem s ?odeslano=1. */
+  const form = document.querySelector<HTMLFormElement>('.booking-form');
+  const status = form?.querySelector<HTMLElement>('.booking-form__status');
+
+  const show = (text: string, error = false) => {
+    if (!status) return;
+    status.textContent = text;
+    status.classList.toggle('is-error', error);
+    status.hidden = false;
+  };
+
+  const THANKS = 'Děkuji, objednávka je odeslaná. Ozvu se Vám do 24 hodin s potvrzením termínu.';
+
+  if (new URLSearchParams(location.search).has('odeslano')) show(THANKS);
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const name = form.querySelector<HTMLInputElement>('#name');
+    const phone = form.querySelector<HTMLInputElement>('#phone');
+    if (!name?.value.trim() || !phone?.value.trim()) {
+      show('Vyplňte prosím jméno a telefon, ať se Vám můžu ozvat.', true);
+      (name?.value.trim() ? phone : name)?.focus();
+      return;
+    }
+
+    const data = new FormData(form);
+    /* do e-mailu pošleme čitelný název služby místo interní hodnoty */
+    const service = form.querySelector<HTMLSelectElement>('#service');
+    if (service) data.set('service', service.value ? service.selectedOptions[0].text : '');
+
+    const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+    if (button) button.disabled = true;
+    show('Odesílám…');
+
+    try {
+      const res = await fetch(form.dataset.ajax!, {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: data,
+      });
+      if (!res.ok) throw new Error(String(res.status));
+      form.reset();
+      show(THANKS);
+    } catch {
+      show('Objednávku se nepodařilo odeslat. Zavolejte mi prosím na +420 724 239 998 nebo napište na janeskin@seznam.cz.', true);
+    } finally {
+      if (button) button.disabled = false;
+    }
+  });
+</script>
