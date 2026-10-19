@@ -4,7 +4,7 @@ import PageHeader from '../components/blocks/PageHeader.astro';
 import Button from '../components/ui/Button.astro';
 import PriceList from '../components/blocks/PriceList.astro';
 import CategoryNav from '../components/blocks/CategoryNav.astro';
-import { pricingData, BOOKING_URL } from '../data/pricing';
+import { pricingData, BOOKING_URL, PRICES_VALID_FROM } from '../data/pricing';
 ---
 
 <Layout
@@ -25,6 +25,8 @@ import { pricingData, BOOKING_URL } from '../data/pricing';
 
   <div class="cenik-content section">
     <div class="container">
+      <p class="cenik-valid">Ceník je platný od {PRICES_VALID_FROM}</p>
+
       {pricingData.map(cat => (
         <section class="price-category" id={cat.id} aria-label={cat.category} data-animate>
           <h2 class="price-category__title">{cat.category}</h2>
@@ -41,6 +43,13 @@ import { pricingData, BOOKING_URL } from '../data/pricing';
 </Layout>
 
 <style>
+  .cenik-valid {
+    margin-bottom: var(--space-10);
+    text-align: center;
+    font-size: var(--text-sm);
+    color: var(--color-text-soft);
+  }
+
   /* Price categories */
   .price-category {
     margin-bottom: var(--space-16);

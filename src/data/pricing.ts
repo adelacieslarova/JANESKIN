@@ -496,6 +496,9 @@ export const pricingData: PriceCategory[] = [
   },
 ];
 
+/** Od kdy ceník platí — zobrazuje se nahoře na /cenik */
+export const PRICES_VALID_FROM = '1. 11. 2026';
+
 export const BOOKING_URL = 'https://noona.app/cs/janeskinsalonjanaszymikova';
 
 /** Krátký štítek kategorie pro karty na homepage. */
