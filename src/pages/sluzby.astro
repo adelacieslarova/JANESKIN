@@ -38,6 +38,12 @@ import { pricingData, BOOKING_URL } from '../data/pricing';
         align="left"
       />
 
+      {/* Dočasné: přístrojová péče čeká na schválení. Po 1. 11. 2026 smazat i se stylem .services-notice */}
+      <p class="services-notice">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+        <span>Služby s přístrojovou péčí jsou dostupné s účinností od 1. 11. 2026.</span>
+      </p>
+
       <div class="services-acc">
         {pricingData.map(cat => (
           <details class="service" id={cat.id} data-animate>
@@ -147,6 +153,24 @@ import { pricingData, BOOKING_URL } from '../data/pricing';
 </Layout>
 
 <style>
+  .services-notice {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-6);
+    padding: var(--space-4) var(--space-5);
+    background-color: var(--color-accent-pale);
+    border: 1px solid var(--color-accent-light);
+    border-radius: var(--radius-lg);
+    color: var(--color-text);
+    font-size: var(--text-base);
+  }
+
+  .services-notice svg {
+    flex-shrink: 0;
+    color: var(--color-accent);
+  }
+
   /* Rozbalovací karty */
   .services-acc {
     display: flex;
