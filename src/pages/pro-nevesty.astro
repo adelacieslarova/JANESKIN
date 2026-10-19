@@ -365,10 +365,15 @@ const faq = [
     flex-shrink: 0;
     border-radius: var(--radius-full);
     background-color: var(--color-accent);
-    color: var(--color-text);
+    color: var(--color-white);
     font-family: var(--font-heading);
     font-size: var(--text-xl);
     font-weight: var(--weight-semibold);
+    /* Playfair má číslice „starého stylu“ (3 a 4 visí pod řádek), v kroužku
+       pak sedí nízko. Rovné číslice a řádek 1 je postaví přesně doprostřed. */
+    font-variant-numeric: lining-nums;
+    font-feature-settings: 'lnum' 1;
+    line-height: 1;
     display: flex;
     align-items: center;
     justify-content: center;
