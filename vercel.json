@@ -1,7 +1,7 @@
 {
   "redirects": [
-    { "source": "/:path*", "has": [{ "type": "host", "value": "www.janeskin.cz" }], "destination": "https://janeskin.cz/:path*", "permanent": true },
-    { "source": "/:path*", "has": [{ "type": "host", "value": "janeskin.vercel.app" }], "destination": "https://janeskin.cz/:path*", "permanent": true },
+    { "source": "/(.*)", "has": [{ "type": "host", "value": "www.janeskin.cz" }], "destination": "https://janeskin.cz/$1", "permanent": true },
+    { "source": "/(.*)", "has": [{ "type": "host", "value": "janeskin.vercel.app" }], "destination": "https://janeskin.cz/$1", "permanent": true },
     { "source": "/zasady-cookies-eu", "destination": "/gdpr", "permanent": true },
     { "source": "/zasady-cookies-eu/", "destination": "/gdpr", "permanent": true },
     { "source": "/janeskin-3", "destination": "/", "permanent": true },
