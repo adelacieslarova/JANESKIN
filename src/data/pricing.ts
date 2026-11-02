@@ -161,9 +161,9 @@ export const pricingData: PriceCategory[] = [
         name: 'Rituál Neck & Décolleté – Péče o krk a dekolt',
         price: '1 600 Kč',
         duration: '60 min',
-        note: 'Jako doplněk 990 Kč',
+        note: 'Jako doplněk 600 Kč',
         description:
-          'Luxusní anti-ageing rituál pro obnovu pleti v oblasti krku a dekoltu s okamžitým a dlouhodobým účinkem mladistvé, pevné a zářivé pokožky s liftingovou revitalizační maskou/zábalem s bioaktivními růstovými faktory z rostlinné Bio-placenty, regeneračními kolagenovými peptidy Biopeptide Complex a liftingovými oligosacharidy Phytodermina H Lifting™. Efekt: vyhlazení a odstranění vrásek; zlepšení hydratace a vyplnění deficitů v kůži; podpora nového vlastního kolagenu; zrychlení regeneračních procesů v pleti; stimulace k obnově vlastních buněk; redukce pigmentových nerovností v oblasti krku. Péče zahrnuje: povrchové čištění pleti; peeling dle potřeb pokožky; čištění pleti ultrazvukovou špachtlí; přístrojové zapracování ampulky anti-aging; masku/zábal s růstovými faktory; monochromatickou světelnou terapii pro podporu kolagenu; závěrečný krém/krém s SPF. Jako doplněk ke kosmetické péči je možné rituál zakoupit za zvýhodněnou cenu 990 Kč — najdete ho v kategorii Doplňkové služby ke kosmetické péči.',
+          'Luxusní anti-ageing rituál pro obnovu pleti v oblasti krku a dekoltu s okamžitým a dlouhodobým účinkem mladistvé, pevné a zářivé pokožky s liftingovou revitalizační maskou/zábalem s bioaktivními růstovými faktory z rostlinné Bio-placenty, regeneračními kolagenovými peptidy Biopeptide Complex a liftingovými oligosacharidy Phytodermina H Lifting™. Efekt: vyhlazení a odstranění vrásek; zlepšení hydratace a vyplnění deficitů v kůži; podpora nového vlastního kolagenu; zrychlení regeneračních procesů v pleti; stimulace k obnově vlastních buněk; redukce pigmentových nerovností v oblasti krku. Péče zahrnuje: povrchové čištění pleti; peeling dle potřeb pokožky; čištění pleti ultrazvukovou špachtlí; přístrojové zapracování ampulky anti-aging; masku/zábal s růstovými faktory; monochromatickou světelnou terapii pro podporu kolagenu; závěrečný krém/krém s SPF. Jako doplněk ke kosmetické péči je možné rituál zakoupit za zvýhodněnou cenu 600 Kč — najdete ho v kategorii Doplňkové služby ke kosmetické péči.',
       },
       {
         name: 'Zvýhodněný balíček krásy pro nastávající nevěstu',
@@ -211,7 +211,7 @@ export const pricingData: PriceCategory[] = [
           { name: 'Aplikace Bio Renew masky', price: '600 Kč', duration: '30 min' },
           {
             name: 'Rituál Neck & Décolleté – Péče o krk a dekolt',
-            price: '990 Kč',
+            price: '600 Kč',
             duration: '60 min',
             description:
               'Luxusní anti-ageing rituál pro obnovu pleti v oblasti krku a dekoltu s okamžitým a dlouhodobým účinkem mladistvé, pevné a zářivé pokožky s liftingovou revitalizační maskou/zábalem s bioaktivními růstovými faktory z rostlinné Bio-placenty, regeneračními kolagenovými peptidy Biopeptide Complex a liftingovými oligosacharidy Phytodermina H Lifting™. Efekt: vyhlazení a odstranění vrásek; zlepšení hydratace a vyplnění deficitů v kůži; podpora nového vlastního kolagenu; zrychlení regeneračních procesů v pleti; stimulace k obnově vlastních buněk; redukce pigmentových nerovností v oblasti krku. Péče zahrnuje: povrchové čištění pleti; peeling dle potřeb pokožky; čištění pleti ultrazvukovou špachtlí; přístrojové zapracování ampulky anti-aging; masku/zábal s růstovými faktory; monochromatickou světelnou terapii pro podporu kolagenu; závěrečný krém/krém s SPF. Zvýhodněná cena platí jako doplněk ke kosmetické péči, samostatně stojí rituál 1 600 Kč.',
