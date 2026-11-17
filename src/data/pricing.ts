@@ -217,7 +217,7 @@ export const pricingData: PriceCategory[] = [
               'Luxusní anti-ageing rituál pro obnovu pleti v oblasti krku a dekoltu s okamžitým a dlouhodobým účinkem mladistvé, pevné a zářivé pokožky s liftingovou revitalizační maskou/zábalem s bioaktivními růstovými faktory z rostlinné Bio-placenty, regeneračními kolagenovými peptidy Biopeptide Complex a liftingovými oligosacharidy Phytodermina H Lifting™. Efekt: vyhlazení a odstranění vrásek; zlepšení hydratace a vyplnění deficitů v kůži; podpora nového vlastního kolagenu; zrychlení regeneračních procesů v pleti; stimulace k obnově vlastních buněk; redukce pigmentových nerovností v oblasti krku. Péče zahrnuje: povrchové čištění pleti; peeling dle potřeb pokožky; čištění pleti ultrazvukovou špachtlí; přístrojové zapracování ampulky anti-aging; masku/zábal s růstovými faktory; monochromatickou světelnou terapii pro podporu kolagenu; závěrečný krém/krém s SPF. Zvýhodněná cena platí jako doplněk ke kosmetické péči, samostatně stojí rituál 1 600 Kč.',
           },
           {
-            name: 'Aplikace Beauty Eye kompresu',
+            name: 'Aplikace Beauty Eye Compress',
             price: '200 Kč',
             duration: '20 min',
             description:
