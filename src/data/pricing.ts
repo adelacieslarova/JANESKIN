@@ -210,14 +210,14 @@ export const pricingData: PriceCategory[] = [
           { name: 'Aplikace alginátové masky', price: '400 Kč', duration: '20 min' },
           { name: 'Aplikace Bio Renew masky', price: '600 Kč', duration: '30 min' },
           {
-            name: 'Rituál Neck & Décolleté – Péče o krk a dekolt',
+            name: 'Aplikace Rituál Neck & Décolleté',
             price: '600 Kč',
             duration: '60 min',
             description:
               'Luxusní anti-ageing rituál pro obnovu pleti v oblasti krku a dekoltu s okamžitým a dlouhodobým účinkem mladistvé, pevné a zářivé pokožky s liftingovou revitalizační maskou/zábalem s bioaktivními růstovými faktory z rostlinné Bio-placenty, regeneračními kolagenovými peptidy Biopeptide Complex a liftingovými oligosacharidy Phytodermina H Lifting™. Efekt: vyhlazení a odstranění vrásek; zlepšení hydratace a vyplnění deficitů v kůži; podpora nového vlastního kolagenu; zrychlení regeneračních procesů v pleti; stimulace k obnově vlastních buněk; redukce pigmentových nerovností v oblasti krku. Péče zahrnuje: povrchové čištění pleti; peeling dle potřeb pokožky; čištění pleti ultrazvukovou špachtlí; přístrojové zapracování ampulky anti-aging; masku/zábal s růstovými faktory; monochromatickou světelnou terapii pro podporu kolagenu; závěrečný krém/krém s SPF. Zvýhodněná cena platí jako doplněk ke kosmetické péči, samostatně stojí rituál 1 600 Kč.',
           },
           {
-            name: 'Beauty Eye kompres',
+            name: 'Aplikace Beauty Eye kompresu',
             price: '200 Kč',
             duration: '20 min',
             description:
